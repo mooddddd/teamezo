@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,15,27&height=200&section=header&text=Welcome%20Team%202's%20Project!!&fontSize=60&animation=twinkling)
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,3,4,5,6,7,8,9,15,30&height=200&section=header&text=Welcome%20Team%202's%20Project!!&fontSize=60&animation=twinkling)
 
 ---
 
