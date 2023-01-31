@@ -1,0 +1,67 @@
+header {
+    width: 100%;
+    height: 15rem;
+    background: var(--header);
+}
+
+#header {
+    width: 120rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: var(--main);
+}
+
+.headerLogoImg {
+    width: 11.8rem;
+}
+
+.headerCenter {
+    display: flex;
+    align-items: center;
+}
+
+.headerCenter > div {
+    margin: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.headerCenter > div > a{
+    color: var(--main);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.5s;
+}
+
+.headerCenter > div > a:hover {
+    background-color: var(--footer);
+}
+
+.headerImg {
+    width: 3.5rem;
+}
+
+.headerRight {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.headerRight > div > img {
+    cursor: pointer;
+}
+
+.headerRight > div > a{
+    color: var(--main);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.5s;
+}
+
+.headerRight > div > a:hover{
+    background-color: var(--footer);
+}
