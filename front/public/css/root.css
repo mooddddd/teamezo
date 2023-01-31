@@ -1,0 +1,24 @@
+:root{
+    --header: #ADC46D;
+    --footer: #526A7E;
+    --main: #FDFDFD;
+    --fontColor: #2e2e2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--fontColor)
+}
+
+ul, li {
+    list-style: none;
+}
