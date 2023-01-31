@@ -3,6 +3,7 @@
     --footer: #526A7E;
     --main: #FDFDFD;
     --fontColor: #2e2e2e;
+    --border: #cecece;
 }
 
 * {
@@ -21,4 +22,13 @@ a {
 
 ul, li {
     list-style: none;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+button:hover {
+    background-color: var(--footer);
 }
