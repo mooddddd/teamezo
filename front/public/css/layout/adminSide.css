@@ -1,0 +1,50 @@
+aside {
+    width: 27rem;
+    height: 100vh;
+    background-color: var(--footer);
+}
+
+.adminSideFisrt {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.adminSideFisrt > div {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--main);
+}
+
+.adminSideImg {
+    width: 12rem;
+}
+
+.adminSideSecond {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminSideContent {
+    cursor: pointer;
+    margin: 1rem 0;
+    width: 70%;
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: var(--main);
+    display: flex;
+}
+
+.adminSideContent > div {
+    margin: 0.5rem;
+}
+
+.adminSideicon {
+    width: 3rem;
+}
