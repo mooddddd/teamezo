@@ -1,0 +1,211 @@
+#profileWrap {
+    width: 100%;
+}
+
+#profile {
+    margin: 0 auto;
+    width: 120rem;
+    height: 100rem;
+}
+
+.profileInfo {
+    width: 100%;
+    height: 35%;
+    display: flex;
+}
+
+.profileInfoLeft {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileImgWrap {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.profileInfoAvatar {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileInfoAvatar > img {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+}
+
+.profileInfoImg {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profileInfoImg > div {
+    font-weight: 600;
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+.profileInfoImg > button {
+    cursor: pointer;
+    font-weight: 600;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    width: 10rem;
+    border: none;
+    font-size: 2rem;
+}
+
+.profileInfoImg > button:hover {
+    color: #ececec;
+}
+
+.profileInfoRight {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileImgWrap2 {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    border: 1px solid var(--border);
+}
+
+.profileBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileAccount {
+    margin: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.profileAccountSubject {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profileAccountUpdate {
+    font-size: 1rem;
+    margin: 0 1rem;
+}
+
+.profileAccountInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileAccountInfoContent {
+    margin: 0.5rem;
+    display: flex;
+    width: 100%;
+}
+
+.profileAccountInfoContent > div {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+}
+
+.profileToggle {
+    margin: 0 auto;
+    width: 90%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileSubject {
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 3rem;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.profileSubject:hover {
+    color: #9e9e9e;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.profileContents {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileContentWrap {
+    margin: 0 2rem;
+    width: 90%;
+    height: 20%;
+    font-size: 2rem;
+    border-bottom: 1px solid #ececec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileContentWrap:hover {
+    cursor: pointer;
+    background-color: #ececec;
+}
+
+.profileContent {
+    display: flex;
+    font-weight: 500;
+}
+
+.profileContent > div {
+    margin: 0 1rem;
+}
+
+.profileBtnWrap {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileBtnWrap > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileBtnWrap > ul > li {
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 3rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: #ececec;
+    transition: all 0.5s;
+    line-height: 3rem;
+}
+
+.profileBtnWrap > ul > li:hover {
+    color: #ececec;
+    background-color: var(--footer);
+    transform: scale(1.2);
+}

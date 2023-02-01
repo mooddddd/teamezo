@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+    <link rel="stylesheet" href="/css/user/profile.css">
+</head>
+<body>
+    {% include "layout/header.html" %}
+        <div id="profileWrap">
+            <section id="profile">
+                <div class="profileInfo">
+                    <div class="profileInfoLeft">
+                        <div class="profileImgWrap">
+                            <div class="profileInfoAvatar"><img src="/img/profileEdit.PNG" alt=""></div>
+                            <div class="profileInfoImg">
+                                <div>사진 불러오기</div>
+                                <button>저장하기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profileInfoRight">
+                        <div class="profileImgWrap2 profileBox">
+                            <div class="profileAccount">
+                                <div class="profileAccountSubject">계정 정보</div>
+                                <div class="profileAccountUpdate">수정</div>
+                            </div>
+                            <div class="profileAccountInfo">
+                                <div class="profileAccountInfoContent">
+                                    <div>이 &nbsp&nbsp 름</div>
+                                    <div>아무개</div>
+                                </div>
+                                <div class="profileAccountInfoContent">
+                                    <div>아이디</div>
+                                    <div>abcd</div>
+                                </div>
+                                <div class="profileAccountInfoContent">
+                                    <div>이메일</div>
+                                    <div>abcd@gmail.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profileToggle">
+                    <div class="profileSubject">내가 작성한 글</div>
+                    <div class="profileSubject">내가 작성한 댓글</div>
+                    <div class="profileSubject">내가 좋아요한 글</div>
+                </div>
+                <div class="profileContents">
+                    <div class="profileContentWrap">
+                        <div class="profileContent">
+                            <div>제목입니당ㅇㅇㅇㅇㅇ</div>
+                            <div>(7)</div>
+                        </div>
+                        <div class="profileRegister">2023-01-30</div>
+                    </div>
+                    <div class="profileContentWrap">
+                        <div class="profileContent">
+                            <div>제목입니당ㅇㅇㅇㅇㅇ</div>
+                            <div>(7)</div>
+                        </div>
+                        <div class="profileRegister">2023-01-30</div>
+                    </div>
+                    <div class="profileContentWrap">
+                        <div class="profileContent">
+                            <div>제목입니당ㅇㅇㅇㅇㅇ</div>
+                            <div>(7)</div>
+                        </div>
+                        <div class="profileRegister">2023-01-30</div>
+                    </div>
+                    <div class="profileContentWrap">
+                        <div class="profileContent">
+                            <div>제목입니당ㅇㅇㅇㅇㅇ</div>
+                            <div>(7)</div>
+                        </div>
+                        <div class="profileRegister">2023-01-30</div>
+                    </div>
+                    <div class="profileContentWrap">
+                        <div class="profileContent">
+                            <div>제목입니당ㅇㅇㅇㅇㅇ</div>
+                            <div>(7)</div>
+                        </div>
+                        <div class="profileRegister">2023-01-30</div>
+                    </div>
+                </div>
+                <div class="profileBtnWrap">
+                    <ul>
+                        <li class="prev">이전</li>
+                        <li clsss="next">다음</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    {% include "layout/footer.html" %}
+</body>
+</html>
