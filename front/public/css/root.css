@@ -1,7 +1,7 @@
-:root{
-    --header: #ADC46D;
-    --footer: #526A7E;
-    --main: #FDFDFD;
+:root {
+    --header: #adc46d;
+    --footer: #526a7e;
+    --main: #fdfdfd;
     --fontColor: #2e2e2e;
     --border: #cecece;
 }
@@ -17,10 +17,11 @@ html {
 
 a {
     text-decoration: none;
-    color: var(--fontColor)
+    color: var(--fontColor);
 }
 
-ul, li {
+ul,
+li {
     list-style: none;
 }
 
@@ -32,3 +33,4 @@ button {
 button:hover {
     background-color: var(--footer);
 }
+
