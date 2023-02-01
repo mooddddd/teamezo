@@ -1,0 +1,80 @@
+#welcomeWrap {
+    width: 100%;
+    height: 100%;
+}
+
+#welcomeWrap > #welcomeForm {
+    display: flex;
+    width: 120rem;
+    height: 82.4rem;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeImg {
+    display: flex;
+    justify-content: center;
+    width: 120rem;
+    margin-bottom: 2.5rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeComment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeComment > h1 {
+    font-size: 5.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeComment > #welcomeLine {
+    width: 13rem;
+    border-bottom: 2px solid #000000;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeCele {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeCele > p {
+    font-size: 2.6rem;
+    font-weight: 345;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeProfile > a {
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeStart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#welcomeWrap > #welcomeForm > #welcomeStart > button {
+    width: 20rem;
+    height: 4.6rem;
+    background: #adc46d;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.6rem;
+}

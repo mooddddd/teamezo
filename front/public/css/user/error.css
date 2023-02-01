@@ -1,0 +1,63 @@
+#errorWrap {
+    width: 100%;
+    height: 100%;
+}
+
+#errorWrap > #errorForm {
+    display: flex;
+    width: 120rem;
+    height: 82.4rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#errorWrap > #errorForm > #errorImg {
+    display: flex;
+    justify-content: center;
+    width: 120rem;
+    margin-bottom: 2.5rem;
+}
+
+#errorWrap > #errorForm > #errorComment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+#errorWrap > #errorForm > #errorComment > h1 {
+    font-size: 5.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+#errorWrap > #errorForm > #errorComment > p {
+    font-size: 2.6rem;
+    font-weight: 345;
+}
+
+#errorWrap > #errorForm > #errorCele {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#errorWrap > #errorForm > #errorBefore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+#errorWrap > #errorForm > #errorBefore > button {
+    width: 20rem;
+    height: 4.6rem;
+    background: #adc46d;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
