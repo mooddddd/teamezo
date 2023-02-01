@@ -1,0 +1,158 @@
+section {
+    width: 100%;
+}
+
+.profileEdit {
+    width: 120rem;
+    height: 100rem;
+    margin: 0 auto;
+}
+
+.profileEditContentsWrap {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.profileEditContentsLeft {
+    width: 50%;
+    height: 90%;
+    border-right: 0.1rem solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileEditContent1 {
+    width: 90%;
+    height: 35%;
+    border: 0.1rem solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileEditContent1Img {
+    display: flex;
+    justify-content: center;
+}
+
+.profileEditContent1Img > img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 0.1rem solid var(--footer);
+}
+
+.profileEditContent1Text {
+    width: 40%;
+}
+
+.profileEditContent1Text,
+.profileEditContent1Text > button {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+
+.profileEditContent1Text > div,
+.profileEditContent1Text > button {
+    margin: 1rem;
+}
+
+.profileEditContent1Text > button {
+    padding:  0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--main);
+    background-color: var(--header);
+}
+
+.profileEditContent2 {
+    width: 90%;
+    height: 60%;
+    border: 0.1rem solid var(--border); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.profileEditContentTitle {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    margin: 1rem 4rem;
+}
+
+.profileEditContentBox {
+    margin: 0.5rem 5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profileEditContentBox > div {
+    margin: 0 1rem;
+}
+
+.profileEditContentBox > input {
+    margin: 0 3rem;
+    width: 60%;
+    border: 0.1rem solid var(--border);
+}
+
+.profileEditContentsRight {
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileEditContent3 {
+    width: 90%;
+    height: 45%;
+    border: 0.1rem solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.profileEditContent4 {
+    width: 90%;
+    height: 50%;
+    border: 0.1rem solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profileEditContentIntroduce {
+    width: 85%;
+    height: 60%;
+    margin: 1rem auto;
+    border: none;
+    background-color: #EBEBEB;
+}
+
+.profileEditBtnWrap {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileEditBtn {
+    width: 30rem;
+    height: 5rem;
+    color: var(--main);
+    font-size: 3rem;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--header);
+}

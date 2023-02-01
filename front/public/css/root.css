@@ -3,6 +3,7 @@
     --footer: #526a7e;
     --main: #fdfdfd;
     --fontColor: #2e2e2e;
+    --border: #cecece;
 }
 
 * {
@@ -23,3 +24,13 @@ ul,
 li {
     list-style: none;
 }
+
+button {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+button:hover {
+    background-color: var(--footer);
+}
+
