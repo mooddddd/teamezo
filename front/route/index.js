@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("layout/writeForm.html");
+  res.render("user/profile.html");
 });
 
 module.exports = router;
