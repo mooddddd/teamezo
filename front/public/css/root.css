@@ -4,6 +4,9 @@
     --main: #fdfdfd;
     --fontColor: #2e2e2e;
     --border: #cecece;
+    --headerFont: "Sacred";
+    --footerFont: "TheHistoriaDemo";
+    --textFont: "GmarketSans";
 }
 
 * {
@@ -13,6 +16,7 @@
 
 html {
     font-size: 10px;
+    font-family: var(--textFont);
 }
 
 a {
@@ -32,5 +36,20 @@ button {
 
 button:hover {
     background-color: var(--footer);
+}
+
+@font-face {
+    font-family: "Sacred";
+    src: url("../fonts/Sacred\ Bridge\ Demo.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: "TheHistoriaDemo";
+    src: url("../fonts/TheHistoriaDemo.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: "GmarketSans";
+    src: url("../fonts/GmarketSansTTFMedium.ttf") format("opentype");
 }
 
