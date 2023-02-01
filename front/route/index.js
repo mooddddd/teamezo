@@ -1,9 +1,9 @@
-const { response } = require("express");
-const express = require("express");
-const router = express.Router();
+const { response } = require('express')
+const express = require('express')
+const router = express.Router()
 
-router.get("/", (req, res) => {
-  res.render("layout/writeForm.html");
-});
+router.get('/', (req, res) => {
+    res.render('admin/adminUserEdit.html')
+})
 
-module.exports = router;
+module.exports = router
