@@ -1,0 +1,48 @@
+    {% block listForm %}
+    <article>
+      <div id="writeForm">
+        <div class="top">
+          <h1>새글쓰기</h1>
+          <span></span>
+        </div>
+
+        <div class="write">
+          <form method="post" action="/board/write">
+            <ul>
+
+              <li class="subject">
+                <select name="mainCategory_idx">
+                  <option value="IT">--카테고리 선택--</option>
+                  <option value="IT">IT</option>
+                  <option value="food">음식/맛집</option>
+                </select> <br>
+                <input type="text" name="subject" placeholder="제목을 입력하세요" />
+              </li>
+
+              <li class="content">
+                <textarea name="content" placeholder="내용을 입력하세요"></textarea><br>
+                <input type="file" name="img" />
+              </li>
+
+              <!-- <li>
+                <script src="https://unpkg.com/@yaireo/tagify"></script>
+                <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" />
+                <input class="hashtag" placeholder="#태그입력" />
+
+                <script>
+                  var input = document.querySelector(".hashtag");
+                  var tagify = new Tagify(input);
+                  tagify.on("add", function () {
+                    console.log(tagify.value);
+                  });
+                </script> -->
+              </li>
+            </ul>
+            <button class="submitBtn">등록하기</button>
+          </form>
+          <button class="cancelBtn" onclick="location.href='board/list'">돌아가기</button>
+        </div>
+      </div>
+    </article>
+    <script type="text/javascript" src="/js/layout/writeForm.js"></script>
+{%endblock%}
