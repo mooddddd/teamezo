@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/adminSide.css" />
+        <style>
+            .adminWrap {
+                display: flex;
+            }
+
+            aside {
+                height: 100rem;
+            }
+            .adminRight {
+                height: 100rem;
+            }
+            .adminRightTop {
+                width: 120rem;
+                height: 15%;
+                padding: 3rem 0 0 3rem;
+                box-sizing: border-box;
+            }
+
+            .adminRightTop > h1 {
+                font-size: 3.6rem;
+                font-weight: 350;
+            }
+
+            .adminRightTop > p {
+                font-size: 1.6rem;
+                margin-top: 2.5rem;
+                font-weight: 160;
+            }
+
+            .adminUserSearch > form {
+                width: 120rem;
+                height: 10%;
+                padding: 3rem 0 0 3rem;
+                box-sizing: border-box;
+            }
+
+            .adminUserSearch > form > span {
+                font-size: 1.6rem;
+                margin-top: 2.5rem;
+                font-weight: 200;
+            }
+
+            .adminUserSearch > form > input {
+                margin-right: 1rem;
+            }
+
+            .adminUserList {
+                display: flex;
+                justify-content: center;
+                margin-top: 2rem;
+                width: 120rem;
+                height: 50%;
+            }
+
+            .adminUserList > table > tr > th {
+                font-size: 1.7rem;
+                padding-bottom: 1rem;
+            }
+
+            table {
+                width: 95rem;
+                height: 7rem;
+                border-top: 1px solid #ececec;
+                border-left: 1px solid #ececec;
+                border-right: 1px solid #ececec;
+            }
+
+            .trBody > td {
+                height: 7rem;
+                text-align: center;
+                border-bottom: 1px solid #ececec;
+            }
+
+            .th1 {
+                width: 20%;
+                height: 5rem;
+            }
+            .th2 {
+                width: 10%;
+                height: 5rem;
+            }
+            .th3 {
+                width: 20%;
+                height: 5rem;
+            }
+            .th4 {
+                width: 5%;
+                height: 5rem;
+            }
+            .th5 {
+                width: 15%;
+                height: 5rem;
+            }
+            .th6 {
+                width: 20%;
+                height: 5rem;
+            }
+            .th7 {
+                width: 5%;
+                height: 5rem;
+            }
+            .th8 {
+                width: 5%;
+                height: 5rem;
+            }
+
+            .adminPreNext {
+                display: flex;
+                justify-content: center;
+            }
+
+            .adminPreNext > button {
+                background: none;
+                border: none;
+                width: 5rem;
+                height: 3rem;
+            }
+
+            .adminPreNext > button:hover,
+            button:focus {
+                background: var(--main);
+                box-shadow: 0 0 5px grey;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="adminWrap">
+            {% include 'layout/adminSide.html' %}
+            <!-- adminRight -->
+            <div class="adminRight">
+                <!-- adminRightTop -->
+                <div class="adminRightTop">
+                    <h1>회원 관리</h1>
+                    <p>특정 회원을 검색하고 정보를 수정할 수 있습니다.</p>
+                </div>
+
+                <!-- adminRightTop -->
+                <div class="adminUserSearch">
+                    <form action="" method="">
+                        <span>회원 검색 :</span>
+                        <input type="text" name="" id="" />
+                        <button type="submit">검색</button>
+                    </form>
+                </div>
+                <!-- adminUserSearch -->
+
+                <!-- adminUserList -->
+                <div class="adminUserList">
+                    <table>
+                        <tr class="trHeader">
+                            <th class="th1">아이디</th>
+
+                            <th class="th2">이름</th>
+
+                            <th class="th3">닉네임</th>
+
+                            <th class="th4">성별</th>
+
+                            <th class="th5">핸드폰 번호</th>
+
+                            <th class="th6">이메일</th>
+
+                            <th class="th7">포인트</th>
+
+                            <th class="th8">수정</th>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <!-- <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        <tr class="trBody">
+                            <td>{아이디}</td>
+                            <td>{이름}</td>
+                            <td>{닉네임}</td>
+                            <td>{성별}</td>
+                            <td>{핸드폰번호}</td>
+                            <td>{이메일}</td>
+                            <td>포인트</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr> -->
+                    </table>
+                </div>
+
+                <!-- adminUserList -->
+                <div class="adminPreNext">
+                    <button type="adminPreBtn">이전</button>
+                    <button type="adminNextBtn">다음</button>
+                </div>
+            </div>
+            <!-- adminRight -->
+        </div>
+    </body>
+</html>
