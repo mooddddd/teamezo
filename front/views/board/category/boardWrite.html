@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/root.css" />
-    <link rel="stylesheet" href="/css/layout/header.css" />
-    <link rel="stylesheet" href="/css/layout/writeForm.css" />
-    <link rel="stylesheet" href="/css/layout/footer.css" />
-    <script src="/js/board/category/boardWrite.js" type="text/javascript"></script>
-    <title>Document</title>
-</head>
-<body>
-    {% include 'layout/header.html' %}
-    <article>
-        <div id="writeForm">
-          <div class="top">
-            <h1>새글쓰기</h1>
-            <span></span>
-          </div>
-  
-          <div class="write">
-            <form method="post" action="/board/write">
-              <ul>
-  
-                <li class="subject">
-                  <select class="mainCategorySelect" name="mainCategory_idx" onchange="categoryChange(this)">
-                    <option>--카테고리 선택--</option>
-                    <!-- 만약에 벨류값 없으면 alert 뜨게 -->
-                    <option value="IT">IT</option>
-                    <option value="food">음식/맛집</option>
-                    <option value="etc">기타</option>
-                  </select> 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/header.css" />
+        <link rel="stylesheet" href="/css/layout/writeForm.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
 
-                  <select class="subCategory" name="subName">
-                    <option>--카테고리 선택--</option>
-                  </select>
+        <title>Document</title>
+    </head>
+    <body>
+        {% include 'layout/header.html' %}
+        <article>
+            <div id="writeForm">
+                <div class="top">
+                    <h1>새글쓰기</h1>
+                    <span></span>
+                </div>
 
-                  <br>
-                  <input type="text" name="subject" placeholder="제목을 입력하세요" />
-                </li>
-  
-                <li class="content">
-                  <textarea name="content" placeholder="내용을 입력하세요"></textarea><br>
-                  <input type="file" name="img" />
-                </li>
-  
-                <!-- <li>
+                <div class="write">
+                    <form method="post" action="/board/write">
+                        <ul>
+                            <li class="subject">
+                                <select class="mainCategorySelect" name="mainCategory_idx" onchange="categoryChange(this)">
+                                    <option>--카테고리 선택--</option>
+                                    <!-- 만약에 벨류값 없으면 alert 뜨게 -->
+                                    <option value="IT">IT</option>
+                                    <option value="food">음식/맛집</option>
+                                    <option value="etc">기타</option>
+                                </select>
+
+                                <select class="subCategory" name="subName">
+                                    <option>--카테고리 선택--</option>
+                                </select>
+
+                                <br />
+                                <input type="text" name="subject" placeholder="제목을 입력하세요" />
+                            </li>
+
+                            <li class="content">
+                                <textarea name="content" placeholder="내용을 입력하세요"></textarea><br />
+                                <input type="file" name="img" />
+                            </li>
+
+                            <li class="hashtagLi" style="margin-top: 1.5rem">
+                                <!-- <button class="hashtagBtn">#해시태그</button> -->
+                                <span style="color: gray"># </span>
+                                <input type="text" class="hashtagBox" name="tagName" placeholder="해시태그" style="border: none" />
+                            </li>
+
+                            <!-- <li>
                   <script src="https://unpkg.com/@yaireo/tagify"></script>
                   <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" />
                   <input class="hashtag" placeholder="#태그입력" />
@@ -57,15 +62,16 @@
                     tagify.on("add", function () {
                       console.log(tagify.value);
                     });
-                  </script> -->
-                </li>
-              </ul>
-              <button class="submitBtn">등록하기</button>
-            </form>
-            <button class="cancelBtn" onclick="location.href='board/list'">돌아가기</button>
-          </div>
-        </div>
-      </article>
-      {% include 'layout/footer.html' %}
-</body>
+                  </script> 
+                </li>-->
+                        </ul>
+                        <button class="submitBtn">등록하기</button>
+                    </form>
+                    <button class="cancelBtn" onclick="location.href='board/list'">돌아가기</button>
+                </div>
+            </div>
+        </article>
+        <script src="/js/board/category/boardWrite.js" type="text/javascript"></script>
+        {% include 'layout/footer.html' %}
+    </body>
 </html>
