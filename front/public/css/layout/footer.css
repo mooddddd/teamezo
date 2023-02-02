@@ -67,7 +67,7 @@ footer {
     justify-content: center;
 }
 
-.footerContent > h2, div {
+.footerContent > h2 {
     margin: 0 1rem;
 }
 
