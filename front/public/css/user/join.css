@@ -1,0 +1,181 @@
+form {
+    font-size: 2rem;
+}
+
+#join {
+    width: 100%;
+}
+
+#joinLogo {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+    font-size: 7rem;
+    font-family: var(--headerFont);
+}
+
+.joinWrap {
+    margin: 3rem auto 5rem;
+    width: 65rem;
+    height: 85rem;
+    background-color: #efefef;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.join {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.apiWrap {
+    width:100%;
+    height: 20%;
+}
+
+.api {
+    display: flex;
+    justify-content: center;
+}
+
+.api > a > img {
+    margin: 4rem 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.joinFormWrap {
+    margin: 0 auto;
+    width: 100%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center; */
+}
+
+.joinForm {
+    width: 40%;
+    height: 20%;
+}
+
+.joinTitle {
+    display: flex;
+}
+
+.joinTitle > div {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.star {
+    margin-left: 0.5rem;
+    color: rgb(225, 0, 0);
+}
+
+.joinInputIdWrap {
+    width: 115%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.joinInputId {
+    width: 85%;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: #dedede;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+}
+
+.joinInput {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: #dedede;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+}
+
+.duplicate {
+    width: 15%;
+    height: 3.5rem;
+    border: none;
+    padding: 0.3rem;
+    border-radius: 0 0.3rem;
+    font-weight: 700;
+    font-family: var(--textFont);
+    color: var(--main);
+    background-color: var(--footer);
+}
+
+.joinCheck {
+    margin: 0.2rem 0 2rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: red;
+}
+
+.agreeWrap {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agree {
+    margin: 1rem 0;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.checkBoxWrap {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.checkBox {
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.yellow {
+    background-color: yellow;
+    border-radius: 50%;
+}
+
+.agreeOk {
+    display: flex;
+}
+
+.btnWrap {
+    margin: 2rem 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joinBtn {
+    width: 40%;
+    margin: 2rem auto;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--header);
+}
