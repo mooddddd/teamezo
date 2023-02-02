@@ -6,8 +6,16 @@ form {
     width: 100%;
 }
 
+#joinLogo {
+    display: block;
+    text-align: center;
+    margin: 2rem auto 0;
+    font-size: 7rem;
+    font-family: var(--headerFont);
+}
+
 .joinWrap {
-    margin: 10rem auto;
+    margin: 3rem auto 5rem;
     width: 65rem;
     height: 85rem;
     background-color: #efefef;
@@ -31,7 +39,7 @@ form {
     justify-content: center;
 }
 
-.api > img {
+.api > a > img {
     margin: 4rem 2rem;
     width: 3.5rem;
     height: 3.5rem;

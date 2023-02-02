@@ -7,16 +7,20 @@
         <title>Document</title>
         <link rel="stylesheet" href="/css/root.css">
         <link rel="stylesheet" href="/css/user/join.css">
+        <!-- <link rel="stylesheet" href="/css/layout/footer.css"> -->
         <script src="/js/user/join.js" defer></script>
     </head>
     <body>
         <section id="join">
+            <a href="#" id="joinLogo">
+                TeamEzo
+            </a>
             <form class="joinWrap" action="#">
                 <div class="join">
                     <div class="apiWrap">
                         <div class="api">
-                            <img src="/img/join_kakao.png">
-                            <img src="/img/join_google.png">
+                            <a href="#"><img src="/img/join_kakao.png"></a>
+                            <a href="#"><img src="/img/join_google.png"></a>
                         </div>
                     </div>
                     <div class="joinFormWrap">
@@ -90,5 +94,6 @@
                 </div>
             </form>
         </section>
+        <!-- {% include "layout/footer.html" %} -->
     </body>
 </html>
