@@ -46,32 +46,40 @@ const categoryChange = (e) => {
 // 처음부터 인풋박스인 경우! 여기에 CSS 먹여서 innerHTML 처리 시키기?
 const hashtagLi = document.querySelector(".hashtagLi");
 const hashtagBox = document.querySelector(".hashtagBox");
+const arr = [];
 
 const addHashtag = (e) => {
     if (e.keyCode === 13) {
         e.preventDefault();
-        const hashtag = e.target.value;
-        if (hashtag === "") alert("해시태그를 입력하세요");
+
         // console.log(e.target.value); // 칸 안에 있는 밸류값 잘 찍힘
-        // 그 다음에 엑시오스로 데이터 날림
+        // 그 다음에 엑시오스로 데이터 날리고 백에서 중복있는지 확인 후 데이터 받고 저장되지 않았으면 추가
+
+        // if(hashtagAll.length <0)
+        if (e.target.value === "") {
+            alert("해시태그를 입력하세요");
+            return;
+        }
+
+        const hashtagAll = document.querySelectorAll(".hashtagLi > a");
+        for (let i = 0; i < hashtagAll.length; i++) {
+            if (hashtagAll[i].innerHTML === `# ${e.target.value}`) {
+                e.target.value = "";
+                return alert("이미 사용한 해시태그입니다");
+            }
+        }
 
         const hashtagSpan = document.createElement("a");
-        hashtagSpan.setAttribute("style", "float:left; padding-right:1.5rem; color:grey");
+        hashtagSpan.setAttribute("style", "float:left; margin-right:1.5rem; color:grey; cursor: pointer;");
         hashtagSpan.setAttribute("class", "hashtag");
         // hashtagSpan.setAttribute("href", "");
 
-        hashtagSpan.innerHTML = `# ${hashtag}`;
+        hashtagSpan.innerHTML = `# ${e.target.value}`;
         hashtagLi.append(hashtagSpan);
-        hashtag = "";
+        e.target.value = "";
 
-        const a = document.querySelectorAll(".hashtag");
-        console.log(a);
-        const deleteHandler = (e) => {
-            e.taret.remove();
-        };
-        a.forEach();
-        a.addEventListener("click", (e) => {
-            console.log(e.target);
+        hashtagSpan.addEventListener("click", (e) => {
+            e.target.remove();
         });
     }
 };
