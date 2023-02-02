@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
+
+const express = require('express')
+const router = express.Router()
 
 router.get("/", (req, res) => {
-    res.render("board/category/boardWrite.html");
+  res.render("user/join.html");
 });
 
-module.exports = router;
+
+module.exports = router
