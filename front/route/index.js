@@ -1,10 +1,8 @@
-
 const express = require('express')
 const router = express.Router()
 
-router.get("/", (req, res) => {
-  res.render("user/join.html");
-});
-
+router.get('/', (req, res) => {
+    res.render('main.html')
+})
 
 module.exports = router
