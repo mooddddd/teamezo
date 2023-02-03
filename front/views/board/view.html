@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../../public/css/root.css" />
+        <link rel="stylesheet" href="../../public/css/board/boardView.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        {% include 'layout/header.html' %}
+        <article>
+            <div id="viewWrap">
+                <!-- VIEW PAGE -->
+                <div id="viewForm">
+                    <!-- 상단 고정 부분 -->
+                    <div class="top">
+                        <h1>카테고리 명</h1>
+                        <span></span>
+                    </div>
+
+                    <!-- 가운데정렬용 -->
+                    <div class="viewContentSortCenter">
+                        <!-- ALL DATA IN VIEW PAGE -->
+                        <div class="viewContent">
+                            <!-- 제목, 작성자 & 날짜 -->
+                            <div class="contentTop">
+                                <div class="contentSubject">제목입니다!!!!!!</div>
+                                <ul>
+                                    <li class="contentWriter">작성자입니다</li>
+                                    <li class="contentCreateDate">2023 - 01 - 31</li>
+                                </ul>
+                            </div>
+
+                            <!-- 글 내용, 해쉬태그 -->
+                            <div class="contentCenter">
+                                <div class="contentData">
+                                    <div>
+                                        게시글 내용!!!!!!<br />
+                                        어쩌구 저쩌구!!!
+                                    </div>
+                                </div>
+                                <div class="hashtagData">
+                                    <ul>
+                                        <li># 해쉬태그1</li>
+                                        <li># 해쉬태그2</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 좋아요 -->
+                            <div class="contentBottom">
+                                <div class="thumsupImg">
+                                    <a href="#" class="nonclick"><img src="../../public/img/thumsup.png" /></a>
+                                    <a href="#" class="click"><img src="../../public/img/thumsupClick.png" /></a>
+                                </div>
+                                <div class="thumsupCount">150</div>
+                            </div>
+                        </div>
+
+                        <!-- 전체 댓글창 -->
+                        <div class="viewComment">
+                            <div class="commentCount">댓글(0)</div>
+
+                            <!-- 원댓 -->
+                            <div class="upperComment">
+                                <div class="userCommnetContent">
+                                    <div class="avatar">
+                                        <a> <img src=../../public/img/profileEdit.PNG> </a>
+                                    </div>
+                                    <div class="commentCenterContent">
+                                        <ul>
+                                            <li><sapn class="commentWriter">댓글작성자</sapn> <span class="commentDate">2023 - 01 - 31</span></li>
+                                            <li>그거 그렇게 하는 거 아닌데</li>
+                                            <li><a>답글쓰기</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="commentBtns">
+                                        <a href="#" class="commentBtnsEdit">수정</a>
+                                        <a href="#" class="commentBtnsDel">삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 리댓 -->
+                            <div class="commentReply">
+                                <div class="userCommnetContent">
+                                    <div class="replyImg">
+                                        <img src="../../public/img/replyArrow.png" />
+                                    </div>
+                                    <div class="avatar">
+                                        <a> <img src=../../public/img/profileEdit.PNG> </a>
+                                    </div>
+                                    <div class="commentCenterContent">
+                                        <ul>
+                                            <li><sapn class="commentWriter">댓글작성자</sapn> <span class="commentDate">2023 - 01 - 31</span></li>
+                                            <li>그거 그렇게 하는 거 아닌데</li>
+                                        </ul>
+                                    </div>
+                                    <div class="commentBtns">
+                                        <a href="#" class="commentBtnsEdit">수정</a>
+                                        <a href="#" class="commentBtnsDel">삭제</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 댓글쓰기 -->
+                            <div class="writeCommentForm">
+                                <form method="post" action="/">
+                                    <!-- <span>내닉네임</span><br /> -->
+                                    <div>
+                                        <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
+                                        <button type="submit">등록</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 이전글 혹은 다음글 -->
+                        <div class="viewBottom">
+                            <a href="#" class="viewPrev">◀ 이전글</a>
+                            <a href="#" class="viewNext">다음글 ▶</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {% include 'layout/footer.html' %}
+    </body>
+</html>
