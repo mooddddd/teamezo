@@ -2,11 +2,17 @@ form {
     font-size: 2rem;
 }
 
+#back {
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 20%, rgb(110, 90, 60) 90%), url(../../img/join.jpg) 10% no-repeat;
+    background-size: cover;
+}
+
 #join {
     width: 100%;
 }
 
 #joinLogo {
+    color: var(--main);
     display: block;
     text-align: center;
     margin: 2rem auto 0;
@@ -18,7 +24,7 @@ form {
     margin: 3rem auto 5rem;
     width: 65rem;
     height: 85rem;
-    background-color: #efefef;
+    background-color: #efefef8f;
     box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -27,6 +33,12 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.agreeContent {
+    font-size: 0.4rem;
+    background-color: #dedede;
 }
 
 .apiWrap {
@@ -156,7 +168,22 @@ form {
 }
 
 .agreeOk {
+    position: relative;
     display: flex;
+}
+
+.agreeView {
+    cursor: pointer;
+    position: absolute;
+    right: -8rem;
+    font-size: 1.5rem;
+    color: rgb(30, 50, 160);
+    border-bottom: 1px solid rgb(30, 50, 160);
+}
+
+.agreeView:hover {
+    color: var(--header);
+    border-bottom: 1px solid var(--header);
 }
 
 .btnWrap {

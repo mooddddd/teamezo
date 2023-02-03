@@ -1,7 +1,8 @@
 footer {
     width: 100%;
-    background: var(--header);
+    background: var(--joinFooter);
     font-size: 2rem;
+    color: var(--main);
 }
 
 #footer {
@@ -35,6 +36,7 @@ footer {
     width: 100%;
     padding-top: 1rem;
     font-weight: 700;
+    color: var(--main);
 }
 
 .footerContents {
@@ -49,9 +51,9 @@ footer {
 }
 
 .footerLogo {
-    font-size: 8rem;
+    font-size: 6rem;
     font-family: var(--headerFont);
-    background-color: black;
+    /* background-color: black; */
     color: var(--main);
     text-align: center;
     border-radius: 0.5rem;
@@ -62,21 +64,24 @@ footer {
 }
 
 .footerContent {
+    font-size: 1.5rem;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .footerContent > h2 {
-    margin: 0 1rem;
+    margin: 0.35rem 1rem;
 }
 
 .footerContent > div > a > img {
+    margin: 0 0.25rem;
     width: 3rem;
     height: 3rem;
 }
 
 .footerCopyRight {
+    font-size: 1.5rem;
     height: 15%;
     text-align: center;
     font-weight: bolder;

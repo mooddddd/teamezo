@@ -1,6 +1,7 @@
 :root {
     --header: #adc46d;
     --footer: #526a7e;
+    --joinFooter: rgba(110, 90, 60, 0.7);
     --main: #fdfdfd;
     --fontColor: #2e2e2e;
     --border: #cecece;
@@ -17,6 +18,7 @@
 html {
     font-size: 10px;
     font-family: var(--textFont);
+    scroll-behavior: smooth;
 }
 
 a {

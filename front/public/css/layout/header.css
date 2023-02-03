@@ -4,6 +4,8 @@ header {
     background: var(--header);
     display: flex;
     align-items: center;
+    /* position: absolute;
+    top: 0; */
 }
 
 #header {
@@ -74,4 +76,48 @@ header {
 
 .headerRight > div > a:hover{
     background-color: var(--footer);
+}
+
+.hamburger_btn {
+    display: none;
+}
+
+.hamburger_btn {
+    cursor: pointer;
+    display: block;
+    float: right;
+    transition: all 1s;
+}
+.hamburger_btn:hover {
+    transform: translateY(0.3rem);
+}
+.hamburger_btn:hover > .hamburger {
+    background-color: gold;
+    transition: all 1s;
+}
+
+.hamburger_btn > .num1, .num2, .num3 {
+    transition: all 1s;
+}
+
+.hamburger_btn:hover > .num1 {
+    width: 2rem;
+    transform: rotate(90deg);
+}
+.hamburger_btn:hover > .num2 {
+    width: 1rem;
+    transform: rotate(-315deg) translateX(0.25rem);
+}
+.hamburger_btn:hover > .num3 {
+    width: 1rem;
+    transform: rotate(315deg) translateX(0.8rem) translateY(0.3rem);
+}
+
+.hamburger {
+    display: block;
+    margin: 0.3rem 0;
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    background-color: #453a33;
 }

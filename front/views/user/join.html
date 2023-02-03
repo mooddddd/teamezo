@@ -7,16 +7,20 @@
         <title>Document</title>
         <link rel="stylesheet" href="/css/root.css">
         <link rel="stylesheet" href="/css/user/join.css">
+        <link rel="stylesheet" href="/css/layout/agree.css">
         <link rel="stylesheet" href="/css/layout/footer.css">
         <script src="/js/user/join.js" defer></script>
+        <script src="/js/layout/popup.js" defer></script>
     </head>
-    <body>
+    <body id="back">
         <section id="join">
             <a href="#" id="joinLogo">
                 TeamEzo
             </a>
             <form class="joinWrap" action="/">
                 <div class="join">
+                    {% include "layout/agree.html" %}
+                    {% include "layout/infoAgree.html" %}
                     <div class="apiWrap">
                         <div class="api">
                             <a href="#"><img src="/img/join_kakao.png"></a>
@@ -76,6 +80,7 @@
                             <div class="agreeOk">
                                 <div>이용약관에 동의합니다.</div>
                                 <div class="star">*</div>
+                                <div id="agreePopupBtn" class="agreeView">약관보기</div>
                             </div>
                         </div>
                         <div class="agree">
@@ -85,6 +90,7 @@
                             <div class="agreeOk">
                                 <div>개인정보취급 방침에 동의합니다.</div>
                                 <div class="star">*</div>
+                                <div id="infoPopupBtn" class="agreeView">약관보기</div>
                             </div>
                         </div>
                     </div>
