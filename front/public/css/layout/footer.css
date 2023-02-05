@@ -1,5 +1,6 @@
-footer {
+#footerWrap {
     width: 100%;
+    height: 25rem;
     background: var(--joinFooter);
     font-size: 2rem;
     color: var(--main);

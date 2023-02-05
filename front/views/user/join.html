@@ -12,94 +12,96 @@
         <script src="/js/user/join.js" defer></script>
         <script src="/js/layout/popup.js" defer></script>
     </head>
-    <body id="back">
-        <section id="join">
-            <a href="#" id="joinLogo">
-                TeamEzo
-            </a>
-            <form class="joinWrap" action="/">
-                <div class="join">
-                    {% include "layout/agree.html" %}
-                    {% include "layout/infoAgree.html" %}
-                    <div class="apiWrap">
-                        <div class="api">
-                            <a href="#"><img src="/img/join_kakao.png"></a>
-                            <a href="#"><img src="/img/join_google.png"></a>
+    <body>
+        <div id="back">
+            <section id="join">
+                <a href="#" id="joinLogo">
+                    TeamEzo
+                </a>
+                <form class="joinWrap" action="/">
+                    <div class="join">
+                        {% include "layout/agree.html" %}
+                        {% include "layout/infoAgree.html" %}
+                        <div class="apiWrap">
+                            <div class="api">
+                                <a href="#"><img src="/img/join_kakao.png"></a>
+                                <a href="#"><img src="/img/join_google.png"></a>
+                            </div>
+                        </div>
+                        <div class="joinFormWrap">
+                            <div class="joinForm">
+                                <div class="joinTitle">
+                                    <div>ID</div>
+                                    <div class="star">*</div>
+                                </div>
+                                <div class="joinInputIdWrap">
+                                    <input class="joinInputId" type="text" placeholder="아이디를 입력해주세요">
+                                    <button class="duplicate">중복 확인</button>
+                                </div>
+                                <div class="joinCheck">아이디를 확인해주세요</div>
+                            </div>
+                            <div class="joinForm">
+                                <div class="joinTitle">
+                                    <div>PASSWORD</div>
+                                    <div class="star">*</div>
+                                </div>
+                                <input class="joinInput" type="password" placeholder="비밀번호를 입력해주세요">
+                                <div class="joinCheck">비밀번호를 확인해주세요</div>
+                            </div>
+                            <div class="joinForm">
+                                <div class="joinTitle">
+                                    <div>PASSWORD CHECK</div>
+                                    <div class="star">*</div>
+                                </div>
+                                <input class="joinInput" type="password" placeholder="비밀번호를 확인해주세요">
+                                <div class="joinCheck">비밀번호가 일치하지않습니다</div>
+                            </div>
+                            <div class="joinForm">
+                                <div class="joinTitle">
+                                    <div>NAME</div>
+                                    <div class="star">*</div>
+                                </div>
+                                <input class="joinInput" type="text" placeholder="이름을 입력해주세요">
+                                <div class="joinCheck">이름을 확인해주세요</div>
+                            </div>
+                            <div class="joinForm">
+                                <div class="joinTitle">
+                                    <div>E-MAIL</div>
+                                    <div class="star">*</div>
+                                </div>
+                                <input class="joinInput" type="text" placeholder="이메일을 입력해주세요">
+                                <div class="joinCheck">이메일을 확인해주세요</div>
+                            </div>
+                        </div>
+                        <div class="agreeWrap">
+                            <div class="agree">
+                                <div class="checkBoxWrap">
+                                    <img id="agreeUse" class="checkBox" src="/img/join_check-mark.png">
+                                </div>
+                                <div class="agreeOk">
+                                    <div>이용약관에 동의합니다.</div>
+                                    <div class="star">*</div>
+                                    <div id="agreePopupBtn" class="agreeView">약관보기</div>
+                                </div>
+                            </div>
+                            <div class="agree">
+                                <div class="checkBoxWrap">
+                                    <img id="agreeInfo" class="checkBox" src="/img/join_check-mark.png">
+                                </div>
+                                <div class="agreeOk">
+                                    <div>개인정보취급 방침에 동의합니다.</div>
+                                    <div class="star">*</div>
+                                    <div id="infoPopupBtn" class="agreeView">약관보기</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnWrap">
+                            <button class="joinBtn" method="submit">회원가입</button>
                         </div>
                     </div>
-                    <div class="joinFormWrap">
-                        <div class="joinForm">
-                            <div class="joinTitle">
-                                <div>ID</div>
-                                <div class="star">*</div>
-                            </div>
-                            <div class="joinInputIdWrap">
-                                <input class="joinInputId" type="text" placeholder="아이디를 입력해주세요">
-                                <button class="duplicate">중복 확인</button>
-                            </div>
-                            <div class="joinCheck">아이디를 확인해주세요</div>
-                        </div>
-                        <div class="joinForm">
-                            <div class="joinTitle">
-                                <div>PASSWORD</div>
-                                <div class="star">*</div>
-                            </div>
-                            <input class="joinInput" type="password" placeholder="비밀번호를 입력해주세요">
-                            <div class="joinCheck">비밀번호를 확인해주세요</div>
-                        </div>
-                        <div class="joinForm">
-                            <div class="joinTitle">
-                                <div>PASSWORD CHECK</div>
-                                <div class="star">*</div>
-                            </div>
-                            <input class="joinInput" type="password" placeholder="비밀번호를 확인해주세요">
-                            <div class="joinCheck">비밀번호가 일치하지않습니다</div>
-                        </div>
-                        <div class="joinForm">
-                            <div class="joinTitle">
-                                <div>NAME</div>
-                                <div class="star">*</div>
-                            </div>
-                            <input class="joinInput" type="text" placeholder="이름을 입력해주세요">
-                            <div class="joinCheck">이름을 확인해주세요</div>
-                        </div>
-                        <div class="joinForm">
-                            <div class="joinTitle">
-                                <div>E-MAIL</div>
-                                <div class="star">*</div>
-                            </div>
-                            <input class="joinInput" type="text" placeholder="이메일을 입력해주세요">
-                            <div class="joinCheck">이메일을 확인해주세요</div>
-                        </div>
-                    </div>
-                    <div class="agreeWrap">
-                        <div class="agree">
-                            <div class="checkBoxWrap">
-                                <img id="agreeUse" class="checkBox" src="/img/join_check-mark.png">
-                            </div>
-                            <div class="agreeOk">
-                                <div>이용약관에 동의합니다.</div>
-                                <div class="star">*</div>
-                                <div id="agreePopupBtn" class="agreeView">약관보기</div>
-                            </div>
-                        </div>
-                        <div class="agree">
-                            <div class="checkBoxWrap">
-                                <img id="agreeInfo" class="checkBox" src="/img/join_check-mark.png">
-                            </div>
-                            <div class="agreeOk">
-                                <div>개인정보취급 방침에 동의합니다.</div>
-                                <div class="star">*</div>
-                                <div id="infoPopupBtn" class="agreeView">약관보기</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btnWrap">
-                        <button class="joinBtn" method="submit">회원가입</button>
-                    </div>
-                </div>
-            </form>
-        </section>
-        {% include "layout/footer.html" %}
+                </form>
+            </section>
+            {% include "layout/footer.html" %}
+        </div>
     </body>
 </html>

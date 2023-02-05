@@ -6,37 +6,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
         <link rel="stylesheet" href="/css/user/login.css" />
     </head>
     <body>
-        <div id="loginWrap">
+        <div id="wrap">
+            <a href="/" id="joinLogo">
+                TeamEzo
+            </a>
             <div id="loginForm">
-                <div id="loginLeft">
-                    <!-- Background image -->
-                </div>
-                <div id="loginRight">
-                    <div id="loginRightSub">
-                        <h1>ACCOUNT LOGIN</h1>
+                <div id="login">
+                    <div id="loginHeaderWrap">
+                        <div id="loginHeader">login</div>
                     </div>
-                    <div id="loginInputForm" class="loginBackground">
-                        <form action="login.html" method="post">
-                            <input type="text" name="userId" />
-                            <input type="password" name="userPw" />
-                            <button type="submit">SIGN IN</button>
-                        </form>
-                    </div>
-                    <div id="loginApi">
-                        <p>Or Sign in With</p>
-                        <div id="loginApiImg">
-                            <a href="#"><img src="/img/loginKakao.png" /></a>
-                            <a href="#"><img src="/img/loginGoogle.png" /></a>
+                    <div id="loginContentWrap">
+                        <div id="loginContents">
+                            <form id="loginBoxWrap">
+                                <input type="text">
+                                <input type="password">
+                                <button>로그인</button>
+                            </form>
+                            <div id="loginApi">
+                                <a href="#"><img src="/img/loginKakao.png"></a>
+                                <a href="#"><img src="/img/loginGoogle.png"></a>
+                            </div>
                         </div>
                     </div>
-                    <div id="loginSignUp">
-                        <a href="#">SIGN UP</a>
+                    <div id="loginFooterWrap">
+                        <div id="goToJoin">
+                            <a href="/user/join">회원가입</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% include "layout/footer.html"%}
         </div>
     </body>
 </html>
