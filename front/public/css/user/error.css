@@ -65,11 +65,17 @@
 }
 
 #errorWrap > #errorForm > #errorBefore > button {
-    width: 20rem;
-    height: 4.6rem;
-    background: var(--header);
+    text-align: center;
+    line-height: 3rem;
+    width: 28rem;
+    height: 4.5rem;
+    margin: 2rem auto;
     border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
     color: var(--main);
-    font-weight: bold;
-    font-size: 1.6rem;
+    background-color: var(--header);
 }
