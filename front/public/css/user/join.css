@@ -37,6 +37,7 @@ form {
     justify-content: center;
     position: relative;
     background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/joinForm.jpg) 10% no-repeat;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .agreeContent {
@@ -208,4 +209,9 @@ form {
     padding: 1rem;
     color: var(--main);
     background-color: var(--header);
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.joinBtn:hover {
+    background-color: var(--footer);
 }

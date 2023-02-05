@@ -118,7 +118,8 @@
     padding: 1rem;
     color: var(--main);
     background-color: var(--header);
-    transition: all 0.3s;
+    transition: all 0.2s;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 #welcomeProfile > a:hover {

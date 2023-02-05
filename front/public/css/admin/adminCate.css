@@ -112,6 +112,7 @@
     font-weight: 700;
     color: var(--main);
     background-color: var(--header);
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .categoryUpdateBox > button:hover {
