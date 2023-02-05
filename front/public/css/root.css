@@ -35,11 +35,6 @@ li {
 
 button {
     cursor: pointer;
-    transition: all 0.5s;
-}
-
-button:hover {
-    background-color: var(--footer);
 }
 
 @font-face {

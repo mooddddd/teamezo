@@ -1,0 +1,184 @@
+#wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/profileback.jpg) 10% no-repeat;
+    background-size: cover;
+}
+
+#categoryWrap {
+    width: 85%;
+    height: 100%;
+    position: relative;
+    left: 27rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#category {
+    width: 140rem;
+    height: 84rem;
+    background-color: var(--main);
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#categoryHeader{
+    width: 100%;
+    height: 16rem;
+    background-color: var(--footer);
+    color: var(--main);
+}
+
+#categoryHeaderTitle{
+    padding: 1rem 4rem;
+    width: 100%;
+    height: 50%;
+    font-size: 5rem;
+    line-height: 10rem;
+    font-weight: 700;
+}
+
+#categoryHeaderContent{
+    padding: 0 6rem;
+    width: 100%;
+    height: 50%;
+    font-size: 2rem;
+    line-height: 6rem;
+    box-sizing: border-box;
+}
+
+#categoryBody{
+    width: 100%;
+    height: 56rem;
+}
+
+#categoryClassify {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+}
+
+#categoryClassifyList {
+    margin: 1rem 0;
+    padding: 0 4rem;
+    width: 100%;
+    height: 6rem;
+    font-size: 4rem;
+    line-height: 6rem;
+    box-sizing: border-box;
+}
+
+.categoryUpdate {
+    padding: 0 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryBox {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryName {
+    font-size: 3rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.subCategoryName {
+    padding-left: 4rem;
+    font-size: 2rem;
+}
+
+.categoryUpdateBox {
+    display: flex;
+    width: 23rem;
+    justify-content: space-between;
+}
+
+.categoryUpdateBox > button {
+    width: 10rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--main);
+    background-color: var(--header);
+}
+
+.categoryUpdateBox > button:hover {
+    background-color: var(--footer);
+}
+
+.subCategoryBox {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categoryCreate {
+    padding: 0 4rem;
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categoryCreateBox {
+    width: 70%;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: #dedede;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+}
+
+.categoryCreate > button {
+    width: 23rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--main);
+    background-color: var(--header);
+}
+
+.categoryCreate > button:hover {
+    background-color: var(--footer);
+}
+
+#categoryFooter{
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#categorySave {
+    width: 100%;
+    height: 10rem;
+    padding: 0 4rem;
+    background-color: rgb(235, 241, 247);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #2e2e2e;
+    text-align: left;
+}
+
+#categorySave:hover {
+    background-color: var(--footer);
+    color: var(--main);
+    transition: all 0;
+}
