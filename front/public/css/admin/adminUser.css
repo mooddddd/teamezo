@@ -1,0 +1,196 @@
+.adminWrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/profileback.jpg) 10% no-repeat;
+    background-size: cover;
+}
+
+.adminRight {
+    position: relative;
+    left: 40rem;
+    height: 90rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.adminRightTop {
+    width: 120rem;
+    height: 15%;
+    padding: 3rem 0 0 3rem;
+    box-sizing: border-box;
+}
+
+.adminRightTop > h1 {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+.adminRightTop > p {
+    font-size: 1.6rem;
+    margin-top: 2.5rem;
+    font-weight: 160;
+}
+
+.adminUserSearch {
+    display: flex;
+    align-items: center;
+    margin: 2rem;
+    width: 100%;
+}
+
+.adminUserSearch > form {
+    width: 70rem;
+    display: flex;
+}
+
+/* .adminUserSearch > form > span {
+    font-size: 1.6rem;
+    margin-top: 2.5rem;
+    font-weight: 200;
+} */
+
+.adminUserSearch > form > input {
+    width: 40rem;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border: none;
+    background-color: #dedede;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+}
+
+.adminUserSearch > form > button {
+    text-align: center;
+    line-height: 3rem;
+    width: 10rem;
+    height: 4.5rem;
+    margin: 1rem ;
+    border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--header);
+    transition: all 0.3s;
+}
+
+.adminUserSearch > form > button:hover {
+    background-color: var(--footer);
+}
+
+.adminUserList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 120rem;
+    height: 60rem;
+}
+
+.adminUserList > table > tr > th {
+    font-size: 1.7rem;
+    padding-bottom: 1rem;
+}
+
+table {
+    margin-bottom: 5rem;
+    width: 120rem;
+    height: 100rem;
+    border-top: 1px solid #ececec;
+    border-left: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+    background-color: #efefef8f;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.trHeader {
+    font-size: 1.6rem;
+    color: var(--main);
+    background-color: var(--footer);
+}
+
+.trBody > td {
+    font-size: 1.6rem;
+    height: 7rem;
+    text-align: center;
+    border-bottom: 1px solid #ececec;
+}
+
+.trBody > td > button {
+    width: 50%;
+    height: 30%;
+    background-color: var(--header);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    color: var(--main);
+    font-weight: 700;
+}
+
+.trBody > td > button:hover {
+    background-color: var(--footer);
+}
+
+.th1 {
+    width: 15%;
+    height: 5rem;
+}
+.th2 {
+    width: 10%;
+    height: 5rem;
+}
+.th3 {
+    width: 20%;
+    height: 5rem;
+}
+.th4 {
+    width: 5%;
+    height: 5rem;
+}
+.th5 {
+    width: 15%;
+    height: 5rem;
+}
+.th6 {
+    width: 20%;
+    height: 5rem;
+}
+.th7 {
+    width: 5%;
+    height: 5rem;
+}
+.th8 {
+    width: 10%;
+    height: 5rem;
+}
+
+.adminPreNext{
+    display: flex;
+    justify-content: center;
+}
+
+.adminPreNext > a {
+    text-align: center;
+    line-height: 3rem;
+    width: 20rem;
+    height: 4.5rem;
+    margin: 1rem auto;
+    border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--header);
+    transition: all 0.3s;
+}
+
+.adminPreNext > a:hover {
+    background-color: var(--footer);
+}
