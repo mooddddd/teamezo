@@ -22,6 +22,7 @@ html {
     justify-content: center;
     align-items: center;
     background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
+    background-size: cover;
 }
 
 #header {
