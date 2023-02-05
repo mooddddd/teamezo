@@ -10,6 +10,9 @@
     --textFont: "GmarketSans";
 }
 
+/* background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 20%, rgb(110, 90, 60) 90%), url(../../img/join.jpg) 10% no-repeat;
+background-size: cover; */
+
 * {
     margin: 0;
     padding: 0;
