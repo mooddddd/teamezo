@@ -1,39 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/root.css">
-  <link rel="stylesheet" href="/css/layout/header.css">
-</head>
-<body>
-  {% block header %}
-<header>
-  <div id="header">
-    <div class="headerLeft">
-      <a href="#"><div class="headerLogo">TeamEzo</div></a>
-    </div>
-    <div class="headerCenter">
-      <div><a href="#">HOME</a></div>
-      <div><a href="#">BOARD</a></div>
-      <div><a href="#">NOTICE</a></div>
-      <div><a href="#">Q&A</a></div>
-    </div>
-    <div class="headerRight">
-      <div><img class="headerImg" src="/img/sun.png" /></div>
-      <div><img class="headerImg" src="/img/magnifier.png" /></div>
-      <div><a href="#">LOGIN</a></div>
-    </div>
-    <div class="hamburger_btn">
-      <span class="hamburger num1"></span>
-      <span class="hamburger num2"></span>
-      <span class="hamburger num3"></span>
-  </div>
-  </div>
-</header>
+{% block header %}
+  <div class="wrap">
+    <aside id="sidebarWrap">
+        <div class="cancleBtn">
+            <span class="cancle1"></span>
+            <span class="cancle2"></span>
+            <span class="cancle3"></span>
+        </div>
+        <div id="sidebar">
+            <div id="sidemenus">
+                <div class="sideloginWrap">
+                    <a href="#" class="sidelogin">로그인</a>
+                    <a href="#" class="sidelogin">회원가입</a>
+                </div>
+                <div class="sidemenu">카테고리 1</div>
+                <div class="sidemenu">카테고리 2</div>
+                <div class="sidemenu">카테고리 3</div>
+                <div class="sidemenu">카테고리 4</div>
+            </div>
+        </div>
+    </aside>
+    <header id="headerWrap">
+        <div id="header">
+            <div class="headerLogoWrap">
+                <h1 class="headerLogo">TeamEzo</h1>
+            </div>
+            <div class="headerContentWrap">
+                <div class="headerContents">
+                    <a href=""><div class="headerContent">Home</div></a>
+                    <a href=""><div class="headerContent">Board</div></a>
+                    <a href=""><div class="headerContent">Notice</div></a>
+                    <a href=""><div class="headerContent">QnA</div></a>
+                </div>
+            </div>
+            <div class="headerFunction">
+                <form class="searchWrap">
+                    <input id="search" class="invisible" type="text">
+                    <button id="searchBtn" class="invisible">검색</button>
+                    <img id="searchIcon" src="/img/search.png">
+                </form>
+                <div class="hamburgerBtn">
+                    <span class="stick h1"></span>
+                    <span class="stick h2"></span>
+                    <span class="stick h3"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+</div>
 {% endblock %}
-  
-</body>
-</html>
