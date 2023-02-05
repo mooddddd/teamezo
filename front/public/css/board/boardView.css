@@ -82,7 +82,7 @@ article {
     align-items: center;
 }
 
-.viewContent > .contentBottom > .thumsupImg > .click {
+.viewContent > .contentBottom > .thumsupImg > .off {
     display: none;
 }
 
