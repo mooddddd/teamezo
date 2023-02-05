@@ -52,13 +52,13 @@
 
 .profileInfoAvatar {
     width: 45%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profileInfoAvatar > img {
-    width: 70%;
     height: 70%;
     border-radius: 50%;
     border: 1px solid var(--border);
@@ -69,26 +69,36 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .profileInfoImg > div {
-    font-weight: 600;
-    margin: 1rem 0;
+    text-align: center;
+    padding: 1rem;
+    width: 80%;
+    font-weight: 700;
     font-size: 2rem;
+    box-sizing: border-box;
 }
 
 .profileInfoImg > button {
-    cursor: pointer;
-    font-weight: 600;
-    margin: 1rem 0;
     padding: 1rem;
-    width: 10rem;
+    width: 80%;
+    color: var(--main);
+    background-color: var(--header);
     border: none;
-    font-size: 2rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .profileInfoImg > button:hover {
-    color: var(--main);
+    background-color: var(--footer);
+}
+
+.profileInfoImg > button > div {
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 .profileInfoRight {
@@ -121,6 +131,7 @@
 }
 
 .profileAccountSubject {
+    margin-right: 2rem;
     font-size: 3rem;
     font-weight: 700;
 }
@@ -131,11 +142,13 @@
 }
 
 .profileAccount > a {
-    padding: 1rem;
+    padding: 0.7rem;
     font-weight: 600;
-    background-color: #ececec;
+    background-color: var(--header);
+    color: var(--main);
     border-radius: 0.5rem;
     transition: all 0.5s;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .profileAccount > a:hover {
@@ -252,13 +265,13 @@
     margin: 0 3rem;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
-    background-color: #ececec;
-    transition: all 0.5s;
+    color: var(--main);
+    background-color: var(--header);
+    transition: all 0.2s;
     line-height: 3rem;
 }
 
 .profileBtnWrap > ul > li:hover {
     color: #ececec;
     background-color: var(--footer);
-    transform: scale(1.2);
 }

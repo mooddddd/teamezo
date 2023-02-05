@@ -37,6 +37,8 @@ button {
     cursor: pointer;
 }
 
+/* box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2); */
+
 @font-face {
     font-family: "Sacred";
     src: url("../fonts/Sacred\ Bridge\ Demo.ttf") format("opentype");
