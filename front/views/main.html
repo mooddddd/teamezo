@@ -1,11 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="/js/test.js"></script>
-    <title>Document</title>
-  </head>
-  <body></body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/header.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
+        <style>
+            .mainWrap {
+                width: 100%;
+                height: 70rem;
+                /* background: yellow; */
+            }
+            .mainContentHeader {
+                display: flex;
+                align-items: flex-end;
+                width: 120rem;
+                height: 15%;
+                margin: 0 auto;
+                padding-bottom: 1rem;
+                box-sizing: border-box;
+                border-bottom: 1px solid black;
+            }
+            .mainContentBottom {
+                display: grid;
+                grid-template-areas:
+                    'a b c d'
+                    'a b c d'
+                    'e f g h'
+                    'e f g h';
+
+                grid-template-rows: repeat(4, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+                width: 120rem;
+                height: 84%;
+                margin: 0 auto;
+                /* background: magenta; */
+            }
+            .a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: a;
+                /* background: beige; */
+            }
+            .b {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: b;
+                /* background: green; */
+            }
+            .c {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: c;
+                /* background: beige; */
+            }
+            .d {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: d;
+                /* background: green; */
+            }
+            .e {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: e;
+                /* background: beige; */
+            }
+            .f {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: f;
+                /* background: green; */
+            }
+            .g {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: g;
+                /* background: beige; */
+            }
+            .h {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                grid-area: h;
+                /* background: green; */
+            }
+            .mainContentImg {
+                width: 80%;
+                height: 45%;
+                padding: 1rem 1rem;
+                box-sizing: border-box;
+                border: 0.1rem solid var(--border);
+                /* background: wheat; */
+            }
+
+            .mainContentImg > a > img {
+                width: 100%;
+                height: 100%;
+                transition: all 0.3s linear;
+                overflow: hidden;
+            }
+
+            .mainContentImg:hover > a > img {
+                transform: scale(1.08);
+            }
+
+            .mainContentSubject {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 80%;
+                height: 15%;
+                /* background: red; */
+            }
+
+            .mainContentWriter {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 80%;
+                height: 10%;
+                /* background: skyblue; */
+            }
+            .mainContentHashLike {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 80%;
+                height: 30%;
+                /* background: blueviolet; */
+            }
+
+            .mainContentLike {
+                display: flex;
+                height: 10rem;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+            .mainContentLike > img {
+                width: 100%;
+                height: 100%;
+                transition: all 0.2s linear;
+                overflow: hidden;
+            }
+            .mainContentLike > img:hover {
+                transform: scale(1.2);
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'layout/header.html' %}
+        <div class="mainWrap">
+            <div class="mainContentHeader">
+                <h1>최신글</h1>
+            </div>
+            <div class="mainContentBottom">
+                <!-- START -->
+                <div class="a">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/img.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>나는 바보</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(10)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">바보김홍태</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#흑흑</a>
+                            <a href="#">#죄송합니다</a>
+                            <a href="#">#ㅉㅉ</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(10)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="b">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/header.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>그거 그렇게하는거아님</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(12)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">쯧쯧김홍태</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#TeamEzo</a>
+                            <a href="#">#티미조</a>
+                            <a href="#">#케케</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(15)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="c">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/img.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>그거 그렇게하는거아님</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(12)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">쯧쯧김홍태</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#TeamEzo</a>
+                            <a href="#">#티미조</a>
+                            <a href="#">#케케</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(15)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="d">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/header.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>그거 그렇게하는거아님</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(12)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">쯧쯧김홍태</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#TeamEzo</a>
+                            <a href="#">#티미조</a>
+                            <a href="#">#케케</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(15)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="e">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/profileEdit.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>나는 천재다</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(100)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">천재찬수짱</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#나는천재</a>
+                            <a href="#">#다이아원딜러</a>
+                            <a href="#">#정글님다이브</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(10)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="f">
+                    <div class="mainContentImg">
+                        <a href="#"><img src="/img/profileEdit.png" /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>나는 천재다</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(100)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">천재찬수짱</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#나는천재</a>
+                            <a href="#">#다이아원딜러</a>
+                            <a href="#">#정글님다이브</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(10)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="g">
+                    <div class="mainContentImg">
+                        <a href="#"
+                            ><img
+                                src="/img/2697398bad5927125f3db2f8a248ca15effd194bae87d73dd00522794070855d.png"
+                        /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>다 뒤질래?</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(120)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">대장은지</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#족밥들</a>
+                            <a href="#">#싸우지마</a>
+                            <a href="#">#케케케</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(101)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+                <!-- START -->
+                <div class="h">
+                    <div class="mainContentImg">
+                        <a href="#"
+                            ><img
+                                src="/img/2697398bad5927125f3db2f8a248ca15effd194bae87d73dd00522794070855d.png"
+                        /></a>
+                    </div>
+                    <div class="mainContentSubject">
+                        <div class="mainContentSubjecetLeft">
+                            <a href="#"><h2>다 뒤질래?</h2></a>
+                        </div>
+                        <div class="mainContentSubjecetRight">
+                            <h2>(120)</h2>
+                        </div>
+                    </div>
+                    <div class="mainContentWriter">
+                        <div class="mainContentWriterLeft">대장은지</div>
+                        <div class="mainContentWriterRight">2023-02-03</div>
+                    </div>
+                    <div class="mainContentHashLike">
+                        <div class="mainContentHash">
+                            <a href="#">#족밥들</a>
+                            <a href="#">#싸우지마</a>
+                            <a href="#">#케케케</a>
+                        </div>
+                        <div class="mainContentLike">
+                            <img src="/img/25297.png" style="width: 3.5rem; height: 3.5rem" />
+                            <h3>(101)</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+            </div>
+        </div>
+
+        {% include 'layout/footer.html' %}
+    </body>
 </html>
