@@ -1,77 +1,237 @@
-header {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.wrap {
+    position: relative;
     width: 100%;
     height: 15rem;
-    background: var(--header);
+    background-color: var(--header);
+}
+
+#headerWrap {
+    position: absolute;
+    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
+    background-size: cover;
 }
 
 #header {
     width: 120rem;
-    margin: 0 auto;
+    height: 15rem;
     display: flex;
     justify-content: space-between;
-    color: var(--main);
 }
 
-.headerLogo {
-    font-size: 8rem;
-    font-family: var(--headerFont);
-    color: var(--main);
-    text-align: center;
-    border-radius: 0.5rem;
-}
-
-.headerLogoImg {
-    width: 11.8rem;
-}
-
-.headerCenter {
+.headerLogoWrap {
+    width: 25%;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-.headerCenter > div {
-    margin: 2rem;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.headerCenter > div > a{
+.headerLogo {
     color: var(--main);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    transition: all 0.5s;
+    font-size: 8rem;
+    font-family: var(--headerFont);
 }
 
-.headerCenter > div > a:hover {
-    background-color: var(--footer);
+.headerContentWrap {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.headerImg {
-    width: 3.5rem;
+.headerContents {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.headerRight {
+.headerContent {
+    color: var(--main);
+    font-size: 2rem;
+}
+
+.headerFunction {
+    position: relative;
     width: 20%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 2rem;
-    font-weight: 700;
 }
 
-.headerRight > div > img {
+.searchWrap {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.searchWrap > input {
+    margin-right: 0.5rem;
+    border: 1px solid black;
+}
+
+#searchIcon{
+    position: absolute;
+    right: 4rem;
     cursor: pointer;
+    width: 3rem;
+    height: 3rem;
 }
 
-.headerRight > div > a{
-    color: var(--main);
-    padding: 1.5rem;
-    border-radius: 1rem;
+#search {
+    position: absolute;
+    left: -1rem;
+    width: 50%;
+    /* border: none; */
+    padding: 0.5rem;
     transition: all 0.5s;
 }
 
-.headerRight > div > a:hover{
-    background-color: var(--footer);
+#searchBtn {
+    position: absolute;
+    width: 20%;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.5rem;
+}
+
+.invisible {
+    display: none;
+}
+
+/* .searchWrap:hover > .searchIcon {
+    display: none;
+}
+
+.searchWrap:hover > #search {
+    display: block;
+}
+
+.searchWrap:hover > #searchBtn {
+    display: block;
+} */
+
+.hamburgerBtn {
+    position: absolute;
+    right: -3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.stick {
+    display: block;
+    margin: 0.75rem;
+    width: 4rem;
+    height: 0.4rem;
+    background-color: var(--main);;
+    transition: all 0.5;
+    border-radius: 1rem;
+}
+
+.hamburgerBtn:hover > .h1 {
+    width: 50%;
+    transform: rotateZ(45deg) translateX(1.9rem) translateY(-1.6rem);
+}
+
+.hamburgerBtn:hover > .h2 {
+    transform: translateX(0.5rem);
+}
+
+.hamburgerBtn:hover > .h3 {
+    width: 50%;
+    transform: rotateZ(-45deg) translateX(1.9rem) translateY(1.6rem);
+}
+
+.h1, .h2, .h3 {
+    transition: all 0.2s;
+}
+
+/* ======================================================= */
+
+#sidebarWrap {
+    position: absolute;
+    display: none;
+    right: 0rem;
+    width: 30rem;
+    height: 100vh;
+    background-color: blueviolet;
+    transition: all 0.5s;
+}
+
+.cancleBtn {
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+}
+
+.cancle1 {
+    transform: rotateZ(45deg) translateX(0.3rem);
+    display: block;
+    width: 5rem;
+    height: 0.4rem;
+    background-color: black;
+    border-radius: 1rem;
+}
+
+.cancle2 {
+    transform: rotateZ(-45deg) translateX(0.2rem);
+    display: block;
+    width: 5rem;
+    height: 0.4rem;
+    background-color: black;
+    border-radius: 1rem;
+}
+
+.cancle3 {
+    position: absolute;
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    top: -2.5rem;
+}
+
+#sidebar {
+    margin: 0 auto;
+    padding: 5rem;
+    box-sizing: border-box;
+    width: 80%;
+    height: 100%;
+}
+
+#sidemenus {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sideloginWrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sidelogin {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.sidemenu {
+    font-size: 2rem;
 }

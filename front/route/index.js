@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("board/category/boardList.html");
-});
+const express = require('express')
+const router = express.Router()
 
-module.exports = router;
+router.get('/', (req, res) => {
+    res.render('main.html')
+})
+
+module.exports = router
+

@@ -6,29 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/root.css">
-    <link rel="stylesheet" href="/css/layout/header.css">
     <link rel="stylesheet" href="/css/layout/footer.css">
     <link rel="stylesheet" href="/css/user/profile.css">
 </head>
 <body>
-    {% include "layout/header.html" %}
+    <div id="wrap">
         <div id="profileWrap">
+            <a href="#" id="joinLogo">
+                TeamEzo
+            </a>
             <section id="profile">
                 <div class="profileInfo">
                     <div class="profileInfoLeft">
                         <div class="profileImgWrap">
                             <div class="profileInfoAvatar"><img src="/img/profileEdit.PNG" alt=""></div>
-                            <div class="profileInfoImg">
+                            <form class="profileInfoImg">
                                 <div>사진 불러오기</div>
-                                <button>저장하기</button>
-                            </div>
+                                <button>
+                                    <div>저장하기</div>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="profileInfoRight">
                         <div class="profileImgWrap2 profileBox">
                             <div class="profileAccount">
                                 <div class="profileAccountSubject">계정 정보</div>
-                                <a href="#"><div class="profileAccountUpdate">수정</div></a>
+                                <a href="#"><div class="profileAccountUpdate">수정하기</div></a>
                             </div>
                             <div class="profileAccountInfo">
                                 <div class="profileAccountInfoContent">
@@ -98,5 +102,6 @@
             </section>
         </div>
     {% include "layout/footer.html" %}
+    </div>
 </body>
 </html>
