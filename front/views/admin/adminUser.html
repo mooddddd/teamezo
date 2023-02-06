@@ -6,130 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
-        <style>
-            .adminWrap {
-                display: flex;
-            }
-
-            aside {
-                height: 100rem;
-            }
-            .adminRight {
-                height: 100rem;
-            }
-            .adminRightTop {
-                width: 120rem;
-                height: 15%;
-                padding: 3rem 0 0 3rem;
-                box-sizing: border-box;
-            }
-
-            .adminRightTop > h1 {
-                font-size: 3.6rem;
-                font-weight: 350;
-            }
-
-            .adminRightTop > p {
-                font-size: 1.6rem;
-                margin-top: 2.5rem;
-                font-weight: 160;
-            }
-
-            .adminUserSearch > form {
-                width: 120rem;
-                height: 10%;
-                padding: 3rem 0 0 3rem;
-                box-sizing: border-box;
-            }
-
-            .adminUserSearch > form > span {
-                font-size: 1.6rem;
-                margin-top: 2.5rem;
-                font-weight: 200;
-            }
-
-            .adminUserSearch > form > input {
-                margin-right: 1rem;
-            }
-
-            .adminUserList {
-                display: flex;
-                justify-content: center;
-                margin-top: 2rem;
-                width: 120rem;
-                height: 50%;
-            }
-
-            .adminUserList > table > tr > th {
-                font-size: 1.7rem;
-                padding-bottom: 1rem;
-            }
-
-            table {
-                width: 95rem;
-                height: 7rem;
-                border-top: 1px solid #ececec;
-                border-left: 1px solid #ececec;
-                border-right: 1px solid #ececec;
-            }
-
-            .trBody > td {
-                height: 7rem;
-                text-align: center;
-                border-bottom: 1px solid #ececec;
-            }
-
-            .th1 {
-                width: 20%;
-                height: 5rem;
-            }
-            .th2 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th3 {
-                width: 20%;
-                height: 5rem;
-            }
-            .th4 {
-                width: 5%;
-                height: 5rem;
-            }
-            .th5 {
-                width: 15%;
-                height: 5rem;
-            }
-            .th6 {
-                width: 20%;
-                height: 5rem;
-            }
-            .th7 {
-                width: 5%;
-                height: 5rem;
-            }
-            .th8 {
-                width: 5%;
-                height: 5rem;
-            }
-
-            .adminPreNext {
-                display: flex;
-                justify-content: center;
-            }
-
-            .adminPreNext > button {
-                background: none;
-                border: none;
-                width: 5rem;
-                height: 3rem;
-            }
-
-            .adminPreNext > button:hover,
-            button:focus {
-                background: var(--main);
-                box-shadow: 0 0 5px grey;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/admin/adminUser.css">
         <title>Document</title>
     </head>
     <body>
@@ -146,7 +23,6 @@
                 <!-- adminRightTop -->
                 <div class="adminUserSearch">
                     <form action="" method="">
-                        <span>회원 검색 :</span>
                         <input type="text" name="" id="" />
                         <button type="submit">검색</button>
                     </form>
@@ -268,8 +144,8 @@
 
                 <!-- adminUserList -->
                 <div class="adminPreNext">
-                    <button type="adminPreBtn">이전</button>
-                    <button type="adminNextBtn">다음</button>
+                    <a href="#">이전</a>
+                    <a href="#">다음</a>
                 </div>
             </div>
             <!-- adminRight -->

@@ -1,11 +1,29 @@
+#joinLogo {
+    width: 50rem;
+    height: 10rem;
+    color: var(--main);
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5rem 0;
+    font-size: 7rem;
+    font-family: var(--headerFont);
+}
+
 #profileWrap {
+    padding-bottom: 10rem;
     width: 100%;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/profileback.jpg) 10% no-repeat;
+    background-size: cover;
 }
 
 #profile {
     margin: 0 auto;
     width: 120rem;
     height: 100rem;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/note.jpg) 10% no-repeat;
+    background-size: cover;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .profileInfo {
@@ -27,18 +45,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--border);
+    background-color: var(--main);
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
 }
 
 .profileInfoAvatar {
     width: 45%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .profileInfoAvatar > img {
-    width: 70%;
     height: 70%;
     border-radius: 50%;
     border: 1px solid var(--border);
@@ -49,26 +69,36 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .profileInfoImg > div {
-    font-weight: 600;
-    margin: 1rem 0;
+    text-align: center;
+    padding: 1rem;
+    width: 80%;
+    font-weight: 700;
     font-size: 2rem;
+    box-sizing: border-box;
 }
 
 .profileInfoImg > button {
-    cursor: pointer;
-    font-weight: 600;
-    margin: 1rem 0;
     padding: 1rem;
-    width: 10rem;
+    width: 80%;
+    color: var(--main);
+    background-color: var(--header);
     border: none;
-    font-size: 2rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .profileInfoImg > button:hover {
-    color: var(--main);
+    background-color: var(--footer);
+}
+
+.profileInfoImg > button > div {
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 .profileInfoRight {
@@ -84,7 +114,9 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    border: 1px solid var(--border);
+    background-color: var(--main);
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
 }
 
 .profileBox {
@@ -99,6 +131,7 @@
 }
 
 .profileAccountSubject {
+    margin-right: 2rem;
     font-size: 3rem;
     font-weight: 700;
 }
@@ -109,11 +142,13 @@
 }
 
 .profileAccount > a {
-    padding: 1rem;
+    padding: 0.7rem;
     font-weight: 600;
-    background-color: #ececec;
+    background-color: var(--header);
+    color: var(--main);
     border-radius: 0.5rem;
     transition: all 0.5s;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .profileAccount > a:hover {
@@ -165,6 +200,7 @@
     height: 40%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .profileContentWrap {
@@ -174,8 +210,9 @@
     font-size: 2rem;
     border-bottom: 1px solid #ececec;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    background-color: var(--main);
 }
 
 .profileContentWrap:hover {
@@ -184,12 +221,27 @@
 }
 
 .profileContent {
+    width: 70%;
+    height: 100%;
     display: flex;
+    align-items: center;
     font-weight: 500;
+    padding-left: 4rem;
+    box-sizing: border-box;
 }
+
 
 .profileContent > div {
     margin: 0 1rem;
+}
+
+.profileRegister {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
 }
 
 .profileBtnWrap {
@@ -213,13 +265,13 @@
     margin: 0 3rem;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
-    background-color: #ececec;
-    transition: all 0.5s;
+    color: var(--main);
+    background-color: var(--header);
+    transition: all 0.2s;
     line-height: 3rem;
 }
 
 .profileBtnWrap > ul > li:hover {
     color: #ececec;
     background-color: var(--footer);
-    transform: scale(1.2);
 }

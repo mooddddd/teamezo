@@ -1,0 +1,103 @@
+#agreePopup{
+    position: absolute;
+    top: 3rem;
+    right: 12.5rem;
+    width: 40rem;
+    height: 80rem;
+    border-radius: 1rem;
+    background-color: #ececec;
+    z-index: -5;
+    opacity: 0;
+}
+
+#infoPopup{
+    position: absolute;
+    top: 3rem;
+    right: 12.5rem;
+    width: 40rem;
+    height: 80rem;
+    border-radius: 1rem;
+    background-color: #ececec;
+    z-index: -5;
+    opacity: 0;
+}
+
+.onPopup {
+    z-index: 5;
+    opacity: 1;
+}
+
+.agreeheaderWrap{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agreeheader{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.agreeContentWrap{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    box-sizing: border-box;
+    border: 1px solid #2e2e2e71;
+}
+
+.agreeContent{
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.agreeFooterWrap{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.agreeFooter{
+    display: flex;
+
+}
+
+.agreeAccept{
+    background-color: var(--footer);
+    color: var(--main);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+    font-size: 2rem;
+    transition: all 0.5s;
+}
+
+.agreeAccept:hover {
+    color: var(--footer);
+    background-color: var(--header);
+}
+
+.agreeCancle{
+    cursor: pointer;
+    background-color: var(--footer);
+    color: var(--main);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+    font-size: 2rem;
+    transition: all 0.5s;
+}
+
+.agreeCancle:hover {
+    color: var(--footer);
+    background-color: var(--header);
+}

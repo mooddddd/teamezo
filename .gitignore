@@ -2,3 +2,6 @@ node_modules/
 package-lock.json
 .env
 *.pem
+front/route/example.js
+front/server\copy.js
+front/app\copy.js

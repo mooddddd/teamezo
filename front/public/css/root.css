@@ -1,13 +1,16 @@
 :root {
     --header: #adc46d;
     --footer: #526a7e;
+    --joinFooter: rgba(110, 90, 60, 0.7);
     --main: #fdfdfd;
     --fontColor: #2e2e2e;
     --border: #cecece;
     --headerFont: "Sacred";
-    --footerFont: "TheHistoriaDemo";
     --textFont: "GmarketSans";
 }
+
+/* background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 20%, rgb(110, 90, 60) 90%), url(../../img/join.jpg) 10% no-repeat;
+background-size: cover; */
 
 * {
     margin: 0;
@@ -17,6 +20,7 @@
 html {
     font-size: 10px;
     font-family: var(--textFont);
+    scroll-behavior: smooth;
 }
 
 a {
@@ -31,12 +35,9 @@ li {
 
 button {
     cursor: pointer;
-    transition: all 0.5s;
 }
 
-button:hover {
-    background-color: var(--footer);
-}
+/* box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2); */
 
 @font-face {
     font-family: "Sacred";

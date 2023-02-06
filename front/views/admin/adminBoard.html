@@ -6,137 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
-        <style>
-            .adminWrap {
-                display: flex;
-            }
-
-            aside {
-                height: 100rem;
-            }
-            .adminRight {
-                height: 100rem;
-            }
-            .adminRightTop {
-                width: 120rem;
-                height: 15%;
-                padding: 3rem 0 0 3rem;
-                box-sizing: border-box;
-            }
-
-            .adminRightTop > h1 {
-                font-size: 3.6rem;
-                font-weight: 350;
-            }
-
-            .adminRightTop > p {
-                font-size: 1.6rem;
-                margin-top: 2.5rem;
-                font-weight: 160;
-            }
-
-            .adminBoardSearch > form {
-                width: 120rem;
-                height: 10%;
-                padding: 3rem 0 0 10rem;
-                box-sizing: border-box;
-            }
-
-            .adminBoardSearch > form > span {
-                font-size: 1.6rem;
-                margin-top: 2.5rem;
-                font-weight: 200;
-            }
-
-            .adminBoardSearch > form > input {
-                margin-right: 1rem;
-            }
-
-            .adminBoardList {
-                display: flex;
-                justify-content: center;
-                margin-top: 2rem;
-                width: 120rem;
-                height: 50%;
-            }
-
-            .adminBoardList > table > tr > th {
-                font-size: 1.7rem;
-                padding-bottom: 1rem;
-            }
-
-            table {
-                width: 100rem;
-                height: 7rem;
-                border-top: 1px solid #ececec;
-                border-left: 1px solid #ececec;
-                border-right: 1px solid #ececec;
-            }
-
-            .trBody > td {
-                height: 7rem;
-                text-align: center;
-                border-bottom: 1px solid #ececec;
-            }
-
-            .th1 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th2 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th3 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th4 {
-                width: 25%;
-                height: 5rem;
-            }
-            .th5 {
-                width: 15%;
-                height: 5rem;
-            }
-            .th6 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th7 {
-                width: 10%;
-                height: 5rem;
-            }
-            .th8 {
-                width: 5%;
-                height: 5rem;
-            }
-
-            .adminPreNext {
-                display: flex;
-                justify-content: center;
-            }
-
-            .adminPreNext > button {
-                background: none;
-                border: none;
-                width: 5rem;
-                height: 3rem;
-            }
-
-            .adminPreNext > button:hover,
-            button:focus {
-                background: var(--main);
-                box-shadow: 0 0 5px grey;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/admin/adminBoard.css">
         <title>Document</title>
     </head>
     <body>
         <div class="adminWrap">
             {% include 'layout/adminSide.html' %}
-
-            <!-- adminRight -->
             <div class="adminRight">
                 <div class="adminRightTop">
                     <h1>게시물 관리</h1>
@@ -144,13 +19,10 @@
                 </div>
                 <div class="adminBoardSearch">
                     <form action="" method="">
-                        <span>게시물 검색 :</span>
                         <input type="text" name="" id="" />
                         <button type="submit">검색</button>
                     </form>
                 </div>
-                <!-- adminUserSearch -->
-
                 <div class="adminBoardList">
                     <table>
                         <tr class="trHeader">
@@ -237,13 +109,12 @@
                             <td>{글상태}</td>
                         </tr>
                     </table>
+                    <div class="adminPreNext">
+                        <a href="#">이전</a>
+                        <a href="#">다음</a>
+                    </div>
                 </div>
-
                 <!-- adminUserList -->
-                <div class="adminPreNext">
-                    <button type="adminPreBtn">이전</button>
-                    <button type="adminNextBtn">다음</button>
-                </div>
             </div>
             <!-- adminRight -->
         </div>
