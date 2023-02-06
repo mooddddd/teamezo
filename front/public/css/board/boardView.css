@@ -1,0 +1,227 @@
+article {
+    width: 100%;
+}
+#viewWrap {
+    width: 100%;
+    background: #f5f5f5;
+}
+#viewForm {
+    width: 120rem;
+    margin: 0 auto;
+}
+
+/* 상단 고정 부분 */
+#viewForm > .top {
+    padding: 1rem 0;
+    border-bottom: 0.1rem solid #646464;
+}
+#viewForm > .top > h1 {
+    margin-top: 10rem;
+    color: #adc46d;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* 가운데 정렬용 */
+.viewContentSortCenter {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 4rem !important;
+}
+
+/* 제목, 작성자 & 날짜 */
+.viewContent > .contentTop > .contentSubject {
+    font-size: 2.4rem;
+    width: 100%;
+    height: 3rem;
+    border-bottom: 0.1rem solid #646464;
+}
+
+.viewContent > .contentTop > ul {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+    display: flex;
+}
+.viewContent > .contentTop > ul > .contentWriter {
+    padding-right: 3rem;
+    font-weight: bold;
+}
+.viewContent > .contentTop > ul > .contentCreateDate {
+    color: gray;
+}
+
+/* 글 내용, 해쉬태그 */
+.viewContent > .contentCenter {
+    margin-top: 3rem;
+}
+.viewContent > .contentCenter > .contentData {
+    font-size: 1.6rem;
+    padding: 2rem;
+    width: 95%;
+    min-height: 30rem;
+    background: white;
+}
+
+.viewContent > .contentCenter > .hashtagData {
+    color: gray;
+    font-size: 1.2rem;
+    margin: 1.5rem 1rem;
+}
+.viewContent > .contentCenter > .hashtagData > ul > li {
+    display: inline-block;
+    padding-right: 1rem;
+}
+.viewContent > .contentCenter > .hashtagData > ul > li:last-child {
+    padding: 0;
+}
+
+/* 좋아요 */
+.viewContent > .contentBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.viewContent > .contentBottom > .thumsupImg > .off {
+    display: none;
+}
+
+.viewContent > .contentBottom > .thumsupImg > a > img {
+    transition: all 0.5s;
+}
+.viewContent > .contentBottom > .thumsupImg > a:hover img {
+    transform: scale(150%);
+}
+.viewContent > .contentBottom > .thumsupCount {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* 전체 댓글창 */
+.viewComment {
+    margin: 2rem 0;
+    background: #ececec;
+    padding: 2rem;
+}
+.commentCount {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #adc46d;
+}
+
+/* 작성된 댓글 기본 CSS */
+.userCommnetContent {
+    margin: 1.5rem 0;
+    display: flex;
+    width: 95%;
+    font-size: 1.5rem;
+    border-bottom: 0.1rem solid #cccccc;
+}
+.userCommnetContent > .avatar {
+    width: 8rem;
+}
+.userCommnetContent > .avatar > a > img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.userCommnetContent > .commentCenterContent > ul {
+    margin-left: 1.5rem;
+}
+
+/* 댓글작성자, 날짜 */
+.userCommnetContent > .commentCenterContent > ul > li:first-child > .commentWriter {
+    font-weight: bold;
+    float: left;
+    padding-bottom: 1rem;
+}
+.userCommnetContent > .commentCenterContent > ul > li:first-child > .commentDate {
+    float: right;
+    padding-left: 3rem;
+    padding-bottom: 1rem;
+}
+
+/* 댓글내용 */
+.userCommnetContent > .commentCenterContent > ul > :nth-last-child(2) {
+    margin-bottom: 1rem;
+}
+
+/* 답글쓰기버튼(원댓글에만) */
+.userCommnetContent > .commentCenterContent > ul > li:last-child {
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+.userCommnetContent > .commentCenterContent > ul > li:last-child a {
+    font-size: 1.2rem;
+    color: gray !important;
+}
+
+.userCommnetContent > .commentBtns {
+    float: right;
+    margin-left: 3rem;
+}
+
+/* 원댓글 설정 */
+.viewComment > .upperComment {
+    width: 100%;
+}
+/* 대댓글 설정 */
+.viewComment > .commentReply {
+    margin-left: 2.5rem;
+}
+.viewComment > .commentReply > .userCommnetContent > .replyImg {
+    margin: auto 1rem;
+}
+.viewComment > .commentReply > .userCommnetContent > .commentBtns {
+    padding-top: 1rem;
+}
+
+/* 댓글쓰기 */
+.writeCommentForm {
+    margin-top: 5rem;
+}
+
+/* .writeCommentForm > form > span {
+    font-weight: bold;
+    font-size: 1.5rem;
+} */
+
+.writeCommentForm > form > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.writeCommentForm > form > div > textarea {
+    margin-top: 1rem;
+    border: none;
+    width: 93%;
+    min-height: 5rem;
+    font-size: 1.5rem;
+    resize: none;
+}
+.writeCommentForm > form > div > textarea::placeholder {
+    padding: 0.5rem;
+}
+
+.writeCommentForm > form > div > button {
+    width: 7%;
+    border: none;
+    font-size: 1.8rem;
+}
+
+/* 이전글 혹은 다음글 */
+.viewBottom {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10rem;
+    margin: 2rem auto;
+    font-size: 2rem;
+}
+
+.viewBottom > a:hover {
+    color: #adc46d;
+}

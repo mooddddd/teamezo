@@ -1,0 +1,169 @@
+article {
+    width: 100%;
+    height: 130rem;
+    background: #f5f5f5;
+}
+
+#boardListWrap {
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* 왼쪽(카테고리 목록) */
+#boardListWrap > .listLeft {
+    font-size: 1.7rem;
+    margin-top: 10rem;
+    float: left;
+    width: 15%;
+    height: 100%;
+}
+
+#boardListWrap > .listLeft > ul {
+    width: 100%;
+    background: white;
+}
+#boardListWrap > .listLeft > ul > .allCategory {
+    padding-top: 4rem;
+}
+
+#boardListWrap > .listLeft > ul > li {
+    padding-left: 1.7rem;
+    padding-bottom: 2rem;
+}
+#boardListWrap > .listLeft > ul > li:last-child {
+    padding-bottom: 4rem;
+}
+
+.mainCategory > .subCategory {
+    margin-top: 1rem;
+}
+.mainCategory > .subCategory > li {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+#boardListWrap > .listLeft > ul > .allCategory > h3 > a:hover {
+    color: #adc46d;
+}
+.mainCategory > h4 > a:hover {
+    color: #adc46d;
+}
+.mainCategory > .subCategory > li > a:hover {
+    color: #adc46d;
+}
+
+/* 오른쪽(글목록) */
+#boardListWrap > .listRight {
+    float: right;
+    width: 80%;
+    padding: 1.5rem;
+}
+/* 상단고정부분 */
+#boardListWrap > .listRight > .top {
+    padding: 1rem 0;
+    border-bottom: 0.1rem solid #646464;
+}
+
+#boardListWrap > .listRight > .top > h1 {
+    color: #adc46d;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* list 게시물 템플릿 */
+.boardListContents {
+    width: 90%;
+    margin: 2rem auto;
+    padding-top: 1rem;
+    background: white;
+}
+
+.boardListContents > .boardFindOne:hover {
+    background: #ececec;
+}
+
+.boardListContents > .boardFindOne {
+    margin: 2rem 2rem 0 2rem;
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+}
+/* 대표이미지 */
+.boardListContents > .boardFindOne > .boardListPic {
+    width: 20%;
+}
+.boardListContents > .boardFindOne > .boardListPic > img {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0.1rem solid #ececec;
+}
+/* 제목, 닉네임, 날짜 */
+.boardListContents > .boardFindOne > .boardListContent {
+    width: 70%;
+    height: 100%;
+}
+
+.boardListContents > .boardFindOne > .boardListContent > ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.boardListContents > .boardFindOne > .boardListContent > ul > .subject {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.boardListContents > .boardFindOne > .boardListContent > ul > .writer {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.boardListContents > .boardFindOne > .boardListContent > ul > .date {
+    color: gray;
+}
+
+/* 좋아요 */
+.boardListContents > .boardFindOne > .boardListLiked {
+    width: 5%;
+    text-align: center;
+    padding: 1rem 0;
+}
+/* list 게시물 템플릿 끝 */
+
+/* 페이징 */
+.boardListPaging {
+    padding: 3rem 0;
+    width: 100%;
+}
+.boardListPaging > ul {
+    width: 30%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+.boardListPaging > ul > li {
+    padding-top: 1rem;
+    padding-right: 1rem;
+}
+.boardListPaging > ul > li:last-child {
+    padding-right: none;
+}
+.boardListPaging > ul > li > a {
+    font-size: 1.5rem;
+}
+.boardListPaging > ul > li > a:hover {
+    font-weight: bold;
+    color: #adc46d;
+}
+.boardListPaging > ul > li > a > button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+}
