@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const nunjucks = require("nunjucks");
 const cookieParser = require("cookie-parser");
-const router = require("./route");
+const router = require("./routes");
 
 app.set("view engine", "html");
 nunjucks.configure("views", { express: app });
