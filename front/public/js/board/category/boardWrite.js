@@ -80,16 +80,24 @@ const submitHandler = async (e) => {
 
     const body = new FormData(e.target);
 
+    const response = Promise.all([
+        axios.post("http://localhost:3000/", body, {
+            header: {
+                ["Content-type"]: "multipart/form-data",
+            },
+        }),
+        axios.post("http://localhost:3000", tagNames),
+    ]); // response 값으로는 board_idx값 받아오기, 받아오면 로케이션에 넣기?
+
     // ** 얘 나중에 백이랑 연결해서 손보기
     // const response = await axios.post("http://localhost:3000/", body, {
     //     header: {
     //         ["Content-type"]: "multipart/form-data",
     //     },
-    // }); // 반환되는 값으로 idx 받기
-    // const sendtag = await axios.post("http://localhost:3000", tagNames);
+    // }); await axios.post("http://localhost:3000", tagNames);
     // // promise.all 공부해야 댐,,,,, 암튼 두개 보내서 처리하기
     // **
 
-    location.href = "/board/view";
+    // location.href = "/board/view";
 };
 writeDataForm.addEventListener("submit", submitHandler);
