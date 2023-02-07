@@ -12,7 +12,6 @@ const categoryChange = (e) => {
             subOpt.value = subCategotyIT[i];
             subOpt.innerHTML = subCategotyIT[i];
             target.append(subOpt);
-            console.log(target.options);
         }
     } else if (category === "food") {
         for (let i = 0; i <= subCategotyFood.length - 1; i++) {
@@ -25,24 +24,6 @@ const categoryChange = (e) => {
     }
 };
 
-// 버튼으로 만들 경우 버튼 누르면 인풋박스로 바뀌게 만든 코드!
-// const hashtagBtn = document.querySelector(".hashtagBtn");
-// const hashtagLi = document.querySelector(".hashtagLi");
-
-// const createInputBox = (e) => {
-//     e.preventDefault();
-//     hashtagBtn.setAttribute("hidden", "hidden");
-
-//     const hashtagBox = document.createElement("input");
-//     hashtagBox.setAttribute("type", "text");
-//     hashtagBox.setAttribute("name", "tagName");
-//     hashtagBox.className = "hashtag";
-
-//     hashtagLi.append(hashtagBox);
-// };
-
-// hashtagBtn.addEventListener("click", createInputBox);
-
 // 처음부터 인풋박스인 경우! 여기에 CSS 먹여서 innerHTML 처리 시키기?
 const hashtagLi = document.querySelector(".hashtagLi");
 const hashtagBox = document.querySelector(".hashtagBox");
@@ -52,10 +33,6 @@ const addHashtag = (e) => {
     if (e.keyCode === 13) {
         e.preventDefault();
 
-        // console.log(e.target.value); // 칸 안에 있는 밸류값 잘 찍힘
-        // 그 다음에 엑시오스로 데이터 날리고 백에서 중복있는지 확인 후 데이터 받고 저장되지 않았으면 추가
-
-        // if(hashtagAll.length <0)
         if (e.target.value === "") {
             alert("해시태그를 입력하세요");
             return;
@@ -71,17 +48,48 @@ const addHashtag = (e) => {
 
         const hashtagSpan = document.createElement("a");
         hashtagSpan.setAttribute("style", "float:left; margin-right:1.5rem; color:grey; cursor: pointer;");
-        hashtagSpan.setAttribute("class", "hashtag");
+        hashtagSpan.setAttribute("class", "tagName");
         // hashtagSpan.setAttribute("href", "");
 
         hashtagSpan.innerHTML = `# ${e.target.value}`;
         hashtagLi.append(hashtagSpan);
         e.target.value = "";
 
+        const tagName = hashtagSpan.innerHTML;
+        arr.push({ tagName });
+
         hashtagSpan.addEventListener("click", (e) => {
             e.target.remove();
         });
     }
 };
-
 hashtagBox.addEventListener("keydown", addHashtag);
+
+// 전체 데이터 submit
+const writeDataForm = document.querySelector(".write > form");
+const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const tagNameElement = document.querySelectorAll(".tagName");
+    const tagArr = Object.values(tagNameElement);
+    let tagNamesArr = [];
+    for (let i = 0; i <= tagArr.length - 1; i++) {
+        tagNamesArr.push(tagArr[i].innerHTML.split("# ")[1]);
+    }
+    const tagNames = { tagNames: tagNamesArr };
+
+    const body = new FormData(e.target);
+
+    // ** 얘 나중에 백이랑 연결해서 손보기
+    // const response = await axios.post("http://localhost:3000/", body, {
+    //     header: {
+    //         ["Content-type"]: "multipart/form-data",
+    //     },
+    // }); // 반환되는 값으로 idx 받기
+    // const sendtag = await axios.post("http://localhost:3000", tagNames);
+    // // promise.all 공부해야 댐,,,,, 암튼 두개 보내서 처리하기
+    // **
+
+    location.href = "/board/view";
+};
+writeDataForm.addEventListener("submit", submitHandler);
