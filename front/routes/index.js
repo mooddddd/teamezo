@@ -7,15 +7,14 @@ const qna = require('./qna.router')
 const main = require('./router')
 
 router.get('/', (req, res) => {
-    if (req.cookies) {
+    if (req.cookies.token) {
         const userid = 'asdf'
         res.render('main.html', { userid })
     }
 })
 
 router.get('/welcome', (req, res) => {
-    console.log(req.cookies)
-    if (req.cookies) {
+    if (req.cookies.token) {
         const userid = 'hahaha'
         const userpw = 'zzz'
         const userpwchk = 'zzz'
@@ -26,15 +25,27 @@ router.get('/welcome', (req, res) => {
 })
 
 router.get('/profile', (req, res) => {
-    const profileCookies = JSON.stringify(req.cookies)
-    console.log(profileCookies === {})
-    if (profileCookies !== {}) {
+    const profileCookies = JSON.stringify(req.cookies.token)
+    if (profileCookies === undefined) {
+        res.render('error.html')
+    } else {
         const userid = 'hahaha'
         const username = 'hongtae'
         const useremail = 'hongtae@gmail.com'
         res.render('user/profile.html', { userid, username, useremail })
-    } else if (profileCookies === {}) {
+    }
+})
+
+router.get('/profileEdit', (req, res) => {
+    const profileCookies = JSON.stringify(req.cookies.token)
+
+    if (profileCookies === undefined) {
         res.render('error.html')
+    } else {
+        const userid = 'amamam'
+        const username = 'hongtae2'
+        const useremail = 'hongtae2@gmail.com'
+        res.render('user/profileEdit.html', { userid, username, useremail })
     }
 })
 

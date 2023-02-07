@@ -38,7 +38,6 @@ exports.postjoin = (req, res) => {
         username,
         useremail,
     }
-
     const cookies = JSON.stringify(userinfo.token)
     res.setHeader('Set-Cookie', `token=${cookies}; path=/;`)
     res.redirect('/welcome')
@@ -50,4 +49,8 @@ exports.getwelcome = (req, res) => {
 
 exports.getprofile = (req, res) => {
     res.render('user/profile.html')
+}
+
+exports.getProfileEdit = (req, res) => {
+    res.render('user/profileEdit.html')
 }
