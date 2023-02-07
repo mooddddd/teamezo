@@ -1,4 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-module.exports = router;
+router.get('/', (req, res) => {
+    if (req.cookies.token) {
+        const userid = 'asdf'
+        res.render('main.html', { userid })
+    } else {
+        res.render('main.html')
+    }
+})
+
+module.exports = router

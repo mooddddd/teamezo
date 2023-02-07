@@ -11,7 +11,9 @@ router.post('/join', controller.postjoin)
 router.get('/welcome', controller.getwelcome)
 
 router.get('/profile', controller.getprofile)
-router.get('/profile', controller.postProfileEdit)
+
+router.get('/profileEdit', controller.getProfileEdit)
+router.post('/profileEdit', controller.postProfileEdit)
 
 router.get('/modify')
 // router.post("/modify:userid");

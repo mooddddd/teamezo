@@ -1,4 +1,5 @@
 const axios = require('axios')
+const e = require('express')
 
 exports.getlogin = (req, res) => {
     res.render('user/login.html')
@@ -40,17 +41,55 @@ exports.postjoin = (req, res) => {
     }
     const cookies = JSON.stringify(userinfo.token)
     res.setHeader('Set-Cookie', `token=${cookies}; path=/;`)
-    res.redirect('/welcome')
+    res.redirect('/user/welcome')
 }
 
 exports.getwelcome = (req, res) => {
-    res.render('user/welcome.html')
+    if (req.cookies.token) {
+        const userid = 'hahaha'
+        const userpw = 'zzz'
+        const userpwchk = 'zzz'
+        const username = 'hongtae'
+        const useremail = 'gkgk@gmail.com'
+        res.render('user/welcome.html', { userid, username })
+    } else {
+        res.render('user/welcome.html')
+    }
 }
 
 exports.getprofile = (req, res) => {
-    res.render('user/profile.html')
+    const profileCookies = JSON.stringify(req.cookies.token)
+    if (profileCookies === undefined) {
+        res.render('error.html')
+    } else {
+        const userid = 'hahaha'
+        const username = 'hongtae'
+        const useremail = 'hongtae@gmail.com'
+        res.render('user/profile.html', { userid, username, useremail })
+    }
+}
+
+exports.postProfileEdit = (req, res) => {
+    const profileCookies = JSON.stringify(req.cookies.token)
+    console.log('profileEdit!!!!')
+    if (profileCookies === undefined) {
+        res.render('error.html')
+    } else {
+        const userid = 'amamam'
+        const username = 'hongtae2'
+        const useremail = 'hongtae2@gmail.com'
+        res.redirect('/profileEdit')
+    }
 }
 
 exports.getProfileEdit = (req, res) => {
-    res.render('user/profileEdit.html')
+    const profileCookies = JSON.stringify(req.cookies.token)
+    if (profileCookies === undefined) {
+        res.render('error.html')
+    } else {
+        const userid = 'hongtae'
+        const username = 'hongttt'
+        const useremail = 'hongtae3@gmail.com'
+        res.render('user/profileEdit.html', { userid, username, useremail })
+    }
 }

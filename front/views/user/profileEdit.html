@@ -11,9 +11,7 @@
         <link rel="stylesheet" href="/css/layout/footer.css" />
     </head>
     <body>
-        <!-- {% extends 'layout/header.html' %}
-    {% block header %}
-    {% endblock %} -->
+        {% include 'layout/header.html' %}
         <section>
             <div class="profileEdit">
                 <div class="profileEditContentsWrap">
@@ -31,11 +29,11 @@
                             <div class="profileEditContentTitle">계정 정보</div>
                             <div class="profileEditContentBox">
                                 <div>이름</div>
-                                <input type="text" name="" id="" />
+                                <input type="text" name="username" id="" value="{{username}}" />
                             </div>
                             <div class="profileEditContentBox">
                                 <div>아이디</div>
-                                <input type="text" name="" id="" />
+                                <input type="text" name="userid" id="" value="{{userid}}" />
                             </div>
                             <div class="profileEditContentBox">
                                 <div>비밀번호</div>
@@ -51,7 +49,7 @@
                             </div>
                             <div class="profileEditContentBox">
                                 <div>이메일</div>
-                                <input type="text" name="" id="" />
+                                <input type="text" name="useremail" id="" value="{{useremail}}" />
                             </div>
                         </div>
                     </div>
@@ -89,8 +87,8 @@
                 </div>
             </div>
         </section>
-        <!-- {% extends 'layout/footer.html' %}
-    {% block footer %}
-    {% endblock %} -->
+        {% include 'layout/footer.html' %}
+        <script src="/js/layout/header.js"></script>
+        <script src="/js/layout/sidebar.js"></script>
     </body>
 </html>
