@@ -22,21 +22,16 @@
                             <span></span>
                         </li>
                         <!-- 카테고리 템플릿 -->
+                        {% for item in category %}
                         <li class="mainCategory">
-                            <h4><a href="#">카테고리1</a></h4>
+                            <h4><a href="#">{{item.MainCategory}}</a></h4>
                             <ul class="subCategory">
-                                <li><a href="#">서브 카테고리1</a></li>
-                                <li><a href="#">서브 카테고리2</a></li>
+                                {% set subCate = item.subName %} {% for sub in subCate %}
+                                <li><a href="#">{{sub}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
-
-                        <li class="mainCategory">
-                            <h4><a href="#">카테고리2</a></h4>
-                            <ul class="subCategory">
-                                <li><a href="#">서브 카테고리1</a></li>
-                                <li><a href="#">서브 카테고리2</a></li>
-                            </ul>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
 
@@ -51,6 +46,7 @@
                     <!-- ALL DATA IN LIST PAGE -->
                     <div class="boardListContents">
                         <!-- list 게시물 템플릿 -->
+                        {% for item in list %}
                         <div class="boardFindOne">
                             <!-- 대표이미지 -->
                             <div class="boardListPic"><img src="/img/header.png" /></div>
@@ -58,10 +54,10 @@
                             <div class="boardListContent">
                                 <ul>
                                     <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
+                                        <a href="#">{{item.subject}}</a>
                                     </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
+                                    <li class="writer">{{item.user_userid}}</li>
+                                    <li class="date">{{item.createAt}}</li>
                                 </ul>
                             </div>
                             <!-- 좋아요 -->
@@ -70,33 +66,12 @@
                                     <img id="beforeClick" src="/img/thumsup.png" />
                                     <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
                                 </div>
-                                <span>200</span>
+                                <span>{{item.liked}}</span>
                             </div>
                         </div>
+                        {% endfor %}
 
                         <!-- 더미 -->
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
                         <div class="boardFindOne">
                             <!-- 대표이미지 -->
                             <div class="boardListPic"><img src="/img/header.png" /></div>

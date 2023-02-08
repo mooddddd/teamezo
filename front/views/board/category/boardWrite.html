@@ -24,13 +24,17 @@
                     <form method="post" action="/board/write">
                         <ul>
                             <li class="subject">
-                                <select class="mainCategorySelect" name="mainName" onchange="categoryChange(this)">
+                                <select class="mainCategorySelect" name="mainName">
                                     <option>--카테고리 선택--</option>
-                                    <!-- 만약에 벨류값 없으면 alert 뜨게 -->
-                                    <option value="IT">IT</option>
-                                    <option value="food">음식/맛집</option>
-                                    <option value="etc">기타</option>
+                                    {% for item in category%}
+                                    <option class="mainCategory" value="{{item.MainCategory}}">{{item.MainCategory}}</option>
+                                    {% endfor %}
                                 </select>
+                                <div>
+                                    {% for item in category%} {% set subCate = item.subName %} {% for sub in subCate %}
+                                    <input type="hidden" class="{{item.MainCategory}}" value="{{sub}}" />
+                                    {% endfor %}{% endfor %}
+                                </div>
 
                                 <select class="subCategory" name="subName">
                                     <option>--카테고리 선택--</option>
