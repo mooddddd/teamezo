@@ -15,7 +15,4 @@ router.get('/profile', controller.getprofile)
 router.get('/profileEdit', controller.getProfileEdit)
 router.post('/profileEdit', controller.postProfileEdit)
 
-router.get('/modify')
-// router.post("/modify:userid");
-
 module.exports = router
