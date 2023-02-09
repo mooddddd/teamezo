@@ -9,9 +9,12 @@ router.get("/write", controller.getWrite);
 
 router.get("/view", controller.getView);
 
-// router.post("/view/comment");
+// router.get("/view/comments")
+// router.post("/view/comments");
+// router.get("/view/comments/modify")
+// router.get("/view/comments/delete")
 
-// router.get("/modity");
+// router.get("/modify");
 // router.post("/modify");
 
 // router.get("/delete");
