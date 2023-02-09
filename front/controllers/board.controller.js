@@ -33,15 +33,21 @@ exports.getList = async (req, res) => {
 };
 
 exports.getWrite = (req, res) => {
-    const category = [
-        { MainCategory: "IT", subName: ["css", "html", "nodejs"] },
-        { MainCategory: "찬수", subName: ["1", "2", "3"] },
-        { MainCategory: "홍태", subName: ["하나", "둘", "셋"] },
-        { MainCategory: "은지", subName: ["원", "투", "쓰리"] },
-        // { MainCategory: "food", subName: ["한식", "양식", "몰라,,,"] },
-    ];
-    res.render("board/category/boardWrite.html", { category });
+    try {
+        const category = [
+            { MainCategory: "IT", subName: ["css", "html", "nodejs"] },
+            { MainCategory: "찬수", subName: ["1", "2", "3"] },
+            { MainCategory: "홍태", subName: ["하나", "둘", "셋"] },
+            { MainCategory: "은지", subName: ["원", "투", "쓰리"] },
+            // { MainCategory: "food", subName: ["한식", "양식", "몰라,,,"] },
+        ];
+        res.render("board/category/boardWrite.html", { category });
+    } catch (e) {
+        throw new Error(e);
+    }
 };
+
+exports.postWrite = (req, res) => {};
 
 exports.getView = (req, res) => {
     // findOne 해와야 함

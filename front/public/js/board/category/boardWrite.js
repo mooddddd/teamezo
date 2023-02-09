@@ -24,6 +24,7 @@
 //     }
 // };
 
+/* 카테고리 선택하기 */
 const mainCategoryBox = document.querySelector(".mainCategorySelect");
 const MainCategory = document.querySelectorAll(".mainCategorySelect > .mainCategory");
 // const holeSubCategory = document.querySelectorAll(".subject > input");
@@ -39,9 +40,9 @@ mainCategoryBox.addEventListener("change", (e) => {
     // console.log(e.target.value);
     subCategory.options.length = 1;
     for (i = 0; i <= MainCategory.length - 1; i++) {
-        // console.log(e.target.value);
+        console.log(e.target.value);
         if (MainCategory[i].value === e.target.value) {
-            const selectSubCategory = document.querySelectorAll(`.subject > .${MainCategory[i].value}`);
+            const selectSubCategory = document.querySelectorAll(`.subject > div > .${MainCategory[i].value}`);
             const selectSubCategoryArr = Object.values(selectSubCategory);
             for (j = 0; j <= selectSubCategoryArr.length - 1; j++) {
                 // console.log(selectSubCategoryArr[j].value);
@@ -53,9 +54,10 @@ mainCategoryBox.addEventListener("change", (e) => {
             // console.log(document.getElementsByClassName(`${MainCategory[i].value}`));
         }
     }
+    // 백에서 데이터 받아와서 뿌리는 걸로 바꿔보기! (나중에,,,)
 });
 
-// 처음부터 인풋박스인 경우! 여기에 CSS 먹여서 innerHTML 처리 시키기?
+/* 해시태그 추가하기 */
 const hashtagLi = document.querySelector(".hashtagLi");
 const hashtagBox = document.querySelector(".hashtagBox");
 const arr = [];
@@ -96,10 +98,11 @@ const addHashtag = (e) => {
 };
 hashtagBox.addEventListener("keydown", addHashtag);
 
-// 전체 데이터 submit
+/* 전체데이터 submit 하기(백으로 보내기) */
 const writeDataForm = document.querySelector(".write > form");
 const submitHandler = async (e) => {
     e.preventDefault();
+    console.log(e.target.subName.value);
 
     const tagNameElement = document.querySelectorAll(".tagName");
     const tagArr = Object.values(tagNameElement);
@@ -111,14 +114,15 @@ const submitHandler = async (e) => {
 
     const body = new FormData(e.target);
 
-    const response = Promise.all([
-        axios.post("http://localhost:3000/", body, {
+    const response = await Promise.all([
+        axios.post("http://localhost:3000", body, {
             header: {
                 ["Content-type"]: "multipart/form-data",
             },
         }),
         axios.post("http://localhost:3000", tagNames),
     ]); // response 값으로는 board_idx값 받아오기, 받아오면 로케이션에 넣기?
+    // console.log(response[0].data.board_idx);
 
     // ** 얘 나중에 백이랑 연결해서 손보기
     // const response = await axios.post("http://localhost:3000/", body, {
@@ -129,7 +133,7 @@ const submitHandler = async (e) => {
     // // promise.all 공부해야 댐,,,,, 암튼 두개 보내서 처리하기
     // **
 
-    // location.href = "/board/view";
+    location.href = `/board/view?idx=${response[0].data.board_idx}`;
 };
 writeDataForm.addEventListener("submit", submitHandler);
 

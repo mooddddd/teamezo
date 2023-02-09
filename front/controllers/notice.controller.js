@@ -1,0 +1,1 @@
+exports.getList = (req, res) => {};
