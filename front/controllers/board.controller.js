@@ -112,5 +112,5 @@ exports.getView = (req, res) => {
     ];
 
     const commentCount = 2;
-    res.render("board/view.html", { contentResult, commentResult, commentCount, commentReplyResult });
+    res.render("board/category/boardView.html", { contentResult, commentResult, commentCount, commentReplyResult });
 };
