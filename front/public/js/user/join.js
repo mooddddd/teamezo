@@ -6,13 +6,24 @@ const joinCheck = document.querySelectorAll('.joinCheck')
 const joinInput = document.querySelectorAll('.joinInput')
 const joinBtn = document.querySelector('.joinBtn')
 
+const agree = document.querySelectorAll('.agree')
+
 joinBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    if (joinInput[0].value !== joinInput[1].value) {
-        joinCheck[2].innerHTML = '비밀번호가 틀려욧!!!!'
+
+    if (
+        agreeUse.getAttribute('class') === 'checkBox yellow' &&
+        agreeInfo.getAttribute('class') === 'checkBox yellow'
+    ) {
+        if (joinInput[0].value !== joinInput[1].value) {
+            joinCheck[2].innerHTML = '비밀번호가 틀려욧!!!!'
+            joinCheck[2].focus()
+        } else {
+            joinCheck[2].innerHTML = '비밀번호 확인완료!!'
+            location.href = '/user/welcome'
+        }
     } else {
-        joinCheck[2].innerHTML = '비밀번호 확인완료!!'
-        location.href = '/user/welcome'
+        alert('약관에 동의하세요!!!')
     }
 })
 
