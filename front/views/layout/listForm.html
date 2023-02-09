@@ -1,125 +1,40 @@
 {% block listForm %}
 <article>
-  <div id="listForm">
-    <div class="top">
-      <h1>NOTICE</h1>
-      <span></span>
+    <div id="listForm">
+        <div class="top">
+            <h1>{{board}}</h1>
+            <span></span>
+        </div>
+        <table class="content">
+            <tbody>
+                <tr>
+                    <th class="per10">번호</th>
+                    <th class="per40">제목</th>
+                    <th class="per20">작성자</th>
+                    <th class="per20">등록일</th>
+                    <th class="per10">조회수</th>
+                </tr>
+                {% for item in list %}
+                <tr>
+                    <td class="per10">{{item.idx}}</td>
+                    <td class="title per40">
+                        <a href="/{{board}}/view?idx={{item.idx}}">{{item.subject}}</a>
+                    </td>
+                    <td class="per20">{{item.userid}}</td>
+                    <td class="per20">{{item.createAt}}</td>
+                    <td class="per10">{{item.hit}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        <div class="bottom">
+            <a href="/{{board}}/write">글쓰기</a>
+            <ul>
+                <li class="prev"><a href="#">이전</a></li>
+                <li class="next"><a href="#">다음</a></li>
+            </ul>
+        </div>
     </div>
-    <table class="content">
-      <tbody>
-        <tr>
-          <th class="per10">번호</th>
-          <th class="per40">제목</th>
-          <th class="per20">작성자</th>
-          <th class="per20">등록일</th>
-          <th class="per10">조회수</th>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-        <tr>
-          <td class="per10">1</td>
-          <td class="title per40">
-            <a href="#">제목입니다</a>
-          </td>
-          <td class="per20">작성자</td>
-          <td class="per20">2023 - 01 - 31</td>
-          <td class="per10">21</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="bottom">
-      <a href="#">글쓰기</a>
-      <ul>
-        <li class="prev"><a href="#">이전</a></li>
-        <li class="next"><a href="#">다음</a></li>
-      </ul>
-    </div>
-  </div>
 </article>
 {% endblock %}
 
