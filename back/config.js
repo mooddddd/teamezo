@@ -1,11 +1,11 @@
 const config = {
     db: {
         development: {
-            username: '',
-            password: '',
-            host: '127.0.0.1',
-            port: '3306',
-            database: 'teamezo',
+            username: precess.env.USERNAME || '',
+            password: precess.env.PASSWORD || '',
+            host: precess.env.HOST || '',
+            port: precess.env.PORT || '',
+            database: precess.env.DATABASE || '',
             dialect: 'mysql',
             define: {
                 freezeTableName: true,
