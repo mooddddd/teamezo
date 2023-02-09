@@ -1,4 +1,8 @@
 const axios = require('axios')
+const request = axios.create({
+    baseURL: 'http://127.0.0.1:3000',
+    withCredentials: true,
+})
 
 exports.getlogin = (req, res) => {
     res.render('user/login.html')
@@ -6,20 +10,14 @@ exports.getlogin = (req, res) => {
 
 exports.postlogin = async (req, res) => {
     const { userid, userpw } = req.body
-    // const result = await axios.post('http://localhost:3005/user/login', {
-    //     userid,
-    //     userpw,
-    // })
-
-    const result = {
-        token: 'asd',
-        user: {
-            userid: req.body.userid,
-            username: req.body.userpw,
-        },
-    }
-
-    const cookies = JSON.stringify(result.token)
+    const result = await request.post('/users/login', {
+        ...req.body,
+    })
+    console.log('front postLogin')
+    console.log(result.data)
+    console.log('front postLogin')
+    console.log(result.data.token)
+    const cookies = JSON.stringify(result.data.token)
     res.setHeader('Set-Cookie', `token=${cookies}; path=/;`)
     res.redirect('/')
 }

@@ -1,11 +1,12 @@
+require('dotenv').config()
 const config = {
     db: {
         development: {
-            username: precess.env.USERNAME || '',
-            password: precess.env.PASSWORD || '',
-            host: precess.env.HOST || '',
-            port: precess.env.PORT || '',
-            database: precess.env.DATABASE || '',
+            username: process.env.DB_USERNAME || 'root',
+            password: process.env.DB_PASSWORD || 'tiajsrlf1!',
+            host: process.env.DB_HOST || '127.0.0.1',
+            port: process.env.DB_PORT || '3306',
+            database: process.env.DATABASE || 'teamezo',
             dialect: 'mysql',
             define: {
                 freezeTableName: true,
