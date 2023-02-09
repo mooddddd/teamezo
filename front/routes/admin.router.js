@@ -5,6 +5,7 @@ const controller = require("../controllers/admin.controller");
 router.get("/", controller.getAdmin)
 
 router.get("/user", controller.getAdminUser)
+router.post("/user", controller.postAdminUser)
 
 router.get("/userEdit", controller.getAdminUserEdit)
 router.post("/userEdit", controller.postAdminUserEdit)
