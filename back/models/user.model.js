@@ -25,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
                     },
                     gender: {
                         type: Sequelize.STRING(4),
-                        defaultValue: '남자',
+                        defaultValue: "남자",
                     },
                     phone: {
                         type: Sequelize.STRING(20),
@@ -36,9 +36,9 @@ module.exports = (sequelize, Sequelize) => {
                         allowNull: false,
                     },
                     provider: {
-                        type: Sequelize.ENUM('local', 'kakao'),
+                        type: Sequelize.ENUM("local", "kakao"),
                         allowNull: false,
-                        defaultValue: 'local',
+                        defaultValue: "local",
                     },
                     introduce: {
                         type: Sequelize.TEXT(),
@@ -50,8 +50,26 @@ module.exports = (sequelize, Sequelize) => {
                     },
                 },
                 { sequelize }
-            )
+            );
+        }
+        static associate(model) {
+            this.hasMany(model.Board, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Chat, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Qna, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Point, {
+                foreignKey: "userid",
+            });
+
+            this.hasMany(model.Liked, {
+                foreignKey: "userid",
+            });
         }
     }
-    User.initialize()
-}
+    User.initialize();
+};
