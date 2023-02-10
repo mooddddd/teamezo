@@ -11,9 +11,7 @@
     </head>
     <body>
         <div id="wrap">
-            <a href="/" id="joinLogo">
-                TeamEzo
-            </a>
+            <a href="/" id="joinLogo"> TeamEzo </a>
             <div id="loginForm">
                 <div id="login">
                     <div id="loginHeaderWrap">
@@ -21,14 +19,14 @@
                     </div>
                     <div id="loginContentWrap">
                         <div id="loginContents">
-                            <form id="loginBoxWrap">
-                                <input type="text">
-                                <input type="password">
-                                <button>로그인</button>
+                            <form id="loginBoxWrap" method="post" action="/user/login">
+                                <input type="text" name="userid" />
+                                <input type="password" name="userpw" />
+                                <button src="submit">로그인</button>
                             </form>
                             <div id="loginApi">
-                                <a href="#"><img src="/img/loginKakao.png"></a>
-                                <a href="#"><img src="/img/loginGoogle.png"></a>
+                                <a href="#"><img src="/img/loginKakao.png" /></a>
+                                <a href="#"><img src="/img/loginGoogle.png" /></a>
                             </div>
                         </div>
                     </div>
