@@ -52,7 +52,7 @@ exports.getList = async (req, res) => {
     }
 };
 
-exports.getview = (req, res) => {
+exports.getView = (req, res) => {
     try {
         const contentResult = {
             cookies: "cookies와 user_userid 값이 같아야 수정, 삭제 버튼 뜨도록 넌작스로 처리함",
@@ -64,6 +64,23 @@ exports.getview = (req, res) => {
         };
         const commentCount = "123";
         res.render("board/view.html", { contentResult, commentCount, board });
+    } catch (e) {
+        throw new Error(e);
+    }
+};
+
+exports.getWrite = (req, res) => {
+    try {
+        const board = "notice"; // 레이아웃때문에 넣어줘야 함
+        res.render("board/notice/noticeWrite.html", { board });
+    } catch (e) {
+        throw new Error(e);
+    }
+};
+
+exports.postWrite = (req, res) => {
+    try {
+        console.log(req.body);
     } catch (e) {
         throw new Error(e);
     }
