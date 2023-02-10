@@ -29,7 +29,7 @@ article {
     margin-top: 4rem !important;
 }
 
-/* 제목, 작성자 & 날짜 */
+/* 제목, 작성자 & 날짜 & 수정 및 삭제 */
 .viewContent > .contentTop > .contentSubject {
     font-size: 2.4rem;
     width: 100%;
@@ -48,6 +48,11 @@ article {
 }
 .viewContent > .contentTop > ul > .contentCreateDate {
     color: gray;
+    margin-right: 2rem;
+}
+
+.viewContent > .contentTop > ul > .contentModify {
+    margin: 0 1rem;
 }
 
 /* 글 내용, 해쉬태그 */
@@ -127,6 +132,8 @@ article {
     border-radius: 50%;
 }
 .userCommnetContent > .commentCenterContent > ul {
+    display: flex;
+    flex-direction: column;
     margin-left: 1.5rem;
 }
 
@@ -139,7 +146,9 @@ article {
 .userCommnetContent > .commentCenterContent > ul > li:first-child > .commentDate {
     float: right;
     padding-left: 3rem;
+    padding-top: 0.35rem;
     padding-bottom: 1rem;
+    font-size: 1rem;
 }
 
 /* 댓글내용 */
@@ -152,6 +161,7 @@ article {
     box-sizing: border-box;
     margin-bottom: 1rem;
 }
+
 .userCommnetContent > .commentCenterContent > ul > li:last-child a {
     font-size: 1.2rem;
     color: gray !important;
@@ -160,6 +170,38 @@ article {
 .userCommnetContent > .commentBtns {
     float: right;
     margin-left: 3rem;
+}
+.userCommnetContent > .commentBtns > a {
+    margin-right: 1rem;
+    color: gray;
+    font-size: 0.9rem;
+}
+
+/* 답댓 쓰기창(클릭시 나타나게) */
+.off {
+    display: none;
+}
+
+.commentReplyBox {
+    width: 80%;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 1rem;
+    margin-left: 8rem;
+}
+.commentReplyBox > form > div > textarea {
+    resize: none;
+    border: none;
+    width: 90%;
+    padding: 0.3rem;
+}
+.commentReplyBox > form > div {
+    display: flex;
+    justify-content: space-between;
+}
+.commentReplyBox > form > div > button {
+    border: none;
+    font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 /* 원댓글 설정 */
@@ -173,9 +215,9 @@ article {
 .viewComment > .commentReply > .userCommnetContent > .replyImg {
     margin: auto 1rem;
 }
-.viewComment > .commentReply > .userCommnetContent > .commentBtns {
+/* .viewComment > .commentReply > .userCommnetContent > .commentBtns {
     padding-top: 1rem;
-}
+} */
 
 /* 댓글쓰기 */
 .writeCommentForm {

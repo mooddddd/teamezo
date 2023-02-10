@@ -5,3 +5,6 @@ package-lock.json
 front/route/example.js
 front/server\copy.js
 front/app\copy.js
+
+back.test/
+axios.test.js

@@ -18,7 +18,7 @@
                 <div id="viewForm">
                     <!-- 상단 고정 부분 -->
                     <div class="top">
-                        <h1>{{board}}</h1>
+                        <h1>{{contentResult.mainName}}</h1>
                         <span></span>
                     </div>
 
@@ -40,11 +40,26 @@
                                 </ul>
                             </div>
 
-                            <!-- 글 내용 -->
+                            <!-- 글 내용, 해쉬태그 -->
                             <div class="contentCenter">
                                 <div class="contentData">
                                     <div>{{contentResult.content}}</div>
                                 </div>
+                                <div class="hashtagData">
+                                    <ul>
+                                        {%for item in contentResult.tagName%}
+                                        <li>{{item}}</li>
+                                        {%endfor%}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 좋아요 -->
+                            <div class="contentBottom">
+                                <div class="changeIMG">
+                                    <img src="/img/thumsup.png" />
+                                </div>
+                                <div class="thumsupCount">{{contentResult.liked}}</div>
                             </div>
                         </div>
 
@@ -177,6 +192,8 @@
             </div>
         </article>
         <script src="/js/board/view.js" type="text/javascript"></script>
+        <!-- 좋아요 기능 들어있음 -->
+        <script src="/js/board/category/boardList.js" type="text/javascript"></script>
 
         {% include 'layout/footer.html' %}
     </body>
