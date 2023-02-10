@@ -23,6 +23,12 @@ module.exports = (sequelize, Sequelize) => {
                         type: Sequelize.STRING(64),
                         allowNull: false,
                     },
+
+                    avatarUrl: {
+                        type: Sequelize.STRING(255),
+                        allownull: true,
+                    },
+
                     gender: {
                         type: Sequelize.STRING(4),
                         defaultValue: "남자",
@@ -65,7 +71,9 @@ module.exports = (sequelize, Sequelize) => {
             this.hasMany(model.Point, {
                 foreignKey: "userid",
             });
-
+            this.hasMany(model.Comment, {
+                foreignKey: "userid",
+            });
             this.hasMany(model.Liked, {
                 foreignKey: "userid",
             });

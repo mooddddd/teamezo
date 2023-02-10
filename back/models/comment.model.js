@@ -23,19 +23,23 @@ module.exports = (sequelize, Sequelize) => {
         }
         static associate(model) {
             this.hasMany(model.Comment, {
-                foreignKey: "group",
+                foreignKey: "groupNum",
             });
             this.belongsTo(model.Comment, {
-                foreignKey: "group",
+                foreignKey: "groupNum",
             });
 
             this.belongsTo(model.Board, {
                 foreignKey: "boardId",
             });
 
+            this.belongsTo(model.User, {
+                foreignKey: "userid",
+            });
+
             this.hasMany(model.Point, {
                 foreignKey: "commentId",
-                sourceKey: "group",
+                sourceKey: "groupNum",
             });
         }
     }

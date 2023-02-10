@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
 
             this.belongsTo(model.Comment, {
                 foreignKey: "commentId",
-                targetKey: "group",
+                targetKey: "groupNum",
             });
 
             this.belongsTo(model.Liked, {
