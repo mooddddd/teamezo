@@ -5,8 +5,9 @@ const {
 } = require('../../models')
 
 const UserController = require('./user.controller')
+const UserService = require('./user.service')
 
-const userController = new UserController({})
+const userController = new UserController({ userService })
 module.exports = {
     userController,
 }
