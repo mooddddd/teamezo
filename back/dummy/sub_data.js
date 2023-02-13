@@ -1,0 +1,41 @@
+const subCategory = [
+    {
+        mainName:"IT",
+        subName:"html",
+    },
+    {
+        mainName:"IT",
+        subName:"css",
+    },
+    {
+        mainName:"IT",
+        subName:"javascript",
+    },
+    {
+        mainName:"Food",
+        subName:"korean",
+    },
+    {
+        mainName:"Food",
+        subName:"japan",
+    },
+    {
+        mainName:"Food",
+        subName:"american",
+    },
+    {
+        mainName:"Trip",
+        subName:"city",
+    },
+    {
+        mainName:"Trip",
+        subName:"sea",
+    },
+    {
+        mainName:"Trip",
+        subName:"mountain",
+    },
+]
+console.log(subCategory.length)
+
+module.exports = subCategory

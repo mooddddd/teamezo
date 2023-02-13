@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
                     },
 
                     gender: {
-                        type: Sequelize.STRING(4),
+                        type: Sequelize.CHAR(4),
                         defaultValue: "남자",
                     },
                     phone: {

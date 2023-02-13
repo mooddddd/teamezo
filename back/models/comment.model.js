@@ -24,9 +24,12 @@ module.exports = (sequelize, Sequelize) => {
         static associate(model) {
             this.hasMany(model.Comment, {
                 foreignKey: "groupNum",
+                defaultValue: "id",
             });
+
             this.belongsTo(model.Comment, {
                 foreignKey: "groupNum",
+                defaultValue: "id",
             });
 
             this.belongsTo(model.Board, {

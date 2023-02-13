@@ -57,7 +57,7 @@ module.exports = (sequelize, Sequelize) => {
 
             this.belongsTo(model.File, {
                 foreignKey: "fileId",
-            });
+            }); 
 
             this.belongsTo(model.MainCategory, {
                 foreignKey: "mainName",
