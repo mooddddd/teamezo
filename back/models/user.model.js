@@ -23,10 +23,17 @@ module.exports = (sequelize, Sequelize) => {
                         type: Sequelize.STRING(64),
                         allowNull: true,
                     },
+
+                    avatarUrl: {
+                        type: Sequelize.STRING(255),
+                        allownull: true,
+                    },
+
                     gender: {
                         type: Sequelize.STRING(4),
                         defaultValue: '남자',
                         allowNull: true,
+
                     },
                     phone: {
                         type: Sequelize.STRING(20),
@@ -51,8 +58,28 @@ module.exports = (sequelize, Sequelize) => {
                     },
                 },
                 { sequelize }
-            )
+            );
+        }
+        static associate(model) {
+            this.hasMany(model.Board, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Chat, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Qna, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Point, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Comment, {
+                foreignKey: "userid",
+            });
+            this.hasMany(model.Liked, {
+                foreignKey: "userid",
+            });
         }
     }
-    User.initialize()
-}
+    User.initialize();
+};

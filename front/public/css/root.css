@@ -1,7 +1,7 @@
 :root {
     --header: #adc46d;
     --footer: #526a7e;
-    --joinFooter: rgba(110, 90, 60, 0.7);
+    --joinFooter: rgb(150, 120, 80);
     --main: #fdfdfd;
     --fontColor: #2e2e2e;
     --border: #cecece;

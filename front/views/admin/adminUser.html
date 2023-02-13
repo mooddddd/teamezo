@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
         <link rel="stylesheet" href="/css/admin/adminUser.css">
-        <title>Document</title>
     </head>
     <body>
         <div class="adminWrap">
@@ -22,16 +22,16 @@
 
                 <!-- adminRightTop -->
                 <div class="adminUserSearch">
-                    <form action="" method="">
-                        <input type="text" name="" id="" />
-                        <button type="submit">검색</button>
+                    <form action="/admin/user" method="post" id="searchFrm">
+                        <input type="text" name="search" id="search" placeholder="아이디를 검색해주세요."/>
+                        <button type="submit" id="searchBtn">검색</button>
                     </form>
                 </div>
                 <!-- adminUserSearch -->
 
                 <!-- adminUserList -->
                 <div class="adminUserList">
-                    <table>
+                    <table id="contentTable">
                         <tr class="trHeader">
                             <th class="th1">아이디</th>
 
@@ -49,106 +49,31 @@
 
                             <th class="th8">수정</th>
                         </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <!-- <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr>
-                        <tr class="trBody">
-                            <td>{아이디}</td>
-                            <td>{이름}</td>
-                            <td>{닉네임}</td>
-                            <td>{성별}</td>
-                            <td>{핸드폰번호}</td>
-                            <td>{이메일}</td>
-                            <td>포인트</td>
-                            <td><button class="adminUserEditBtn">수정</button></td>
-                        </tr> -->
+                        <template id="template">
+                            <tr class="trBody userinfoWrap">
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td class="userinfo"></td>
+                                <td><button class="adminUserEditBtn">수정</button></td>
+                            </tr>
+                        </template>
                     </table>
-                </div>
-
-                <!-- adminUserList -->
                 <div class="adminPreNext">
-                    <a href="#">이전</a>
-                    <a href="#">다음</a>
+                    <a><</a>
+                    <span class="pageNumber">1</span>
+                    <span class="pageNumber">2</span>
+                    <span class="pageNumber">3</span>
+                    <span class="pageNumber">4</span>
+                    <span class="pageNumber">5</span>
+                    <a>></a>
                 </div>
             </div>
             <!-- adminRight -->
         </div>
+        <script src="/js/admin/adminUser.js"></script>
     </body>
 </html>

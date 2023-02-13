@@ -64,7 +64,8 @@
     margin-top: 2rem;
 }
 
-#errorWrap > #errorForm > #errorBefore > button {
+#errorWrap > #errorForm > #errorBefore > a {
+    display: inline-block;
     text-align: center;
     line-height: 3rem;
     width: 28rem;
@@ -79,4 +80,9 @@
     color: var(--main);
     background-color: var(--header);
     box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+#errorWrap > #errorForm > #errorBefore > a:hover {
+    color: var(--main);
+    background-color: var(--joinFooter);
 }

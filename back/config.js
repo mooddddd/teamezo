@@ -1,4 +1,4 @@
-require('dotenv').config()
+console.log(require("dotenv").config())
 const config = {
     db: {
         development: {
@@ -14,6 +14,6 @@ const config = {
             },
         },
     },
-}
+};
 
-module.exports = config
+module.exports = config;

@@ -21,8 +21,9 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
-    background-size: cover;
+    background-color: rgba(150, 120, 80);
+    /* background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
+    background-size: cover; */
 }
 
 #header {
@@ -33,7 +34,7 @@ html {
 }
 
 .headerLogoWrap {
-    width: 25%;
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +47,7 @@ html {
 }
 
 .headerContentWrap {
-    width: 50%;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,9 +74,12 @@ html {
 }
 
 .searchWrap {
-    padding: 1rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .searchWrap > input {
@@ -83,35 +87,41 @@ html {
     border: 1px solid black;
 }
 
-#searchIcon{
+#searchBtn {
     position: absolute;
-    right: 4rem;
+    right: 6rem;
+    background-color: transparent;
+    border: none;
+}
+
+#searchIcon{
     cursor: pointer;
     width: 3rem;
     height: 3rem;
 }
 
 #search {
-    position: absolute;
-    left: -1rem;
     width: 50%;
-    /* border: none; */
-    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5rem;
     transition: all 0.5s;
 }
 
-#searchBtn {
+/* #searchBtn {
     position: absolute;
     width: 20%;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     padding: 0.5rem;
-}
+    background-color: var(--header);
+    color: var(--main);
+} */
 
-.invisible {
+/* .invisible {
     display: none;
-}
+} */
 
 /* .searchWrap:hover > .searchIcon {
     display: none;
@@ -163,12 +173,12 @@ html {
 /* ======================================================= */
 
 #sidebarWrap {
-    position: absolute;
+    position: fixed;
     display: none;
     right: 0rem;
     width: 30rem;
     height: 100vh;
-    background-color: blueviolet;
+    background-color: #dcdcdc;
     transition: all 0.5s;
 }
 
