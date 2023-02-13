@@ -22,6 +22,26 @@ class UserRepository {
     //     }
     // }
 
+    async getUserByInfo(userid) {
+        try {
+            console.log('repository userid')
+            const user = await this.User.findAll({
+                attribute: ['userid', 'username', 'email'],
+                raw: true,
+                nest: true,
+                where: {
+                    userid: userid.userid,
+                },
+            })
+            console.log('repository user')
+            console.log(user)
+
+            return user
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
     async addUser(userInfo) {
         try {
             console.log('user.repository')

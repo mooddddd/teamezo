@@ -13,20 +13,33 @@ class UserController {
     //     }
     // }
 
+    async getProfile(req, res, next) {
+        try {
+            const { userid } = req.query
+            const [getUserProfile] = await this.userService.userCheck({ userid })
+            console.log('getUserProfile user')
+            console.log(getUserProfile)
+            res.json(getUserProfile)
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async postJoin(req, res, next) {
         try {
-            const { userid, userpw, username } = req.body
-            console.log('userid')
-            console.log(userid)
+            const { userid, userpw, username, email } = req.body
+            console.log('useridadasdasd')
+            console.log(email)
             const userInfo = await this.userService.joinChk({
                 userid,
                 userpw,
                 username,
+                email,
             })
-            console.log('user.controller after')
             const a = {
                 userid: userInfo.dataValues.userid,
                 username: userInfo.dataValues.username,
+                email: userInfo.dataValues.email,
             }
             res.json(a)
         } catch (e) {

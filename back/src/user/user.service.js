@@ -24,6 +24,20 @@ class UserService {
     //         next(e)
     //     }
     // }
+
+    async userCheck(token) {
+        try {
+            console.log('token')
+            console.log(token)
+            const user = await this.userRepository.getUserByInfo(token)
+            console.log('service user')
+            console.log(user)
+            return user
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
     /** 회원가입  */
     async joinChk(payload) {
         try {
@@ -39,6 +53,7 @@ class UserService {
                 userid: payload.userid,
                 userpw: hash,
                 username: payload.username,
+                email: payload.email,
             })
             console.log('user.service after')
             console.log(user)

@@ -42,12 +42,17 @@ exports.getwelcome = (req, res) => {
     res.render('user/welcome.html', { userid, username })
 }
 
-exports.getprofile = (req, res) => {
-    const profileCookies = JSON.stringify(req.cookies.token)
+exports.getprofile = async (req, res) => {
+    const profileCookies = req.cookies.token
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
-        res.render('user/profile.html')
+        const result = await request('/users/profile', {
+            url: 'http://localhost:3000/',
+            params: { userid: profileCookies },
+        })
+
+        res.render('user/profile', { result })
     }
 }
 
