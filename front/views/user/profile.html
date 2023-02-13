@@ -62,7 +62,7 @@
                     <!-- 제목 클릭-->
                     <div class="profileContents">
                         <input type="hidden" value="{{resultLength}}" class="resultLengthHidden" />
-                        {% for item in result %}
+                        {% for item in result.data.Boards %}
                         <div class="profileContentWrap">
                             <div class="profileContent">
                                 <div>{{item.subject}}</div>

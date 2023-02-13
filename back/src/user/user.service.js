@@ -25,11 +25,10 @@ class UserService {
     //     }
     // }
 
-    async userCheck(token) {
+    async userCheck({ userid, page }) {
         try {
-            console.log('token')
-            console.log(token)
-            const user = await this.userRepository.getUserByInfo(token)
+            console.log('user.service')
+            const user = await this.userRepository.getUserByInfo({ userid, page })
             console.log('service user')
             console.log(user)
             return user

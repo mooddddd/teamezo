@@ -15,8 +15,9 @@ class UserController {
 
     async getProfile(req, res, next) {
         try {
-            const { userid } = req.query
-            const [getUserProfile] = await this.userService.userCheck({ userid })
+            const { userid, page } = req.query
+            console.log('user.controller')
+            const [getUserProfile] = await this.userService.userCheck({ userid, page })
             console.log('getUserProfile user')
             console.log(getUserProfile)
             res.json(getUserProfile)

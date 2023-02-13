@@ -1,6 +1,9 @@
+const board = require('../../dummy/board_data')
+
 class UserRepository {
-    constructor({ User }) {
+    constructor({ User, Board }) {
         this.User = User
+        this.Board = Board
     }
 
     // async checkLogin(payload) {
@@ -22,15 +25,19 @@ class UserRepository {
     //     }
     // }
 
-    async getUserByInfo(userid) {
+    async getUserByInfo({ userid, page = 1 }) {
         try {
             console.log('repository userid')
+            console.log({ userid, page })
             const user = await this.User.findAll({
-                attribute: ['userid', 'username', 'email'],
-                raw: true,
-                nest: true,
                 where: {
-                    userid: userid.userid,
+                    userid,
+                },
+                include: {
+                    model: this.Board,
+                    offset: Number(page) * 5 - 4, // Current
+                    limit: 5,
+                    order: [['id', 'desc']],
                 },
             })
             console.log('repository user')
@@ -48,6 +55,7 @@ class UserRepository {
             console.log(userInfo)
 
             const result = await this.User.create(userInfo, { raw: true })
+
             console.log('user.repository after')
             console.log(result)
             return result

@@ -44,14 +44,16 @@ exports.getwelcome = (req, res) => {
 
 exports.getprofile = async (req, res) => {
     const profileCookies = req.cookies.token
+    const { page } = req.query
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
         const result = await request('/users/profile', {
             url: 'http://localhost:3000/',
-            params: { userid: profileCookies },
+            params: { userid: profileCookies, page },
         })
-
+        console.log('{result}')
+        console.log(result.data)
         res.render('user/profile', { result })
     }
 }
@@ -61,9 +63,6 @@ exports.postProfileEdit = (req, res) => {
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
-        const userid = 'amamam'
-        const username = 'hongtae2'
-        const useremail = 'hongtae2@gmail.com'
         res.redirect('/user/profile')
     }
 }
