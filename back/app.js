@@ -1,20 +1,21 @@
 const express = require('express')
+const qs = require('qs')
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+const axios = require('axios')
 const app = express()
 const router = require('./routes')
-const qs = require('qs')
-const cors = require('cors')
 
-const cookieParser = require('cookie-parser')
-const axios = require('axios')
-
+app.use(express.urlencoded({ extended:false }))
 app.use(express.json())
+app.use(cookieParser())
 app.use(
     cors({
         origin: true,
         credentials: true,
     })
 )
-app.use(cookieParser())
+
 app.use(router)
 
 app.use((error, req, res, next) => {

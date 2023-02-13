@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/layout/header.css">
+    <link rel="stylesheet" href="/css/layout/footer.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+</head>
+<body>
+    <div id="wrap">
+        {% include "layout/header.html" %}
+        <div id="adminHeader">
+            <a href="/">메인 페이지</a>
+        </div>
+        <div id="contents">
+            <div class="contentWrap">
+                <div class="content left">
+                    <a href="/admin/user?page=1">회원 관리</a>
+                    <a href="/admin/category">카테고리 관리</a>
+                    <a href="/admin/board">게시판 관리</a>
+                </div>
+                <div class="content right">
+                    <a href="/admin/stats">커뮤니티 통계</a>
+                    <a href="#">공지사항 글쓰기</a>
+                    <a href="#">Q & A 답변달기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "layout/footer.html" %}
+</body>
+</html>

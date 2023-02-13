@@ -1,0 +1,276 @@
+table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+
+th, td {
+border-bottom: 1px solid #444444;
+padding: 10px;
+}
+
+#wrap {
+    width: 100%;
+    position: relative;
+}
+
+#contentsWrap {
+    width: 100%;
+    /* background-color: #ececec; */
+}
+
+#contents {
+    margin: 0 auto;
+    padding: 5rem;
+    width: 120rem;
+    box-sizing: border-box
+}
+
+/* .boardList {
+    width: 90%;
+    height: 10rem;
+    background-color: #444444;
+} */
+
+#chatBtn {
+    cursor: pointer;
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    width: 10rem;
+    height: 10rem;
+    color: #2e2e2e;
+    background-color: #f0f332;
+    border-radius: 5rem;
+    line-height: 10rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    transition: all 0.5s;
+}
+
+#chatBtn:hover {
+    background-color: #2e2e2e;
+    color: #ececec;
+}
+
+#top10 {
+    position: absolute;
+    left: 5rem;
+    top: 35rem;
+    width: 25rem;
+    height: 40rem;
+    background-color: #ececec;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.userlisthead {
+    background-color: #2e2e2e;
+    color: #ececec;
+}
+
+.userlisthead, .userlist {
+    font-size: 2rem;
+    text-align: center;
+
+}
+
+#chatSpace {
+    position: fixed;
+    top: 45rem;
+    /* right: 5rem; */
+    right: -55rem;
+    width: 50rem;
+    height: 70rem;
+    max-height: 70rem;
+    background-color: #ececec;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    transition: all 1s;
+    overflow: auto;
+}
+
+#chatHeader {
+    width: 100%;
+    height: 5rem;
+    background-color: #444444;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#cancelBtn {
+    cursor: pointer;
+    margin-right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    background-color: #ff4040;
+}
+
+#cancelBtn:hover {
+    background-color: #fc0a0a;
+}
+
+.chatContentsLeft {
+    width: 100%;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: left;
+}
+
+.chatContentsLeft > li {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.chatContentsRight {
+    width: 100%;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: right;
+}
+
+.chatContentsRight > li {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.chatUserName {
+    width: 20%;
+    height: 3rem;
+    text-align: center;
+}
+
+.chatContent {
+    padding: 0 1rem;
+    height: 3rem;
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+}
+
+#chatBox {
+    position:  fixed;
+    bottom: 2rem;
+    margin-left: 2rem;
+    width: 45rem;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#chatBox > input {
+    width: 80%;
+    height: 100%;
+    font-size: 2rem;
+    border: none;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+#chatBox > div {
+    width: 15%;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 5rem;
+    text-align: center;
+    border: none;
+    background-color: var(--header);
+    color: var(--main);
+}
+
+#chatBox > div:hover {
+    background-color: var(--footer);
+}
+
+.boardListContents {
+    width: 90%;
+    margin: 2rem auto;
+    /* padding-top: 1rem; */
+    background: white;
+}
+
+#boardListContentsHeader {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.boardFindOne:hover {
+    background: #ececec;
+}
+
+.boardFindOne {
+    position: relative;
+    /* margin: 2rem 2rem 0 2rem;
+    height: 7rem; */
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ececec;
+}
+/* 대표이미지 */
+.boardFindOne > .boardListPic {
+    width: 20%;
+}
+.boardFindOne > .boardListPic > img {
+    overflow: hidden;
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+    border: 0.1rem solid #ececec;
+}
+/* 제목, 닉네임, 날짜 */
+.boardFindOne > .boardListContent {
+    width: 70%;
+    height: 100%;
+}
+
+.boardFindOne > .boardListContent > ul {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.boardFindOne > .boardListContent > ul > .subject {
+    position: absolute;
+    top: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    margin-bottom: 0.7rem;
+    box-sizing: border-box;
+}
+
+.boardFindOne > .boardListContent > ul > .writer {
+    position: absolute;
+    top: 15rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.boardFindOne > .boardListContent > ul > .date {
+    position: absolute;
+    top: 18rem;
+    color: gray;
+}
+
+/* 좋아요 */
+.boardFindOne > .boardListLiked {
+    position: absolute;
+    right: 3rem;
+    top: 7.5rem;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.boardFindOne > .boardListLiked > img {
+    object-fit: none;
+}
+
+.boardFindOne > .boardListLiked > .changeIMG > .off {
+    display: none;
+}

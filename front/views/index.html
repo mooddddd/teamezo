@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/header.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
+        <link rel="stylesheet" href="/css/index.css">
+        <script src="/js/index.js" defer></script>
+        <script src="/js/layout/header.js" defer></script>
+        <script src="/js/layout/sidebar.js" defer></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="wrap">
+            {% include 'layout/header.html' %}
+            <div id="contentsWrap">
+                <div id="contents">
+                    <div class="boardListContents">
+                        <div id="boardListContentsHeader">최근게시물</div>
+                        {% for list in board %}
+                        <div class="boardFindOne">
+                            <!-- 대표이미지 -->
+                            <div class="boardListPic"><img src="{{list.url}}" /></div>
+                            <!-- 제목, 닉네임, 날짜 -->
+                            <div class="boardListContent">
+                                <ul>
+                                    <li class="subject">
+                                        <a href="#">{{list.subject}} ({{list.reply}})</a>
+                                    </li>
+                                    <li class="writer">{{list.nickname}}</li>
+                                    <li class="date">{{list.register}}</li>
+                                </ul>
+                            </div>
+                            <!-- 좋아요 -->
+                            <div class="boardListLiked">
+                                <div class="changeIMG">
+                                    <img id="beforeClick" src="/img/thumsup.png" />
+                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
+                                </div>
+                                <span>{{list.totalLiked}}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <table id="top10">
+                <tbody>
+                    <tr class="userlisthead">
+                        <th>순위</th>
+                        <th>아이디</th>
+                    </tr>
+                    {% for user in ranklist %}
+                    <tr class="userlist">
+                        <td>{{user.rank}}</td>
+                        <td>{{user.userid}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div id="chatBtn">
+                Chat
+            </div>
+            <div id="chatSpace">
+                <div id="chatHeader">
+                    <div id="cancelBtn"></div>
+                </div>
+                <template id="chatLeft">
+                    <ul class="chatContentsLeft">
+                        <li class="chatUserName">char1ey</li>
+                        <li class="chatContent">아 하기싫다.</li>
+                    </ul>
+                </template>
+                <template id="chatRight">
+                    <ul class="chatContentsRight">
+                        <li class="chatContent">나도 하기싫다.</li>
+                    </ul>
+                </template>
+                <div id="chatBox">
+                    <input type="text">
+                    <div>전송</div>
+                </div>
+            </div>
+            {% include 'layout/footer.html' %}
+        </div>
+    </body>
+</html>
