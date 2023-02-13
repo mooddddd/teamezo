@@ -17,11 +17,11 @@ module.exports = (sequelize, Sequelize) => {
                     },
                     nickname: {
                         type: Sequelize.STRING(30),
-                        allowNull: false,
+                        allowNull: true,
                     },
                     address: {
                         type: Sequelize.STRING(64),
-                        allowNull: false,
+                        allowNull: true,
                     },
 
                     avatarUrl: {
@@ -30,21 +30,23 @@ module.exports = (sequelize, Sequelize) => {
                     },
 
                     gender: {
-                        type: Sequelize.CHAR(4),
-                        defaultValue: "남자",
+                        type: Sequelize.STRING(4),
+                        defaultValue: '남자',
+                        allowNull: true,
+
                     },
                     phone: {
                         type: Sequelize.STRING(20),
-                        allowNull: false,
-                    }, //admin
+                        allowNull: true,
+                    },
                     email: {
                         type: Sequelize.STRING(30),
-                        allowNull: false,
+                        allowNull: true,
                     },
                     provider: {
-                        type: Sequelize.ENUM("local", "kakao"),
-                        allowNull: false,
-                        defaultValue: "local",
+                        type: Sequelize.ENUM('local', 'kakao'),
+                        allowNull: true,
+                        defaultValue: 'local',
                     },
                     introduce: {
                         type: Sequelize.TEXT(),
