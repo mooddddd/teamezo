@@ -53,7 +53,12 @@
             // function End
             function submitCheck() {
                 var f = document.submitForm
-
+                let emailChk = document.querySelector('#emailChk').value
+                const agreeUse = document.querySelector('#agreeUse')
+                const agreeInfo = document.querySelector('#agreeInfo')
+                // email 유효성
+                let email_form = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+                // email 유효성
                 if (f.userid.value == '') {
                     alert('아이디를 입력해주세요')
                     f.userid.focus()
@@ -77,6 +82,18 @@
                 if (f.email.value == '') {
                     alert('이메일을 입력해주세요')
                     f.email.focus()
+                    return false
+                }
+                if (!email_form.test(emailChk)) {
+                    alert('이메일 형식을 올바르게 입력해주세요')
+                    f.email.focus()
+                    return false
+                }
+                if (
+                    f.agreeUse.className !== 'checkBox yellow' ||
+                    f.agreeInfo.className !== 'checkBox yellow'
+                ) {
+                    alert('약관에 동의해주세요')
                     return false
                 }
             }
@@ -171,7 +188,8 @@
                                     class="joinInput"
                                     type="text"
                                     name="email"
-                                    placeholder="이메일을 입력해주세요"
+                                    id="emailChk"
+                                    placeholder="ex)  teamEzo@gmail.com"
                                 />
                                 <div class="joinCheck">이메일을 확인해주세요</div>
                             </div>
