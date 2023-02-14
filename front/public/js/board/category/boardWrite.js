@@ -115,12 +115,12 @@ const submitHandler = async (e) => {
     const body = new FormData(e.target);
 
     const response = await Promise.all([
-        axios.post("http://localhost:3000", body, {
+        axios.post("http://localhost:3000/board/write", body, {
             header: {
                 ["Content-type"]: "multipart/form-data",
             },
         }),
-        axios.post("http://localhost:3000", tagNames),
+        axios.post("http://localhost:3000/voard/write", tagNames),
     ]); // response 값으로는 board_idx값 받아오기, 받아오면 로케이션에 넣기?
     // console.log(response[0].data.board_idx);
 
