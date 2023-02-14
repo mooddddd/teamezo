@@ -13,6 +13,7 @@
         <script src="/js/user/join.js" defer></script>
         <script src="/js/layout/popup.js" defer></script>
         <script>
+            // function Start
             function check_pw() {
                 const pw1 = document.querySelector('#pw1').value
                 const SC = ['!', '@', '#', '$', '%']
@@ -49,13 +50,49 @@
                     }
                 }
             }
+            // function End
+            function submitCheck() {
+                var f = document.submitForm
+
+                if (f.userid.value == '') {
+                    alert('아이디를 입력해주세요')
+                    f.userid.focus()
+                    return false
+                }
+                if (f.userpw.value == '') {
+                    alert('비밀번호를 입력해주세요')
+                    f.userpw.focus()
+                    return false
+                }
+                if (f.userpwchk.value == '') {
+                    alert('비밀번호를 확인 해주세요')
+                    f.userpwchk.focus()
+                    return false
+                }
+                if (f.username.value == '') {
+                    alert('이름을 입력해주세요')
+                    f.username.focus()
+                    return false
+                }
+                if (f.email.value == '') {
+                    alert('이메일을 입력해주세요')
+                    f.email.focus()
+                    return false
+                }
+            }
         </script>
     </head>
     <body>
         <div id="back">
             <section id="join">
                 <a href="#" id="joinLogo"> TeamEzo </a>
-                <form class="joinWrap" action="/user/join" method="post">
+                <form
+                    class="joinWrap"
+                    action="/user/join"
+                    method="post"
+                    name="submitForm"
+                    onsubmit="return submitCheck()"
+                >
                     <div class="join">
                         {% include "layout/agree.html" %} {% include "layout/infoAgree.html" %}
                         <div class="apiWrap">
