@@ -1,6 +1,6 @@
 const user = [
     {
-        userid: `dd`,
+        userid: `pp`,
         userpw: `password`,
         username: `제의아해`,
         nickname: `charey`,

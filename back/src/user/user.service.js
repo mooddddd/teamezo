@@ -25,6 +25,20 @@ class UserService {
     //     }
     // }
 
+    async loginIdChk({ userid }) {
+        try {
+            console.log('userService loginIdChk')
+            const userId = await this.userRepository.checkUserId({ userid })
+            console.log('userService loginIdChk after')
+            console.log(userId)
+            if (userId === null) {
+                return userId
+            } else throw '아이디 중복인디?!'
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
     async userCheck({ userid, page }) {
         try {
             console.log('user.service')
@@ -48,14 +62,14 @@ class UserService {
                 .digest('hex')
             console.log('hash')
             console.log(hash)
-            const user = await this.userRepository.addUser({
+            const [user, created] = await this.userRepository.addUser({
                 userid: payload.userid,
                 userpw: hash,
                 username: payload.username,
                 email: payload.email,
             })
-            console.log('user.service after')
-            console.log(user)
+
+            if (created === false) throw '아이디 중복된다구~'
             return user
         } catch (e) {
             throw new Error(e)

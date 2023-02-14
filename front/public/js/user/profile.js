@@ -2,7 +2,8 @@ const profileSubject = document.querySelectorAll('.profileSubject')
 const profileBtn = Object.values(profileSubject)
 const profileContents = document.querySelectorAll('.profileContents')
 const profileContentBtn = Object.values(profileContents)
-
+const prev = document.querySelector('.prev > a')
+const next = document.querySelector('.next > a')
 const resultLengthHidden = document.querySelector('.resultLengthHidden')
 const resultHidden = document.querySelectorAll('.resultHidden')
 
@@ -23,3 +24,16 @@ for (let i = 0; i < profileBtn.length; i++) {
         }
     })
 }
+prev.addEventListener('click', (e) => {
+    let count = 1
+    count--
+    location.href = `http://127.0.0.1:3005/user/profile?page=${count}`
+    console.log(count)
+})
+
+next.addEventListener('click', (e) => {
+    let count = 1
+    location.href = `http://127.0.0.1:3005/user/profile?page=${count}`
+    count++
+    console.log(count)
+})

@@ -12,6 +12,19 @@ class UserController {
     //         next(e)
     //     }
     // }
+    async postLoginChk(req, res, next) {
+        try {
+            console.log('userController postLoginChk')
+            const { userid } = req.body
+            console.log(userid)
+            const user = await this.userService.loginIdChk({ userid })
+            console.log('userController postLoginChk after')
+            console.log(user)
+            res.json(user)
+        } catch (e) {
+            next(e)
+        }
+    }
 
     async getProfile(req, res, next) {
         try {

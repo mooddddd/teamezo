@@ -5,7 +5,8 @@ form {
 #back {
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 50%, rgb(110, 90, 60) 100%), url(../../img/join.jpg) 10% no-repeat;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 50%, rgb(110, 90, 60) 100%),
+        url(../../img/join.jpg) 10% no-repeat;
     background-size: cover;
 }
 
@@ -36,7 +37,8 @@ form {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%), url(../../img/joinForm.jpg) 10% no-repeat;
+    background: linear-gradient(180deg, rgba(129, 211, 114, 0.1) 100%, rgb(110, 90, 60) 100%),
+        url(../../img/joinForm.jpg) 10% no-repeat;
     box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -46,7 +48,7 @@ form {
 }
 
 .apiWrap {
-    width:100%;
+    width: 100%;
     height: 20%;
 }
 
@@ -119,10 +121,11 @@ form {
 }
 
 .duplicate {
-    width: 15%;
-    height: 3.5rem;
+    width: 20%;
+    height: 4rem;
     border: none;
     padding: 0.3rem;
+    margin-left: 0.5rem;
     border-radius: 0 0.3rem;
     font-weight: 700;
     font-family: var(--textFont);
