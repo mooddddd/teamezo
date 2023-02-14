@@ -12,6 +12,44 @@
         <link rel="stylesheet" href="/css/layout/footer.css" />
         <script src="/js/user/join.js" defer></script>
         <script src="/js/layout/popup.js" defer></script>
+        <script>
+            function check_pw() {
+                const pw1 = document.querySelector('#pw1').value
+                const SC = ['!', '@', '#', '$', '%']
+                var check_SC = 0
+
+                if (pw1.length < 6 || pw1.length > 16) {
+                    window.alert('비밀번호는 6글자 이상 16글자 이하만 이용가능합니다.')
+                    document.querySelector('#pw1').value = ''
+                }
+                for (let i = 0; i < SC.length; i++) {
+                    if (pw1.indexOf(SC[i]) != -1) {
+                        check_SC = 1
+                    }
+                }
+
+                if (check_SC == 0) {
+                    window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+                    document.querySelector('#pw1').value = ''
+                    document.querySelector('#pw1').focus()
+                }
+
+                if (
+                    document.querySelector('#pw1').value != '' &&
+                    document.querySelector('#pw2').value != ''
+                ) {
+                    if (
+                        document.querySelector('#pw1').value == document.querySelector('#pw2').value
+                    ) {
+                        document.querySelector('.check').innerHTML = '비밀번호가 일치합니다.'
+                        document.querySelector('.check').style.color = 'blue'
+                    } else {
+                        document.querySelector('.check').innerHTML = '비밀번호가 일치하지 않습니다.'
+                        document.querySelector('.check').style.color = 'red'
+                    }
+                }
+            }
+        </script>
     </head>
     <body>
         <div id="back">
@@ -53,7 +91,9 @@
                                     class="joinInput"
                                     type="password"
                                     name="userpw"
+                                    id="pw1"
                                     placeholder="비밀번호를 입력해주세요"
+                                    onchange="check_pw()"
                                 />
                                 <div class="joinCheck">비밀번호를 확인해주세요</div>
                             </div>
@@ -66,9 +106,11 @@
                                     class="joinInput"
                                     type="password"
                                     name="userpwchk"
+                                    id="pw2"
                                     placeholder="비밀번호를 확인해주세요"
+                                    onchange="check_pw()"
                                 />
-                                <div class="joinCheck">비밀번호가 일치하지않습니다</div>
+                                <div class="joinCheck check">비밀번호를 확인해주세요</div>
                             </div>
                             <div class="joinForm">
                                 <div class="joinTitle">
