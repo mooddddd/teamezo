@@ -26,14 +26,19 @@ exports.getjoin = (req, res) => {
 }
 
 exports.postjoin = async (req, res) => {
-    const result = await request.post('/users/join', {
-        ...req.body,
-    })
-    console.log('result')
-    console.log(result.data)
-    const cookies = result.data
-    res.setHeader('Set-Cookie', `token=${cookies.userid}; path=/;`)
-    res.redirect(`/user/welcome?userid=${cookies.userid}&username=${cookies.username}`)
+    try {
+        const result = await request.post('/users/join', {
+            ...req.body,
+        })
+
+        console.log('result')
+        console.log(result)
+        const cookies = result.data
+        res.setHeader('Set-Cookie', `token=${cookies.userid}; path=/;`)
+        res.redirect(`/user/welcome?userid=${cookies.userid}&username=${cookies.username}`)
+    } catch (e) {
+        res.render('error.html')
+    }
 }
 
 exports.getwelcome = (req, res) => {
@@ -42,12 +47,21 @@ exports.getwelcome = (req, res) => {
     res.render('user/welcome.html', { userid, username })
 }
 
-exports.getprofile = (req, res) => {
-    const profileCookies = JSON.stringify(req.cookies.token)
+exports.getprofile = async (req, res) => {
+    // 1. 로그인여부체크
+    // 2. backend 에 다가 필요한 내용을 전달하기
+    const profileCookies = req.cookies.token
+    const { page } = req.query
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
-        res.render('user/profile.html')
+        const result = await request.get('/users/profile', {
+            url: 'http://localhost:3000/',
+            params: { userid: profileCookies, page },
+        })
+        console.log('{result}')
+        console.log(result.data)
+        res.render('user/profile', { result })
     }
 }
 
@@ -56,9 +70,6 @@ exports.postProfileEdit = (req, res) => {
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
-        const userid = 'amamam'
-        const username = 'hongtae2'
-        const useremail = 'hongtae2@gmail.com'
         res.redirect('/user/profile')
     }
 }

@@ -40,15 +40,15 @@
                                 <div class="profileAccountInfo">
                                     <div class="profileAccountInfoContent">
                                         <div>이 &nbsp&nbsp&nbsp 름</div>
-                                        <div>{{result[0].username}}</div>
+                                        <div>{{result.data.username}}</div>
                                     </div>
                                     <div class="profileAccountInfoContent">
                                         <div>아&nbsp이&nbsp디</div>
-                                        <div>{{result[0].userid}}</div>
+                                        <div>{{result.data.userid}}</div>
                                     </div>
                                     <div class="profileAccountInfoContent">
                                         <div>이&nbsp메&nbsp일</div>
-                                        <div>{{result[0].useremail}}</div>
+                                        <div>{{result.data.email}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                     <!-- 제목 클릭-->
                     <div class="profileContents">
                         <input type="hidden" value="{{resultLength}}" class="resultLengthHidden" />
-                        {% for item in result %}
+                        {% for item in result.data.Boards %}
                         <div class="profileContentWrap">
                             <div class="profileContent">
                                 <div>{{item.subject}}</div>
@@ -99,14 +99,14 @@
 
                     <div class="profileBtnWrap">
                         <ul>
-                            <li class="prev">이전</li>
+                            <li class="prev"><a>이전</a></li>
                             <!-- {% set totalDate = resultLength %} {% set dataSize = 5 %} {% set
                             limitNumber = 5 %} {% set currentNumber = 3%} {% for list in result %}
                             <button>{{list}}</button>
                             {% endfor %} -->
 
                             <!-- <div>{{totalPage}}</div> -->
-                            <li clsss="next">다음</li>
+                            <li class="next"><a>다음</a></li>
                         </ul>
                     </div>
                 </section>

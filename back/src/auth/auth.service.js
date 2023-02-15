@@ -18,6 +18,8 @@ class AuthService {
             console.log(user)
 
             const token = this.jwt.sign(user)
+            console.log('auth.service token')
+            console.log(token)
             return token
         } catch (e) {
             throw new Error(e)

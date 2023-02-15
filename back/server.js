@@ -1,6 +1,6 @@
-const app = require("./app");
-const { sequelize } = require("./models");
-const port = process.env.PORT || 3000;
+const app = require('./app')
+const { sequelize } = require('./models')
+const port = process.env.PORT || 3000
 
 const user = require("./dummy/user_data");
 const mainCategory = require("./dummy/cate_data");
@@ -56,5 +56,6 @@ app.listen(3000, async () => {
     await sequelize.models.File.create({ fileUrl: "upload/asdf.jpg", boardId: 7 });
     await sequelize.models.File.create({ fileUrl: "upload/asdf.jpg", boardId: 7 });
 
-    console.log(`Running on http://localhost:${port}`);
-});
+
+    console.log(`Running on http://localhost:${port}`)
+})

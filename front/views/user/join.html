@@ -5,18 +5,111 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/user/join.css" />
         <link rel="stylesheet" href="/css/layout/agree.css" />
         <link rel="stylesheet" href="/css/layout/footer.css" />
         <script src="/js/user/join.js" defer></script>
         <script src="/js/layout/popup.js" defer></script>
+        <script>
+            // function Start
+            function check_pw() {
+                const pw1 = document.querySelector('#pw1').value
+                const SC = ['!', '@', '#', '$', '%']
+                var check_SC = 0
+
+                if (pw1.length < 6 || pw1.length > 16) {
+                    window.alert('비밀번호는 6글자 이상 16글자 이하만 이용가능합니다.')
+                    document.querySelector('#pw1').value = ''
+                }
+                for (let i = 0; i < SC.length; i++) {
+                    if (pw1.indexOf(SC[i]) != -1) {
+                        check_SC = 1
+                    }
+                }
+
+                if (check_SC == 0) {
+                    window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+                    document.querySelector('#pw1').value = ''
+                    document.querySelector('#pw1').focus()
+                }
+
+                if (
+                    document.querySelector('#pw1').value != '' &&
+                    document.querySelector('#pw2').value != ''
+                ) {
+                    if (
+                        document.querySelector('#pw1').value == document.querySelector('#pw2').value
+                    ) {
+                        document.querySelector('.check').innerHTML = '비밀번호가 일치합니다.'
+                        document.querySelector('.check').style.color = 'blue'
+                    } else {
+                        document.querySelector('.check').innerHTML = '비밀번호가 일치하지 않습니다.'
+                        document.querySelector('.check').style.color = 'red'
+                    }
+                }
+            }
+            // function End
+            function submitCheck() {
+                var f = document.submitForm
+                let emailChk = document.querySelector('#emailChk').value
+                const agreeUse = document.querySelector('#agreeUse')
+                const agreeInfo = document.querySelector('#agreeInfo')
+                // email 유효성
+                let email_form = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+                // email 유효성
+                if (f.userid.value == '') {
+                    alert('아이디를 입력해주세요')
+                    f.userid.focus()
+                    return false
+                }
+                if (f.userpw.value == '') {
+                    alert('비밀번호를 입력해주세요')
+                    f.userpw.focus()
+                    return false
+                }
+                if (f.userpwchk.value == '') {
+                    alert('비밀번호를 확인 해주세요')
+                    f.userpwchk.focus()
+                    return false
+                }
+                if (f.username.value == '') {
+                    alert('이름을 입력해주세요')
+                    f.username.focus()
+                    return false
+                }
+                if (f.email.value == '') {
+                    alert('이메일을 입력해주세요')
+                    f.email.focus()
+                    return false
+                }
+                if (!email_form.test(emailChk)) {
+                    alert('이메일 형식을 올바르게 입력해주세요')
+                    f.email.focus()
+                    return false
+                }
+                if (
+                    f.agreeUse.className !== 'checkBox yellow' ||
+                    f.agreeInfo.className !== 'checkBox yellow'
+                ) {
+                    alert('약관에 동의해주세요')
+                    return false
+                }
+            }
+        </script>
     </head>
     <body>
         <div id="back">
             <section id="join">
                 <a href="#" id="joinLogo"> TeamEzo </a>
-                <form class="joinWrap" action="/user/join" method="post">
+                <form
+                    class="joinWrap"
+                    action="/user/join"
+                    method="post"
+                    name="submitForm"
+                    onsubmit="return submitCheck()"
+                >
                     <div class="join">
                         {% include "layout/agree.html" %} {% include "layout/infoAgree.html" %}
                         <div class="apiWrap">
@@ -36,9 +129,10 @@
                                         class="joinInputId"
                                         type="text"
                                         name="userid"
+                                        value=""
                                         placeholder="아이디를 입력해주세요"
                                     />
-                                    <!-- <button class="duplicate">중복 확인</button> -->
+                                    <input type="button" value="중복 확인" class="duplicate" />
                                 </div>
                                 <div class="joinCheck">아이디를 확인해주세요</div>
                             </div>
@@ -51,7 +145,9 @@
                                     class="joinInput"
                                     type="password"
                                     name="userpw"
+                                    id="pw1"
                                     placeholder="비밀번호를 입력해주세요"
+                                    onchange="check_pw()"
                                 />
                                 <div class="joinCheck">비밀번호를 확인해주세요</div>
                             </div>
@@ -64,9 +160,11 @@
                                     class="joinInput"
                                     type="password"
                                     name="userpwchk"
+                                    id="pw2"
                                     placeholder="비밀번호를 확인해주세요"
+                                    onchange="check_pw()"
                                 />
-                                <div class="joinCheck">비밀번호가 일치하지않습니다</div>
+                                <div class="joinCheck check">비밀번호를 확인해주세요</div>
                             </div>
                             <div class="joinForm">
                                 <div class="joinTitle">
@@ -89,8 +187,9 @@
                                 <input
                                     class="joinInput"
                                     type="text"
-                                    name="useremail"
-                                    placeholder="이메일을 입력해주세요"
+                                    name="email"
+                                    id="emailChk"
+                                    placeholder="ex)  teamEzo@gmail.com"
                                 />
                                 <div class="joinCheck">이메일을 확인해주세요</div>
                             </div>
