@@ -63,9 +63,8 @@ app.get('/oauth/kakao', async (req, res, next) => {
         console.log('kakaoLoginUser')
         console.log(kakaoLoginUser)
 
-        return kakaoLoginUser
+        res.redirect(`http://localhost:3005/?token=${kakaoLoginUser}`)
     } catch (e) {}
-    res.redirect('http://localhost:3005')
 })
 
 app.use((error, req, res, next) => {

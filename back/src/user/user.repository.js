@@ -111,7 +111,10 @@ class UserRepository {
             console.log(user)
             console.log('user.repository kakaoUserData')
             console.log(created)
-            return user
+
+            const token = kakaoUserData.userid
+
+            return token
         } catch (e) {
             throw new Error(e)
         }
