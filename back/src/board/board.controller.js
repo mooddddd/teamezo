@@ -5,8 +5,9 @@ class BoardController {
 
     async getList(req, res, next) {
         try {
-            const listAll = await this.boardService.getList();
-            res.json(listAll);
+            const listAll = await this.boardService.getList(req.query.page);
+            const category = await this.boardService.getCategory();
+            res.json({ listAll, category });
         } catch (e) {
             next(e);
         }

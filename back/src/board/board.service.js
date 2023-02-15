@@ -5,10 +5,16 @@ class BoardService {
         this.crypto = jwt.crypto;
     }
 
-    async getList() {
+    async getCategory() {
+        const categoryList = await this.boardRepo.getCategoryList();
+        console.log(categoryList);
+        return categoryList;
+    }
+    async getList(page) {
         try {
-            const categoryList = await this.boardRepo.getCategoryList();
-            const boardList = await this.boardRepo.getBoardList();
+            const boardList = await this.boardRepo.getBoardList(page);
+
+            // console.log(boardList);
 
             // const userid = await 받아온 token값으로 유저 찾아오기
             // const listLikedTnF = await this.boardRepo.getLiked(userid);
@@ -16,7 +22,7 @@ class BoardService {
             // 가져올 데이터 : boardId를 배열 형태로? for문 같은 걸로 like 배열과 unlike 배열로 나누기
             // 전체 배열에 있는 애를 페이징에 맞춰 자른 다음 보내기?
 
-            return { categoryList, boardList };
+            return boardList;
         } catch (e) {
             throw new Error(e);
         }

@@ -1,15 +1,21 @@
 const axios = require("axios");
 
 exports.getList = async (req, res) => {
-    // 게시물&카테고리 findAll 해와야 함(axios 사용), 좋아요 갯수는 게시물이랑 같이 받아와야 함
-    // const list = await request.get();
     try {
-        const response = await axios.get("http://localhost:3000/board/list");
-        const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
-        const { mainCategory, subCategory } = response.data.categoryList;
+        const page = req.query.page;
+        const response = await axios.get(`http://localhost:3000/board/list?page=${page}`);
+        // const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
+        console.log(response);
+        const { boardList, startNumber, endNumber, totalPage, listCount } = response.data.listAll;
+        const { mainCategory, subCategory } = response.data.category;
         // 카테고리 전체 {mainCategory:[{},{},{}], subCategory:[{},{},{}]}
+        const btnNumber = [];
+        for (let i = startNumber; i <= endNumber; i++) {
+            btnNumber.push(i);
+        }
+        console.log(totalPage);
 
-        res.render("board/category/boardList.html", { boardList, mainCategory, subCategory });
+        res.render("board/category/boardList.html", { boardList, mainCategory, subCategory, btnNumber, totalPage, listCount });
     } catch (e) {
         throw new Error(e);
     }
@@ -89,3 +95,14 @@ exports.getView = async (req, res) => {
     // const commentCount = 2;
     res.render("board/category/boardView.html", { contentResult });
 };
+
+/*
+총 게시물 먼저 가져오기
+총 게시물 나누기 10 한다음에 올림처리 => 그러면 필요한 페이지 값(전체페이지 값)이 나옴
+얘는 끝 넘버에서 필요
+
+그런 다음 뒷자리가 1번째인 게시물 구하기(현재 위치가 될 애?) -> id 아님
+스타트 넘버 : 현재 위치에서 10을 나누고 
+엔드넘버
+
+ */

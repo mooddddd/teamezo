@@ -21,3 +21,28 @@ const clickHandler = async (e) => {
 for (let i = 0; i < arr.length; i++) {
     arr[i].addEventListener("click", clickHandler);
 } // 모든 이미지에 이벤트 걸어버려서 e.target에 걸리는 애는 그냥 바로 이벤트 걸리게 만들어놓음
+
+/*페이징 다음, 이전 이벤트*/
+const prevBtn = document.querySelector(".listPagingPrev");
+const nextBtn = document.querySelector(".listPagingNext");
+
+const prev = (e) => {
+    pageNum = Number(location.search.split("=")[1]);
+    if (pageNum === 1) {
+        location.href = `http://localhost:3005/board/list?page=${1}`;
+        alert("첫번째 페이지입니다.");
+    } else {
+        location.href = `http://localhost:3005/board/list?page=${pageNum - 1}`;
+    }
+};
+const next = (e) => {
+    pageNum = Number(location.search.split("=")[1]);
+    if (pageNum === Number(totalPage.value)) {
+        alert("마지막페이지 입니다.");
+    } else {
+        location.href = `http://localhost:3005/board/list?page=${pageNum + 1}`;
+    }
+};
+
+prevBtn.addEventListener("click", prev);
+nextBtn.addEventListener("click", next);

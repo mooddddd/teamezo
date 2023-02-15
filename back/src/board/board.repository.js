@@ -13,10 +13,21 @@ class BoardRepo {
             throw new Error(e);
         }
     }
-    async getBoardList() {
+    async getBoardList(page) {
         try {
-            const listAll = await this.models.Board.findAll();
-            return listAll;
+            const listAll = await this.models.Board.findAll({ raw: true });
+            const listCount = listAll.length;
+            const totalPage = Math.ceil(listAll.length / 10);
+            let current = page * 10 - 9;
+
+            let startNumber = current / 10 - ((current / 10) % 5) + 1;
+            let endNumber = current / 10 - ((current / 10) % 5) + 5;
+            if (endNumber > totalPage) {
+                endNumber = totalPage;
+            }
+
+            const boardList = await this.models.Board.findAll({ offset: page * 10 - 10, limit: 10, order: [["id", "desc"]] });
+            return { boardList, startNumber, endNumber, totalPage, listCount };
         } catch (e) {
             throw new Error(e);
         }
