@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
 }
@@ -22,8 +22,8 @@ html {
     justify-content: center;
     align-items: center;
     background-color: rgba(150, 120, 80);
-    /* background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
-    background-size: cover; */
+    background: linear-gradient(180deg, rgba(116, 191, 102, 0.7) 10%, rgb(91, 187, 112, 0.7) 10%), url(../../img/headerleaf.jpg) 10% no-repeat;
+    background-size: cover;
 }
 
 #header {
@@ -106,7 +106,7 @@ html {
     border-radius: 1rem;
     padding: 1.5rem;
     transition: all 0.5s;
-}
+} */
 
 /* #searchBtn {
     position: absolute;
@@ -135,7 +135,7 @@ html {
     display: block;
 } */
 
-.hamburgerBtn {
+/* .hamburgerBtn {
     position: absolute;
     right: -3rem;
     cursor: pointer;
@@ -168,11 +168,11 @@ html {
 
 .h1, .h2, .h3 {
     transition: all 0.2s;
-}
+} */
 
 /* ======================================================= */
 
-#sidebarWrap {
+/* #sidebarWrap {
     position: fixed;
     display: none;
     right: 0rem;
@@ -244,4 +244,90 @@ html {
 
 .sidemenu {
     font-size: 2rem;
+} */
+
+.header_container{
+    position: relative;
+    top: 0;
+    display:flex;
+    justify-content: space-around;
+    margin: 0rem 2.4rem;
+}
+
+.header {
+    display: inherit;
+    align-items: center;
+    color: #6e6d7a;
+}
+
+.header > div {
+    margin-right: 4rem;
+}
+
+.header > div > a {
+    color: inherit;
+    font-size: 6rem;
+    font-family: var(--headerFont);
+}
+
+.header_menu {
+    display: flex;
+    height: 100%;
+}
+
+.header_menu > li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 3rem 2rem;
+    color: #6e6d7a;
+    font-size: 2rem;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+
+.header_menu > li > a {
+    color: inherit;
+}
+
+.header_functions {
+    display: flex;
+    align-items: center;
+}
+
+.header_function {
+    position: relative;
+    align-items: center;
+    margin: 0 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.search_box {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+}
+
+.header_function > img {
+    position: absolute;
+    right: 2rem;
+    top: 0.9rem;
+    height: 2rem;
+}
+
+.header_function > a {
+    padding: 2rem 0;
+}
+
+.join_box > a {
+    display: inline-block;
+    padding: 1.8rem 1.6rem;
+    border-radius: 1.5rem;
+    line-height: 2rem;
+    color: var(--main);
+    background-color: var(--header);
+}
+
+.join_box > a:hover{
+    background-color: var(--footer);
 }

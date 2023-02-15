@@ -1,3 +1,10 @@
+const axios = require("axios")
+
+const request = axios.create({
+    baseURL: "http://localhost:3000/admin",
+    withCredentials: true,
+})
+
 exports.getAdmin = (req, res, next) => {
     try {
         res.render("admin/admin.html")
@@ -6,29 +13,24 @@ exports.getAdmin = (req, res, next) => {
     }
 }
 
-
-// 회원정보 불러오기 : get 요청으로 전체 회원정보 불러오기
-    // paging 기능 추가
-    // 
-
-// 특정회원 검색기능 : form 태그로 이루어졌다.
-    // 1. 유저의 정보를 받는다.
-    // 2. 해당 정보를 가지고 백서버로가서, 비교(일부)를 한다.
-    // 3. 같은 값을 가지고와서 정보를 뿌린다.
-
 exports.getAdminUser = async (req, res, next) => {
     try {
-        // const result = await axios.get("http://localhost:3000/admin/user")
-        const result = {
-            id: '강찬수',
-            name: '강찬수',
-            nickname: 'char1ey',
-            gender: '남성',
-            phone: "010-1234-1234",
-            email: 'ckstn410@naver.com',
-            point: 1500,
+        if( req.query.search ){
+            const userid = req.query.search
+            const response = await request.post(`/user`, { userid })
+            const userList = []
+            userList[0] = response.data
+            res.render("admin/adminUser.html", { userList })
+        } else {
+            const response = await request.get(`/user?page=${req.query.page}`)
+            const { userList, startNumber, endNumber, totalPage } = response.data
+            const btnNumber = []
+            for(let i = startNumber; i <= endNumber; i++){
+                btnNumber.push(i)
+            }
+    
+            res.render("admin/adminUser.html", { userList, btnNumber, totalPage })
         }
-        res.render("admin/adminUser.html", { result })
     } catch (error) {
         
     }
@@ -36,24 +38,29 @@ exports.getAdminUser = async (req, res, next) => {
 
 exports.postAdminUser = async (req, res, next) => {
     try {
-        // const user = req.body.search
-        // axios.post("http://localhost:3005/admin/user")
-        // res.redirect(`/admin/user?${req.body.search}`)
+        const userid = req.body.search
+        res.redirect(`/admin/user?search=${userid}`)
     } catch (error) {
         
     }
 }
 
-exports.getAdminUserEdit = (req, res, next) => {
+exports.getAdminUserEdit = async (req, res, next) => {
     try {
-        res.render("admin/adminUserEdit.html")
+        const response = await request.get(`/userEdit?userid=${req.query.userid}`)
+        const user = response.data
+        res.render("admin/adminUserEdit.html", { user })
     } catch (error) {
         
     }
 }
 
-exports.postAdminUserEdit = (req, res, next) => {
+exports.postAdminUserEdit = async (req, res, next) => {
     try {
+        const { path } = req.file
+        const { body } = req
+        console.log(path, body)
+        await request.post('/userEdit', { path, body })
         res.redirect('/admin/user')
     } catch (error) {
         

@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
         <link rel="stylesheet" href="/css/admin/adminUserEdit.css" />
-        <title>Document</title>
+        <title>회원정보 수정</title>
     </head>
     <body>
         <div class="adminWrap">
             {% include 'layout/adminSide.html' %}
             <!-- profile start -->
-            <div id="profileWrap">
+            <form id="profileWrap" enctype="multipart/form-data" action="/admin/userEdit" method="post">
                 <div class="profileWrap">
                     <div id="profileHeader">
                         <h1>회원정보 수정</h1>
@@ -23,39 +23,35 @@
                         <div class="profileBox">
                             <div id="profileBox1">
                                 <div id="avatarWrap">
-                                    <img src="/img/profileEdit.PNG">
+                                    <img src="{{user.avatarUrl}}">
                                 </div>
-                                <form id="avatarController">
-                                    <div>사진 불러오기</div>
-                                    <button>저장하기</button>
-                                </form>
+                                <div id="avatarController">
+                                    <div>프로필 사진</div>
+                                    <input type="file" name="avatarUrl">
+                                </div>
                             </div>
                             <div id="profileBox2">
                                 <h2>계정 정보</h2>
                                 <div class="profileContents">
                                     <div class="profileContent">
                                         <div class="profileContentName">이름</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="username" value="{{user.username}}" >
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">아이디</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
-                                    </div>
-                                    <div class="profileContent">
-                                        <div class="profileContentName">비밀번호</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="userid" value="{{user.userid}}">
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">닉네임</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="nickname" value="{{user.nickname}}">
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">성별</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="gender" value="{{user.gender}}">
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">이메일</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="email" value="{{user.email}}">
                                     </div>
                                 </div>
                             </div>
@@ -66,31 +62,31 @@
                                 <div class="profileContents">
                                     <div class="profileContent">
                                         <div class="profileContentName">휴대폰 번호</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="phone" value="{{user.phone}}">
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">집전화 번호</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="telephone" value="{{user.telephone}}">
                                     </div>
                                     <div class="profileContent">
                                         <div class="profileContentName">주소</div>
-                                        <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                        <input type="text" class="profileContentInfo" name="address" value="{{user.address}}">
                                     </div>
                                 </div>
                             </div>
                             <div id="profileBox4">
                                 <h2>간단 소개글</h2>
                                 <div class="profileContentInfoWrap">
-                                    <input type="text" class="profileContentInfo" placeholder="넌적스 문법입니다.">
+                                    <input type="text" class="profileContentInfo" name="introduce" value="{{user.introduce}}">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="profileFooter">
-                        <button id="profileUpdateBtn">수정하기</button>
+                        <button id="profileUpdateBtn" type="submit">수정하기</button>
                     </div>
                 </div>
-            </div>
+            </form>
             <!-- profile end -->
         </div>
     </body>

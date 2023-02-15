@@ -9,7 +9,5 @@ const service = new AdminService({ repository })
 const controller = new AdminController({ service })
 
 module.exports = {
-    repository,
-    service,
-    controller,
+    controller
 }

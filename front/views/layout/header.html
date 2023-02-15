@@ -1,5 +1,31 @@
 {% block header %}
-<div class="wrap">
+<div class="header_container">
+    <nav class="header">
+        <div>
+            <a href="/">TeamEzo</a>
+        </div>
+        <ul class="header_menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/board/list">Board</a></li>
+            <li><a href="/notice">Notice</a></li>
+            <li><a href="/qna">Q&A</a></li>
+        </ul>
+    </nav>
+    <ul class="header_functions">
+        <li class="header_function">
+            <input type="text" class="search_box" placeholder="search">
+            <img src="/img/search.png">
+        </li>
+        {% if token %}
+        <li class="header_function profile_box"><a href="/user/profile">Profile</a></li>
+        <li class="header_function logout_box"><a href="/">Logout</a></li>
+        {% else %}
+        <li class="header_function login_box"><a href="/user/login">Sign in</a></li>
+        <li class="header_function join_box"><a href="/user/join">Sign up</a></li>
+        {% endif %}
+    </ul>
+</div>
+<!-- <div class="wrap">
     <aside id="sidebarWrap">
         <div class="cancleBtn">
             <span class="cancle1"></span>
@@ -49,5 +75,5 @@
     </header>
 </div>
 <script src="/js/layout/header.js"></script>
-<script src="/js/layout/sidebar.js"></script>
+<script src="/js/layout/sidebar.js"></script> -->
 {% endblock %}

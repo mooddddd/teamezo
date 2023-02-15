@@ -49,27 +49,26 @@
 
                             <th class="th8">수정</th>
                         </tr>
-                        <template id="template">
-                            <tr class="trBody userinfoWrap">
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td class="userinfo"></td>
-                                <td><button class="adminUserEditBtn">수정</button></td>
-                            </tr>
-                        </template>
+                        {% for user in userList %}
+                        <tr class="trBody userinfoWrap">
+                            <td class="userinfo userid">{{user.userid}}</td>
+                            <td class="userinfo">{{user.username}}</td>
+                            <td class="userinfo">{{user.nickname}}</td>
+                            <td class="userinfo">{{user.gender}}</td>
+                            <td class="userinfo">{{user.phone}}</td>
+                            <td class="userinfo">{{user.email}}</td>
+                            <td class="userinfo">{{user.point}}</td>
+                            <td><button class="adminUserEditBtn">수정</button></td>
+                        </tr>
+                        {% endfor %}
                     </table>
                 <div class="adminPreNext">
-                    <a><</a>
-                    <span class="pageNumber">1</span>
-                    <span class="pageNumber">2</span>
-                    <span class="pageNumber">3</span>
-                    <span class="pageNumber">4</span>
-                    <span class="pageNumber">5</span>
-                    <a>></a>
+                    <a id="prev"><</a>
+                    {% for number in btnNumber %}
+                    <span class="pageNumber">{{number}}</span>
+                    {% endfor %}
+                    <input type="hidden" value="{{totalPage}}" id="totalPage">
+                    <a id="next">></a>
                 </div>
             </div>
             <!-- adminRight -->

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require("../middlewares/upload")
 const controller = require("../controllers/admin.controller");
 
 router.get("/", controller.getAdmin)
@@ -8,7 +9,7 @@ router.get("/user", controller.getAdminUser)
 router.post("/user", controller.postAdminUser)
 
 router.get("/userEdit", controller.getAdminUserEdit)
-router.post("/userEdit", controller.postAdminUserEdit)
+router.post("/userEdit", upload.single("avatarUrl"),controller.postAdminUserEdit)
 
 router.get("/category", controller.getAdminCategory)
 router.post("/category", controller.postAdminCategory)
