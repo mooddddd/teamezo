@@ -25,6 +25,20 @@ class UserService {
     //     }
     // }
 
+    // async getInfo(token) {
+    //     try {
+    //         console.log('user.service process.env.SALT')
+    //         console.log(process.env.SALT)
+    //         const { userid } = this.jwt.verify(token, process.env.SALT)
+    //         const user = await this.userRepository.getUserById(userid)
+    //         console.log('user.Service getInfo')
+    //         console.log(user)
+    //         return user
+    //     } catch (e) {
+    //         throw new Error(e)
+    //     }
+    // }
+
     async loginIdChk({ userid }) {
         try {
             console.log('userService loginIdChk')

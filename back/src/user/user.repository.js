@@ -26,6 +26,23 @@ class UserRepository {
     //     }
     // }
 
+    async getUserById(userid) {
+        try {
+            console.log('user.Repository getUserById')
+            const user = await this.User.findOne({
+                raw: true,
+                where: {
+                    userid,
+                },
+            })
+            console.log('user.Repository getUserById')
+            console.log(user)
+            return user
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
     async getUserByInfo({ userid, page = 1 }) {
         try {
             console.log('repository userid')

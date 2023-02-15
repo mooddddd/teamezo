@@ -3,15 +3,6 @@ class UserController {
         this.userService = userService
     }
 
-    // async postLogin(req, res, next) {
-    //     try {
-    //         const { userid, userpw } = req.body
-    //         const user = await this.userService.loginChk({ userid, userpw })
-    //         res.json(user)
-    //     } catch (e) {
-    //         next(e)
-    //     }
-    // }
     async postLoginChk(req, res, next) {
         try {
             console.log('userController postLoginChk')
