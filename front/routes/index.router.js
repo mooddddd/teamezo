@@ -4,9 +4,6 @@ const router = express.Router()
 // 랭킹 요청 코드(백서버에서 작업) : [ {}, {}, {}, ...]
 // 글 리스트 가져오기 : [{}, {}, {}, {}, ...]
 router.get('/', (req, res) => {
-    console.log('req.cookiesreq.cookiesreq.cookiesreq.cookies')
-    console.log(req.query)
-    res.setHeader('Set-Cookie', `token=${req.query.token};path=/;`)
     const ranklist = [
         {
             rank: 1,
@@ -132,11 +129,18 @@ router.get('/', (req, res) => {
             totalLiked: 429,
         },
     ]
-    if (req.cookies.token) {
-        console.log(board)
-        res.render('index.html', { userid, ranklist, board })
+    // if (req.cookies.token) {
+    //     console.log(board)
+    //     res.render('index.html', { userid, ranklist, board })
+    // } else {
+    //     res.render('index.html', { ranklist, board })
+    // }
+    //console.log(Boolean(Object.values(req.query).length))
+    if (Object.values(req.query).length) {
+        res.setHeader('Set-Cookie', `token=${req.query.token};path=/;`)
+        res.render('index.html')
     } else {
-        res.render('index.html', { ranklist, board })
+        res.render('index.html')
     }
 })
 
