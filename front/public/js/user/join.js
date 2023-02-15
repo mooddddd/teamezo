@@ -9,6 +9,11 @@ const joinWrap = document.querySelector('.joinWrap')
 
 const agree = document.querySelectorAll('.agree')
 
+const request = axios.create({
+    baseURL: 'http://127.0.0.1:3000',
+    withCredentials: true,
+})
+
 // joinBtn.addEventListener('click', (e) => {
 //     if (
 //         agreeUse.getAttribute('class') === 'checkBox yellow' &&
@@ -25,15 +30,20 @@ const agree = document.querySelectorAll('.agree')
 //     }
 // })
 
-// duplicateBtn.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     const testUserId = 'test'
-//     if (testUserId === joinInputId.value) {
-//         joinCheck[0].innerHTML = '중복된 아이디입니다.'
-//     } else {
-//         joinCheck[0].innerHTML = '사용가능한 아이디입니다.'
-//     }
-// })
+duplicateBtn.addEventListener('click', async (e) => {
+    try {
+        console.log('addEventListener userid')
+        console.log(joinInputId.value)
+        const response = await request.post('/users/login', {
+            userid: joinInputId.value,
+        })
+        console.log(response)
+
+        joinCheck[0].innerHTML = '사용가능한 아이디입니다.'
+    } catch (e) {
+        joinCheck[0].innerHTML = '중복된 아이디입니다.'
+    }
+})
 
 const toggle = (element) => {
     element.addEventListener('click', (e) => {

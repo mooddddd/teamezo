@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/header.css" />
         <link rel="stylesheet" href="/css/board/boardList.css" />
@@ -22,13 +23,13 @@
                             <span></span>
                         </li>
                         <!-- 카테고리 템플릿 -->
-                        {% for item in category %}
+                        {% for item in mainCategory %}
                         <li class="mainCategory">
-                            <h4><a href="#">{{item.MainCategory}}</a></h4>
+                            <h4><a href="#">{{item.mainName}}</a></h4>
                             <ul class="subCategory">
-                                {% set subCate = item.subName %} {% for sub in subCate %}
-                                <li><a href="#">{{sub}}</a></li>
-                                {% endfor %}
+                                {%for sub in subCategory%} {%if item.mainName === sub.mainName%}
+                                <li><a href="#">{{sub.subName}}</a></li>
+                                {%endif%} {% endfor %}
                             </ul>
                         </li>
                         {% endfor %}
@@ -39,14 +40,14 @@
                 <div class="listRight">
                     <!-- 상단 고정 부분 -->
                     <div class="top">
-                        <h1>전체글 ({{count}}개)</h1>
+                        <h1>전체글 ({{boardList.length}}개)</h1>
                         <!-- <button href="#">글쓰기</button> -->
                     </div>
 
                     <!-- ALL DATA IN LIST PAGE -->
                     <div class="boardListContents">
                         <!-- list 게시물 템플릿 -->
-                        {% for item in list %}
+                        {% for item in boardList %}
                         <div class="boardFindOne">
                             <!-- 대표이미지 -->
                             <div class="boardListPic"><img src="/img/header.png" /></div>
@@ -54,201 +55,25 @@
                             <div class="boardListContent">
                                 <ul>
                                     <li class="subject">
-                                        <a href="#">{{item.subject}}</a>
+                                        <a href="/board/view?id={{item.id}}">{{item.subject}}</a>
                                     </li>
                                     <li class="writer">{{item.user_userid}}</li>
                                     <li class="date">{{item.createAt}}</li>
                                 </ul>
                             </div>
                             <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
+                            <form method="post" , action="board/list">
+                                <input type="hidden" value="{{item.id}}" />
+                                <div class="boardListLiked">
+                                    <div class="changeIMG">
+                                        <img id="beforeClick" src="/img/thumsup.png" />
+                                        <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
+                                    </div>
+                                    <span>{{item.liked}}</span>
                                 </div>
-                                <span>{{item.liked}}</span>
-                            </div>
+                            </form>
                         </div>
                         {% endfor %}
-
-                        <!-- 더미 -->
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <div class="boardFindOne">
-                            <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
-                            <!-- 제목, 닉네임, 날짜 -->
-                            <div class="boardListContent">
-                                <ul>
-                                    <li class="subject">
-                                        <a href="#">게시물 제목입니다!! (5)</a>
-                                    </li>
-                                    <li class="writer">닉네임</li>
-                                    <li class="date">2023 - 01 - 30</li>
-                                </ul>
-                            </div>
-                            <!-- 좋아요 -->
-                            <div class="boardListLiked">
-                                <div class="changeIMG">
-                                    <img id="beforeClick" src="/img/thumsup.png" />
-                                    <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
-                                </div>
-                                <span>200</span>
-                            </div>
-                        </div>
-                        <!-- 더미끝 -->
 
                         <!-- 페이징 -->
                         <div class="boardListPaging">

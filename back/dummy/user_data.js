@@ -1,6 +1,21 @@
-const user = []
+const user = [
+    {
+        userid: `pp`,
+        userpw: `password`,
+        username: `제의아해`,
+        nickname: `charey`,
+        address: `천호동`,
+        avatarUrl: `url`,
+        gender: `남자`,
+        phone: `0101234123`,
+        email: `ckstn10@gamil.com`,
+        provider: `local`,
+        introduce: `나는 바보입니다...`,
+    },
+]
 
 for(let i = 0; i <= 51; i++){
+
     const obj = {
         userid: `char${i}ey`,
         userpw: `password${i}`,
@@ -14,7 +29,7 @@ for(let i = 0; i <= 51; i++){
         provider: `local`,
         introduce: `나는 바보입니다...`,
     }
-    
+
     user.push(obj)
 }
 
