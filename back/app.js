@@ -58,35 +58,13 @@ app.get('/oauth/kakao', async (req, res, next) => {
                 'Content-type': 'application/x-www-form-urlencoded',
                 Authorization: `Bearer ${access_token}`,
             },
-        }) // 모든정보가져옴 이제 user.kakao.js 로 정보 던져서 우리쪽에 저장 / 저장하기전에 Authorization 검증
-        console.log('useruseruseruseruser')
-        console.log(user.data)
-        console.log(user.data.id)
-        console.log(user.data.properties.profile_image)
-        console.log(user.data.kakao_account.email)
-        // const kakaoLoginUser = userKakao.addKakaoInfo(user.data) // id hash화 한것? front set-cookies로 저장
+        })
+        const kakaoLoginUser = await userKakao.addKakaoInfo(user.data) // id hash화 한것? front set-cookies로 저장
+        console.log('kakaoLoginUser')
+        console.log(kakaoLoginUser)
+
         return kakaoLoginUser
     } catch (e) {}
-
-    // console.log('kakaoUser userkakao')
-    // console.log(kakaoUser)
-    // const kakaoUserPw = this.crypto
-    //     .createHmac('sha256', 'teamezo')
-    //     .update(kakaoUser.id)
-    //     .digest('hex')
-    // console.log('kakaoUserPw')
-    // console.log(kakaoUserPw)
-    // const user = {
-    //     userid: kakaoUser.id,
-    //     userpw: kakaoUserPw,
-    //     nickname: kakaoUser.profile.nickname,
-    //     email: kakaoUser.email,
-    //     avatarUrl: kakaoUser.properties.profile_image,
-    //     provider: 'kakao',
-    // }
-    // console.log('kakaoUser')
-    // console.log(user)
-
     res.redirect('http://localhost:3005')
 })
 
