@@ -9,6 +9,17 @@
         <link rel="stylesheet" href="/css/user/profileEdit.css" />
         <link rel="stylesheet" href="/css/layout/header.css" />
         <link rel="stylesheet" href="/css/layout/footer.css" />
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            function kakaopost() {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        document.querySelector('#zipcode').value = data.zonecode
+                        document.querySelector('#address').value = data.address
+                    },
+                }).open()
+            }
+        </script>
     </head>
     <body>
         {% include 'layout/header.html' %}
@@ -72,8 +83,22 @@
                                     <input type="text" name="" id="" />
                                 </div>
                                 <div class="profileEditContentBox">
+                                    <div>우편번호</div>
+                                    <input
+                                        type="text"
+                                        name="zipcode"
+                                        id="zipcode"
+                                        size="7"
+                                        readonly
+                                    />
+                                    <input
+                                        type="button"
+                                        value="우편번호찾기"
+                                        onclick="kakaopost()"
+                                        id="zipcodeStyle"
+                                    />
                                     <div>주소</div>
-                                    <input type="text" name="" id="" />
+                                    <input type="text" name="address" id="address" />
                                 </div>
                             </div>
                             <div class="profileEditContent4">
