@@ -48,10 +48,16 @@
                     <!-- ALL DATA IN LIST PAGE -->
                     <div class="boardListContents">
                         <!-- list 게시물 템플릿 -->
-                        {% for item in boardList %}
+                        {% for item in list %}
                         <div class="boardFindOne">
                             <!-- 대표이미지 -->
-                            <div class="boardListPic"><img src="/img/header.png" /></div>
+                            <div class="boardListPic">
+                                {%if item.fileUrl%}
+                                <img src="/{{item.fileUrl}}" />
+                                {%else%}
+                                <img src="/img/2697398bad5927125f3db2f8a248ca15effd194bae87d73dd00522794070855d.png" />
+                                {%endif%}
+                            </div>
                             <!-- 제목, 닉네임, 날짜 -->
                             <div class="boardListContent">
                                 <ul>

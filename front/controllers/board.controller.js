@@ -11,7 +11,7 @@ exports.getList = async (req, res) => {
         const page = req.query.page;
         const response = await request.get(`/list?page=${page}`);
         // const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
-        const { boardList, startNumber, endNumber, totalPage, listCount } = response.data.listAll;
+        const { list, startNumber, endNumber, totalPage, listCount, imgArr } = response.data.listAll;
         const { mainCategory, subCategory } = response.data.category;
         // 카테고리 전체 {mainCategory:[{},{},{}], subCategory:[{},{},{}]}
         const btnNumber = [];
@@ -19,7 +19,7 @@ exports.getList = async (req, res) => {
             btnNumber.push(i);
         }
 
-        res.render("board/category/boardList.html", { boardList, mainCategory, subCategory, btnNumber, totalPage, listCount });
+        res.render("board/category/boardList.html", { list, mainCategory, subCategory, btnNumber, totalPage, listCount, imgArr });
     } catch (e) {
         throw new Error(e);
     }

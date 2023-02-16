@@ -28,9 +28,29 @@ class BoardRepo {
             if (endNumber > totalPage) {
                 endNumber = totalPage;
             }
+            const boardList = await this.models.Board.findAll({ raw: true, offset: page * 10 - 10, limit: 10, order: [["id", "desc"]] });
 
-            const boardList = await this.models.Board.findAll({ offset: page * 10 - 10, limit: 10, order: [["id", "desc"]] });
-            return { boardList, startNumber, endNumber, totalPage, listCount };
+            const boardIdArr = boardList.map((v) => v.id);
+            const searchImg = boardIdArr.map((id) => this.models.File.findAll({ raw: true, where: { boardId: id }, limit: 1 }));
+            const img = await Promise.all(searchImg);
+            const imgArr = img.map((v) => {
+                return v[0];
+            }); // [{}, {}, {}]
+
+            // console.log(imgArr[1].fileUrl);
+
+            const list = boardList.map((v, index) => {
+                if (imgArr[index] != undefined) {
+                    v.fileUrl = imgArr[index].fileUrl;
+                }
+                return v;
+            });
+
+            // console.log(list);
+
+            // const imgList
+
+            return { list, startNumber, endNumber, totalPage, listCount, imgArr };
         } catch (e) {
             throw new Error(e);
         }
