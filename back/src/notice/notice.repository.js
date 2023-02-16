@@ -33,7 +33,7 @@ class NoticeRepository {
             }
 
             const boardList = await this.Board.findAll({
-                offset: Number(page) * 5 - 4,
+                offset: Number(page) * 5 - 5,
                 limit: 5,
                 where: { userid: 'admin' },
                 order: [['id', 'desc']],

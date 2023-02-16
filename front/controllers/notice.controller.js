@@ -9,15 +9,9 @@ const board = 'notice'
 exports.getList = async (req, res) => {
     try {
         // getList 시, token값(userid)로 admin인지 체크랑 , Board테이블에 notice true인것을 가져올거임
-        console.log('req.cookies.token')
-        console.log(req.cookies.token)
         const { page } = req.query
         const noticeList = await request.get(`/notice/list?page=${page}&token=${req.cookies.token}`)
-        console.log('noticeList')
-        console.log(noticeList)
         const { pageNum, startNumber, endNumber, totalPage, boardList } = noticeList.data
-        console.log('boardList!!')
-        console.log(boardList)
         const userAdmin = noticeList.data.userAdmin.admin
         const btnNumber = []
         for (let i = startNumber; i <= endNumber; i++) {

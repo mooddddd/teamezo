@@ -6,6 +6,7 @@ const user = require('./dummy/user_data')
 const mainCategory = require('./dummy/cate_data')
 const subCategory = require('./dummy/sub_data')
 const board = require('./dummy/board_data')
+const qna = require('./dummy/qna.data')
 
 app.listen(3000, async () => {
     await sequelize.sync({ force: false })
@@ -26,6 +27,9 @@ app.listen(3000, async () => {
     // for (let i = 0; i <= board.length - 1; i++) {
     //     await sequelize.models.Board.create(board[i])
     // }
+    for (let i = 0; i <= qna.length - 1; i++) {
+        await sequelize.models.Qna.create(qna[i])
+    }
 
     // await sequelize.models.HashName.create({ tagName: "javascript" });
     // await sequelize.models.HashName.create({ tagName: "c++" });
