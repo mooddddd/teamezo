@@ -1,14 +1,15 @@
-const express = require("express");
-const router = express.Router();
-const users = require("../src/user/user.route");
-const auth = require("../src/auth/auth.route");
-const board = require("../src/board/board.route");
+const express = require('express')
+const router = express.Router()
+const users = require('../src/user/user.route')
+const auth = require('../src/auth/auth.route')
+const board = require('../src/board/board.route')
 const admin = require('../src/admin/admin.route')
+const notice = require('../src/notice/notice.route')
 
-router.use("/users", users);
-router.use("/auth", auth);
-router.use("/board", board);
-router.use('/admin',admin)
+router.use('/users', users)
+router.use('/auth', auth)
+router.use('/board', board)
+router.use('/admin', admin)
+router.use('/notice', notice)
 
-
-module.exports = router;
+module.exports = router

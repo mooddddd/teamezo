@@ -177,3 +177,25 @@ article {
     font-weight: bold;
     border: none;
 }
+
+.pageNumber {
+    cursor: pointer;
+    text-align: center;
+    line-height: 3rem;
+    width: 4rem;
+    height: 4.5rem;
+    margin: 1rem 2.5rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--footer);
+    box-shadow: 0.75rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.pageNumber:hover {
+    background-color: var(--main);
+    color: var(--footer);
+}

@@ -57,6 +57,7 @@ class UserRepository {
                 where: {
                     userid,
                 },
+                raw: true,
             })
             console.log('userRepository checkUserId after')
             console.log(user)
