@@ -102,7 +102,6 @@ hashtagBox.addEventListener("keydown", addHashtag);
 const writeDataForm = document.querySelector(".write > form");
 const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(e.target.subName.value);
 
     const tagNameElement = document.querySelectorAll(".tagName");
     const tagArr = Object.values(tagNameElement);
@@ -110,30 +109,18 @@ const submitHandler = async (e) => {
     for (let i = 0; i <= tagArr.length - 1; i++) {
         tagNamesArr.push(tagArr[i].innerHTML.split("# ")[1]);
     }
-    const tagNames = { tagNames: tagNamesArr };
 
-    const body = new FormData(e.target);
+    let body = new FormData(e.target);
+    body.append("tagName", tagNamesArr);
 
-    const response = await Promise.all([
-        axios.post("http://localhost:3000/board/write", body, {
-            header: {
-                ["Content-type"]: "multipart/form-data",
-            },
-        }),
-        axios.post("http://localhost:3000/voard/write", tagNames),
-    ]); // response 값으로는 board_idx값 받아오기, 받아오면 로케이션에 넣기?
-    // console.log(response[0].data.board_idx);
+    const insertBoardContent = await axios.post("http://localhost:3000/board/write", body, {
+        header: {
+            ["Content-type"]: "multipart/form-data",
+        },
+    });
 
-    // ** 얘 나중에 백이랑 연결해서 손보기
-    // const response = await axios.post("http://localhost:3000/", body, {
-    //     header: {
-    //         ["Content-type"]: "multipart/form-data",
-    //     },
-    // }); await axios.post("http://localhost:3000", tagNames);
-    // // promise.all 공부해야 댐,,,,, 암튼 두개 보내서 처리하기
-    // **
-
-    location.href = `/board/view?idx=${response[0].data.board_idx}`;
+    console.log(insertBoardContent.data);
+    location.href = `/board/view?id=${insertBoardContent.data}`;
 };
 writeDataForm.addEventListener("submit", submitHandler);
 

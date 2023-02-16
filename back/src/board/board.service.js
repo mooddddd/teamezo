@@ -1,3 +1,5 @@
+const { TableHints } = require("sequelize");
+
 class BoardService {
     constructor({ boardRepo, jwt }) {
         this.boardRepo = boardRepo;
@@ -7,7 +9,6 @@ class BoardService {
 
     async getCategory() {
         const categoryList = await this.boardRepo.getCategoryList();
-        console.log(categoryList);
         return categoryList;
     }
     async getList(page) {
@@ -30,11 +31,14 @@ class BoardService {
 
     async getview(id) {
         try {
-            const content = await this.boardRepo.getViewContent(id);
+            const { dataValues: content } = await this.boardRepo.getViewContent(id);
+            const hashtag = await this.boardRepo.getViewHashTag(id);
+            const files = await this.boardRepo.getViewFiles(id);
             // const likedCount = await this.boardRepo.getLikedCount(id);
             // const comment = await this.boardRepo.getViewComment(id);
             // console.log(content.dataValues);
-            return content.dataValues;
+
+            return { content, hashtag, files };
         } catch (e) {
             throw new Error(e);
         }
@@ -45,6 +49,23 @@ class BoardService {
         // console.log(boardId, userid);
         const result = await this.boardRepo.postListLiked(userid, boardId);
         return result;
+    }
+
+    async postBoardContent(body, files) {
+        const { tagName, ...rest } = body;
+        const tagArr = tagName.split(","); //['sadf','dfs','asdfsa']
+        const filenameArr = files.map((v) => v.filename);
+
+        const insertContent = await this.boardRepo.insertContent(tagArr, rest, filenameArr);
+        // const insertFile = await this.boardRepo.insertFile(filenameArr);
+        // const 파일 네임 넣는 함수 사용해서 파일네임 넣어주고
+
+        // 리턴값으로 받아옴
+        // 그런 다음 온 데이터를 넌작스로 파일명 뿌려주고, html 내에는 path{{파일명}} 해주면?
+        // 그냥 넣기만 하고 끝? 그리고 가져오는 작업은 getView에다가 하면 되나...
+
+        // 리턴값으로 들어간 데이터의 id를 리턴해줌
+        return insertContent;
     }
 }
 

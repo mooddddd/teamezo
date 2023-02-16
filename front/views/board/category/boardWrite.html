@@ -26,14 +26,14 @@
                             <li class="subject">
                                 <select class="mainCategorySelect" name="mainName">
                                     <option>--카테고리 선택--</option>
-                                    {% for item in category%}
-                                    <option class="mainCategory" value="{{item.MainCategory}}">{{item.MainCategory}}</option>
+                                    {% for item in mainCategory%}
+                                    <option class="mainCategory" value="{{item.mainName}}">{{item.mainName}}</option>
                                     {% endfor %}
                                 </select>
                                 <div>
-                                    {% for item in category%} {% set subCate = item.subName %} {% for sub in subCate %}
-                                    <input type="hidden" class="{{item.MainCategory}}" value="{{sub}}" />
-                                    {% endfor %}{% endfor %}
+                                    {% for sub in subCategory%}
+                                    <input type="hidden" class="{{sub.mainName}}" value="{{sub.subName}}" />
+                                    {% endfor %}
                                 </div>
 
                                 <select class="subCategory" name="subName">
@@ -46,7 +46,7 @@
 
                             <li class="content">
                                 <textarea name="content" placeholder="내용을 입력하세요" required></textarea><br />
-                                <input type="file" name="fileUrl" />
+                                <input type="file" name="fileUrl" multiple />
                             </li>
 
                             <li class="hashtagLi" style="margin-top: 1.5rem">

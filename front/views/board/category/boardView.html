@@ -18,7 +18,7 @@
                 <div id="viewForm">
                     <!-- 상단 고정 부분 -->
                     <div class="top">
-                        <h1>{{contentResult.mainName}}</h1>
+                        <h1>{{content.mainName}} - {{content.subName}}</h1>
                         <span></span>
                     </div>
 
@@ -28,12 +28,12 @@
                         <div class="viewContent">
                             <!-- 제목, 작성자 & 날짜 -->
                             <div class="contentTop">
-                                <div class="contentSubject">{{contentResult.subject}}</div>
+                                <div class="contentSubject">{{content.subject}}</div>
                                 <ul>
-                                    <li class="contentWriter">{{contentResult.user_userid}}</li>
-                                    <li class="contentCreateDate">{{contentResult.createAt}}</li>
+                                    <li class="contentWriter">{{content.user_userid}}작성자</li>
+                                    <li class="contentCreateDate">{{content.createAt}}</li>
 
-                                    {%if contentResult.cookies == contentResult.user_userid %}
+                                    {%if content.cookies == content.user_userid %}
                                     <li class="contentModify"><a href="/board/modify">수정</a></li>
                                     <li class="contentDelete"><a href="/board/delete">삭제</a></li>
                                     {%endif%}
@@ -43,12 +43,19 @@
                             <!-- 글 내용, 해쉬태그 -->
                             <div class="contentCenter">
                                 <div class="contentData">
-                                    <div>{{contentResult.content}}</div>
+                                    <div>
+                                        {{content.content}}
+                                        <br />
+                                        {%for img in files%}
+                                        <img src="/{{img.fileUrl}}" />
+                                        <br />
+                                        {%endfor%}
+                                    </div>
                                 </div>
                                 <div class="hashtagData">
                                     <ul>
-                                        {%for item in contentResult.tagName%}
-                                        <li>{{item}}</li>
+                                        {%for item in hashtag%}
+                                        <li><a href="#"># {{item.tagName}}　</a></li>
                                         {%endfor%}
                                     </ul>
                                 </div>

@@ -3,6 +3,7 @@ class BoardController {
         this.boardService = boardService;
     }
 
+    // 리스트
     async getList(req, res, next) {
         try {
             const listAll = await this.boardService.getList(req.query.page);
@@ -12,7 +13,16 @@ class BoardController {
             next(e);
         }
     }
+    async postListLiked(req, res, next) {
+        try {
+            const result = await this.boardService.postListLiked(req.body);
+            res.json(result);
+        } catch (e) {
+            next(e);
+        }
+    }
 
+    // 뷰
     async getview(req, res, next) {
         try {
             // console.log(req.query.id); // 1
@@ -20,13 +30,25 @@ class BoardController {
             const result = await this.boardService.getview(id);
             res.json(result);
         } catch (e) {
+            throw new Error(e);
+        }
+    }
+
+    // 글 작성
+    async getWirte(req, res, next) {
+        try {
+            const result = await this.boardService.getCategory();
+            res.json(result);
+        } catch (e) {
             next(e);
         }
     }
 
-    async postListLiked(req, res, next) {
+    async postWrite(req, res, next) {
         try {
-            const result = await this.boardService.postListLiked(req.body);
+            const { body, files } = req;
+            const result = await this.boardService.postBoardContent(body, files);
+
             res.json(result);
         } catch (e) {
             next(e);
