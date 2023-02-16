@@ -9,7 +9,8 @@ const request = axios.create({
 exports.getList = async (req, res) => {
     try {
         const page = req.query.page;
-        const response = await request.get(`/list?page=${page}`, { params: { token: `${req.cookies.token}` } });
+        const response = await request.get(`/list?page=${page}`);
+        // { params: { token: `${req.cookies.token}` } }
         // const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
         const { list, startNumber, endNumber, totalPage, listCount, imgArr } = response.data.listAll;
         const { mainCategory, subCategory } = response.data.category;
@@ -48,63 +49,11 @@ exports.getView = async (req, res) => {
 
 /* 댓글 */
 exports.postComment = async (req, res) => {
-    // console.log(req.body); // { boardId: '52', content: 'ㄴㅇㄹㄴㅇㄹㄴㄹㅇㄴㄹㅇ' }
-    // console.log(req.cookies.token); // mood
     try {
-        const { boardId, content } = req.body;
-        const response = await request.post(`/view/comment?id=${req.body.boardId}`, { boardId, content });
-        console.log(response);
+        const value = req.body;
+        const response = await request.post("/view/comment", value);
+        res.redirect(`/board/view?id=${response.data.boardId}`);
     } catch (e) {
         throw new Error(e);
     }
 };
-
-// const commentResult = [
-//     {
-//         commentidx: 1,
-//         user_userid: "test",
-//         content: "sdfasgasfsd",
-//         createAt: "2023 - 01 -30",
-//         avatar: "profileEdit.PNG",
-//     },
-//     {
-//         commentidx: 2,
-//         user_userid: "test",
-//         content: "sdfasgasfsd",
-//         createAt: "00000000",
-//         avatar: "profileEdit.PNG",
-//     },
-//     {
-//         commentidx: 3,
-//         user_userid: "test",
-//         content: "sdfasgasfsd",
-//         createAt: "00000000",
-//         avatar: "profileEdit.PNG",
-//     },
-// ];
-
-// const commentReplyResult = [
-//     {
-//         commentidx: 1,
-//         replyidx: 1,
-//         user_userid: "ㅁㄴㅇㄹ",
-//         content: "대댓 테스트ddddddd",
-//         createAt: "2023-01-01",
-//     },
-//     {
-//         commentidx: 1,
-//         replyidx: 2,
-//         user_userid: "ㅁㄴㅇㄹ",
-//         content: "대댓 테스트ddddddd",
-//         createAt: "2023-01-01",
-//     },
-//     {
-//         commentidx: 2,
-//         replyidx: 1,
-//         user_userid: "ㅁㄴㅇㄹ",
-//         content: "대댓 테스트ddddddd",
-//         createAt: "2023-01-01",
-//     },
-// ];
-
-// const commentCount = 2;

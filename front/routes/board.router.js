@@ -10,7 +10,7 @@ router.get("/write", controller.getWrite);
 router.get("/view", controller.getView);
 
 // router.get("/view/comments")
-router.post("/view/comments", controller.postComment);
+router.post("/view/comment", controller.postComment);
 // router.get("/view/comments/modify")
 // router.get("/view/comments/delete")
 

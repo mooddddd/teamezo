@@ -1,5 +1,3 @@
-const { raw } = require("mysql2");
-
 class BoardRepo {
     constructor({ models }) {
         this.models = models;
@@ -126,6 +124,11 @@ class BoardRepo {
         // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
 
         return result.id; // 리턴값으로 board 테이블의 id를 반환
+    }
+
+    async insertComment(value) {
+        const result = await this.models.Comment.create(value);
+        return result;
     }
 
     // async postBoardContent(body, file) {

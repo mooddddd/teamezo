@@ -139,6 +139,7 @@
                                             <!-- <span>내닉네임</span><br /> -->
                                             <div>
                                                 <input type="hidden" name="userid" value="mood" />
+                                                <input type="hidden" name="classNum" value="1" />
                                                 <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
                                                 <button type="submit">등록</button>
                                             </div>
@@ -178,10 +179,11 @@
 
                             <!-- 댓글쓰기 -->
                             <div class="writeCommentForm">
-                                <form method="post" action="/board/view/comments">
+                                <form method="post" action="/board/view/comment">
                                     <!-- <span>내닉네임</span><br /> -->
                                     <div>
                                         <input type="hidden" name="boardId" value="{{content.id}}" />
+                                        <input type="hidden" name="classNum" value="0" />
                                         <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
                                         <button type="submit">등록</button>
                                     </div>
