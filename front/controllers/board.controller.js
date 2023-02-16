@@ -9,7 +9,7 @@ const request = axios.create({
 exports.getList = async (req, res) => {
     try {
         const page = req.query.page;
-        const response = await request.get(`/list?page=${page}`);
+        const response = await request.get(`/list?page=${page}`, { params: { token: `${req.cookies.token}` } });
         // const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
         const { list, startNumber, endNumber, totalPage, listCount, imgArr } = response.data.listAll;
         const { mainCategory, subCategory } = response.data.category;
@@ -42,8 +42,21 @@ exports.getView = async (req, res) => {
     // findOne 해와야 함
     const id = req.query.id;
     const result = await request.get(`/view?id=${id}`);
-    const { content, hashtag, files } = result.data;
-    res.render("board/category/boardView.html", { content, hashtag, files });
+    const { content, hashtag, files, comment } = result.data;
+    res.render("board/category/boardView.html", { content, hashtag, files, comment });
+};
+
+/* 댓글 */
+exports.postComment = async (req, res) => {
+    // console.log(req.body); // { boardId: '52', content: 'ㄴㅇㄹㄴㅇㄹㄴㄹㅇㄴㄹㅇ' }
+    // console.log(req.cookies.token); // mood
+    try {
+        const { boardId, content } = req.body;
+        const response = await request.post(`/view/comment?id=${req.body.boardId}`, { boardId, content });
+        console.log(response);
+    } catch (e) {
+        throw new Error(e);
+    }
 };
 
 // const commentResult = [

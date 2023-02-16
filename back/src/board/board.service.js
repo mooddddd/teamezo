@@ -11,9 +11,10 @@ class BoardService {
         const categoryList = await this.boardRepo.getCategoryList();
         return categoryList;
     }
-    async getList(page) {
+    async getList(page, token) {
         try {
             const boardList = await this.boardRepo.getBoardList(page);
+            const likedCheck = await this.boardRepo.getLikedCheck(page, token);
 
             // console.log(boardList);
 
@@ -23,22 +24,32 @@ class BoardService {
             // 가져올 데이터 : boardId를 배열 형태로? for문 같은 걸로 like 배열과 unlike 배열로 나누기
             // 전체 배열에 있는 애를 페이징에 맞춰 자른 다음 보내기?
 
-            return boardList;
+            return { boardList, likedCheck };
         } catch (e) {
             throw new Error(e);
         }
     }
+
+    // async likedCheck(boardId, token) {
+    //     try {
+    //     } catch (e) {
+    //         throw new Error(e);
+    //     }
+    // }
 
     async getview(id) {
         try {
             const { dataValues: content } = await this.boardRepo.getViewContent(id);
             const hashtag = await this.boardRepo.getViewHashTag(id);
             const files = await this.boardRepo.getViewFiles(id);
+            const comment = await this.boardRepo.getViewComment(id);
+
+            console.log(comment);
             // const likedCount = await this.boardRepo.getLikedCount(id);
             // const comment = await this.boardRepo.getViewComment(id);
             // console.log(content.dataValues);
 
-            return { content, hashtag, files };
+            return { content, hashtag, files, comment };
         } catch (e) {
             throw new Error(e);
         }

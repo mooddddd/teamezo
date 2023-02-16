@@ -15,7 +15,7 @@ class BoardRepo {
             throw new Error(e);
         }
     }
-    async getBoardList(page) {
+    async getBoardList(page, token) {
         // limit 10
         try {
             const listAll = await this.models.Board.findAll({ raw: true });
@@ -31,20 +31,20 @@ class BoardRepo {
             const boardList = await this.models.Board.findAll({ raw: true, offset: page * 10 - 10, limit: 10, order: [["id", "desc"]] });
 
             const boardIdArr = boardList.map((v) => v.id);
+
             const searchImg = boardIdArr.map((id) => this.models.File.findAll({ raw: true, where: { boardId: id }, limit: 1 }));
             const img = await Promise.all(searchImg);
             const imgArr = img.map((v) => {
                 return v[0];
             }); // [{}, {}, {}]
-
-            // console.log(imgArr[1].fileUrl);
-
             const list = boardList.map((v, index) => {
                 if (imgArr[index] != undefined) {
                     v.fileUrl = imgArr[index].fileUrl;
                 }
                 return v;
             });
+
+            // const serchLiked = boardIdArr.map(() => { where page,token });
 
             // console.log(list);
 
@@ -56,14 +56,14 @@ class BoardRepo {
         }
     }
 
-    async getLikedCount(boardId) {
-        // limit 10
-        try {
-            // boardId로 검색해서 갯수만 던져주면 됨, 좋아요 데이터가 들어가는 건 브라우저에서 js로 처리함
-        } catch (e) {
-            throw new Error(e);
-        }
-    }
+    // async getLikedCheck(boardId, token) {
+    //     // limit 10
+    //     try {
+    //         // boardId로 검색해서 갯수만 던져주면 됨, 좋아요 데이터가 들어가는 건 브라우저에서 js로 처리함
+    //     } catch (e) {
+    //         throw new Error(e);
+    //     }
+    // }
 
     async getLiked(userid, boardId) {
         try {
@@ -107,6 +107,11 @@ class BoardRepo {
     async getViewFiles(id) {
         const filesResult = await this.models.File.findAll({ raw: true, where: { boardId: id } });
         return filesResult;
+    }
+
+    async getViewComment(id) {
+        const commentResult = await this.models.Comment.findAll({ raw: true, where: { boardId: id } });
+        return commentResult;
     }
 
     async insertContent(tagArr, rest, filenameArr) {

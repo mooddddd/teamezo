@@ -72,19 +72,19 @@
 
                         <!-- 전체 댓글창 -->
                         <div class="viewComment">
-                            <div class="commentCount">댓글({{commentCount}})</div>
+                            <div class="commentCount">댓글({{comment.length}})</div>
 
                             <!-- 원댓 -->
-                            {% for item in commentResult %}
+                            {% for reply in comment %}
                             <div class="upperComment">
                                 <div class="userCommnetContent">
                                     <div class="avatar">
-                                        <a> <img src="/img/{{item.avatar}}" /> </a>
+                                        <a> <img src="/img/{{reply.avatar}}" /> </a>
                                     </div>
                                     <div class="commentCenterContent">
                                         <ul>
-                                            <li><sapn class="commentWriter">{{item.user_userid}}</sapn> <span class="commentDate">{{item.createAt}}</span></li>
-                                            <li>{{item.content}}</li>
+                                            <li><sapn class="commentWriter">{{reply.userid}}</sapn> <span class="commentDate">{{reply.createAt}}</span></li>
+                                            <li>{{reply.content}}</li>
                                             <li><a href="#">답글쓰기</a></li>
                                         </ul>
                                     </div>
@@ -96,7 +96,7 @@
 
                                 <!-- 답댓 쓰기창 -->
                                 <div class="commentReplyBox off">
-                                    <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments?idx=">
+                                    <form method="post" action="/board/view?id={{content.id}}/comments?idx={{reply.id}}">
                                         <!-- <span>내닉네임</span><br /> -->
                                         <div>
                                             <input type="hidden" name="userid" value="mood" />
@@ -178,10 +178,10 @@
 
                             <!-- 댓글쓰기 -->
                             <div class="writeCommentForm">
-                                <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments">
+                                <form method="post" action="/board/view/comments">
                                     <!-- <span>내닉네임</span><br /> -->
                                     <div>
-                                        <input type="hidden" />
+                                        <input type="hidden" name="boardId" value="{{content.id}}" />
                                         <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
                                         <button type="submit">등록</button>
                                     </div>
