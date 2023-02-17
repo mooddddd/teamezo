@@ -1,6 +1,6 @@
 const user = [
     {
-        userid: `pp`,
+        userid: `admin`,
         userpw: `password`,
         username: `제의아해`,
         nickname: `charey`,
@@ -11,11 +11,11 @@ const user = [
         email: `ckstn10@gamil.com`,
         provider: `local`,
         introduce: `나는 바보입니다...`,
+        admin: false,
     },
 ]
 
-for(let i = 0; i <= 51; i++){
-
+for (let i = 0; i <= 51; i++) {
     const obj = {
         userid: `char${i}ey`,
         userpw: `password${i}`,

@@ -9,13 +9,12 @@ class AuthController {
             const token = await this.authService.token({ userid, userpw })
             console.log('auth Controller token')
             console.log(token)
-            const [header, payload, signature] = token.split('.')
-            console.log('payload')
+            // const [header, payload, signature] = token.split('.')
+            // console.log('payload')
 
-            const pl = JSON.parse(payload)
-            console.log('plplplplpl')
-            console.log(pl)
-            res.json(pl)
+            // console.log(payload)
+
+            res.json(token)
         } catch (e) {
             next(e)
         }

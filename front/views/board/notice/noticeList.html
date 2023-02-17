@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/root.css" />
-    <link rel="stylesheet" href="/css/layout/header.css" />
-    <link rel="stylesheet" href="/css/layout/listForm.css" />
-    <link rel="stylesheet" href="/css/layout/footer.css" />
-  </head>
-  <body>
-    {% include 'layout/header.html' %} {% include 'layout/listForm.html' %} {% include 'layout/footer.html' %}
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/header.css" />
+        <link rel="stylesheet" href="/css/layout/listForm.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
+        <link rel="stylesheet" href="/css/board/boardList.css" />
+    </head>
+    <body>
+        {% include 'layout/header.html' %}
+        <article>
+            <div id="listForm">
+                <div class="top">
+                    <h1>{{board}}</h1>
+                    <span></span>
+                </div>
+                <table class="content">
+                    <tbody>
+                        <tr>
+                            <th class="per10">번호</th>
+                            <th class="per40">제목</th>
+                            <th class="per20">작성자</th>
+                            <th class="per20">등록일</th>
+                            <th class="per10">조회수</th>
+                        </tr>
+                        {% for item in boardList %}
+                        <tr>
+                            <td class="per10">{{item.id}}</td>
+                            <td class="title per40">
+                                <a href="/{{board}}/view?idx={{item.idx}}">{{item.subject}}</a>
+                            </td>
+                            <td class="per20">{{item.userid}}</td>
+                            <td class="per20">{{item.createAt}}</td>
+                            <td class="per10">{{item.hit}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                    <!-- {%if count === 0 %}
+              <div>
+                  <span>[ 등록된 글이 없습니다 ]</span>
+              </div>
+              {%endif%} -->
+                </table>
+                <div class="bottom">
+                    {% for number in btnNumber %}
+                    <span class="pageNumber">{{number}}</span>
+                    {% endfor %} {% if userAdmin === 1 %}
+                    <a href="/{{board}}/write" class="bottomWriteTag">글쓰기</a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+        {% include 'layout/footer.html' %}
+        <script src="/js/notice/noticeList.js"></script>
+    </body>
 </html>

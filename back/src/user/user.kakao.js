@@ -5,26 +5,33 @@ class UserKakao {
         this.crypto = jwt.crypto
     }
 
-    // async addKakaoInfo(req, res, next) {
-    //     try {
-    //         console.log('req.headers.authorization')
-    //         console.log(req.headers.authorization)
-    //         console.log('kakaoUser')
-    //         console.log(kakaoUser)
-    //         if (!req.headers.authorization) throw new Error('Authorzation 없음...')
-    //         const [type, token] = req.header.authorization.split(' ')
-    //         console.log('user.Kakao token')
-    //         console.log(token)
-    //         if (type.toLowerCase() !== 'bearer') throw new Error('Authorization Type 에러입니다..')
+    async addKakaoInfo(kakaoData) {
+        try {
+            console.log('kakaoUser')
+            const kakaoDataId = kakaoData.id.toString()
 
-    //         const user = await this.userRepository.getInfo(kakaoUser)
-    //         console.log('user.controller getMyInfo')
-    //         console.log(user)
-    //         res.json(user)
-    //     } catch (e) {
-    //         next(e)
-    //     }
-    // }
+            const hash = this.crypto
+                .createHmac('sha256', process.env.SALT)
+                .update(kakaoDataId)
+                .digest('hex')
+
+            const kakaoUser = {
+                userid: kakaoDataId,
+                userpw: hash,
+                username: kakaoData.properties.nickname,
+                email: kakaoData.kakao_account.email,
+                avatarUrl: kakaoData.properties.profile_image,
+                provider: 'kakao',
+            }
+
+            const user = await this.userRepository.getInfo(kakaoUser)
+            console.log('user.controller getMyInfo')
+            console.log(user)
+            return user
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
 }
 
 module.exports = UserKakao

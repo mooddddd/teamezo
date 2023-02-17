@@ -24,49 +24,49 @@ module.exports = (sequelize, Sequelize) => {
                         defaultValue: false,
                     },
                     createAt: {
-                        type: Sequelize.DATE,
-                        defaultValue: sequelize.fn("now"),
+                        type: Sequelize.DATEONLY,
+                        // defaultValue: sequelize.fn('now'),
                     },
                 },
                 { sequelize }
-            );
+            )
         }
         static associate(model) {
             this.belongsTo(model.User, {
-                foreignKey: "userid",
-            });
+                foreignKey: 'userid',
+            })
 
             this.hasMany(model.Comment, {
-                foreignKey: "boardId",
-            });
+                foreignKey: 'boardId',
+            })
             this.hasMany(model.File, {
-                foreignKey: "boardId",
-            });
+                foreignKey: 'boardId',
+            })
             this.hasMany(model.Point, {
-                foreignKey: "boardId",
-            });
+                foreignKey: 'boardId',
+            })
 
             this.hasMany(model.Liked, {
-                foreignKey: "boardId",
-            });
+                foreignKey: 'boardId',
+            })
 
             this.belongsToMany(model.HashName, {
-                through: "HashTag",
-                foreignKey: "boardId",
-            });
+                through: 'HashTag',
+                foreignKey: 'boardId',
+            })
 
             this.belongsTo(model.File, {
-                foreignKey: "fileId",
-            });
+                foreignKey: 'fileId',
+            })
 
             this.belongsTo(model.MainCategory, {
-                foreignKey: "mainName",
-            });
+                foreignKey: 'mainName',
+            })
 
             this.belongsTo(model.SubCategory, {
-                foreignKey: "subName",
-            });
+                foreignKey: 'subName',
+            })
         }
     }
-    Board.initialize();
-};
+    Board.initialize()
+}
