@@ -172,6 +172,47 @@ class BoardRepo {
         return result;
     }
 
+    async modifyContent(body) {
+        const { id, tagName, ...rest } = body;
+        const newTag = tagName[1].split(",");
+        const result = await this.models.Board.update(
+            {
+                mainName: rest.mainName,
+                subName: rest.subName,
+                subject: rest.subject,
+                content: rest.content,
+            },
+            {
+                where: { id },
+            }
+        );
+        // console.log(this.modifyHashTag(id, newTag));
+        // console.log(result);
+        const addNewHash = await this.modifyHashTag(id, newTag);
+        // console.log(addNewHash);
+        // await result.addHashNames(addNewHash.map((v) => v[0]));
+        // await result.addHashNames(addNewHash.map((v) => v[0]));
+        return id;
+    }
+
+    async modifyHashTag(id, newTag) {
+        // console.log(newTag);
+        if (!newTag) return;
+        await this.models.HashTag.destroy({ where: { boardId: id } });
+        // console.log(newTag);
+        const newCreateTag = newTag.map((tagName) => this.models.HashName.findOrCreate({ raw: true, where: { tagName } }));
+        const newTagArr = (await Promise.all(newCreateTag)).map((v) => v[0]);
+        // console.log(newTagArr[0].tagName);
+        // for (let i = 0; i <= newTagArr.length; i++) {
+        //     this.models.HashTag.create({ boardId: id, tagName: `"${newTagArr[i].tagName}"` });
+        // }
+        const tags = newTagArr.map((v, idx) => this.models.HashTag.create({ tagName: v.tagName, boardId: id }));
+
+        // const test = await newTagArr.map((v) => this.models.HashTag.create({ boardId: id, tagName: v }));
+        // // await Promise.all(deletePromise);
+        return;
+    }
+
     // async postBoardContent(body, file) {
     //     // 한 거
     //     // console.log(body.mainName); // {mainName: , subName: , subject: , content: }{tagName: ['','']}

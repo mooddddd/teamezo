@@ -102,6 +102,7 @@ hashtagBox.addEventListener("keydown", addHashtag);
 
 /* 전체데이터 submit 하기(백으로 보내기) */
 const writeDataForm = document.querySelector(".write > form");
+const value = document.querySelector(".write > form>input");
 const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -115,22 +116,21 @@ const submitHandler = async (e) => {
     let body = new FormData(e.target);
     body.append("tagName", tagNamesArr);
 
-    if (writeDataForm.action === "/board/write") {
-        console.log(`hi`);
+    if (value.value === "write") {
         const insertBoardContent = await axios.post("http://localhost:3000/board/write", body, {
             header: {
                 ["Content-type"]: "multipart/form-data",
             },
         });
-
-        console.log(insertBoardContent.data);
         location.href = `/board/view?id=${insertBoardContent.data}`;
-    } else if (writeDataForm.action === "board/modify") {
+    } else if (value.value === "modify") {
         const modifyBoardContent = await axios.post("http://localhost:3000/board/modify", body, {
             header: {
                 ["Content-type"]: "multipart/form-data",
             },
+            // 파일 보내면 오류나서 우선은 body만 업데이트 해보쟈
         });
+        location.href = `/board/view?id=${modifyBoardContent.data}`;
     }
 };
 writeDataForm.addEventListener("submit", submitHandler);

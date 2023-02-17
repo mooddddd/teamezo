@@ -1,20 +1,18 @@
-const { TableHints } = require('sequelize')
-
 class BoardService {
     constructor({ boardRepo, jwt }) {
-        this.boardRepo = boardRepo
-        this.jwt = jwt
-        this.crypto = jwt.crypto
+        this.boardRepo = boardRepo;
+        this.jwt = jwt;
+        this.crypto = jwt.crypto;
     }
 
     async getCategory() {
-        const categoryList = await this.boardRepo.getCategoryList()
-        return categoryList
+        const categoryList = await this.boardRepo.getCategoryList();
+        return categoryList;
     }
 
     async getList(page) {
         try {
-            const boardList = await this.boardRepo.getBoardList(page)
+            const boardList = await this.boardRepo.getBoardList(page);
             // const likedCheck = await this.boardRepo.getLikedCheck(page, token);
 
             // console.log(boardList);
@@ -25,51 +23,51 @@ class BoardService {
             // 가져올 데이터 : boardId를 배열 형태로? for문 같은 걸로 like 배열과 unlike 배열로 나누기
             // 전체 배열에 있는 애를 페이징에 맞춰 자른 다음 보내기?
 
-            return boardList
+            return boardList;
         } catch (e) {
-            throw new Error(e)
+            throw new Error(e);
         }
     }
 
     async getview(id) {
         try {
-            const { dataValues: content } = await this.boardRepo.getViewContent(id)
-            const hashtag = await this.boardRepo.getViewHashTag(id)
-            const files = await this.boardRepo.getViewFiles(id)
-            const { commentResult, replyResult } = await this.boardRepo.getViewComment(id)
+            const { dataValues: content } = await this.boardRepo.getViewContent(id);
+            const hashtag = await this.boardRepo.getViewHashTag(id);
+            const files = await this.boardRepo.getViewFiles(id);
+            const { commentResult, replyResult } = await this.boardRepo.getViewComment(id);
             // const likedCount = await this.boardRepo.getLikedCount(id);
             // const comment = await this.boardRepo.getViewComment(id);
             // console.log(content.dataValues);
 
-            return { content, hashtag, files, commentResult, replyResult }
+            return { content, hashtag, files, commentResult, replyResult };
         } catch (e) {
-            throw new Error(e)
+            throw new Error(e);
         }
     }
 
     async postComment(value) {
-        const { dataValues: comment } = await this.boardRepo.insertComment(value)
-        return comment
+        const { dataValues: comment } = await this.boardRepo.insertComment(value);
+        return comment;
     }
 
     async postListLiked(body) {
-        const { boardId, userid } = body
+        const { boardId, userid } = body;
         // console.log(boardId, userid);
-        const result = await this.boardRepo.postListLiked(userid, boardId)
-        return result
+        const result = await this.boardRepo.postListLiked(userid, boardId);
+        return result;
     }
 
     async postBoardContent(body, files) {
-        const { tagName, ...rest } = body
+        const { tagName, ...rest } = body;
         if (tagName) {
-            const tagArr = tagName.split(',') //['sadf','dfs','asdfsa']
-            const filenameArr = files.map((v) => v.filename)
-            const insertContent = await this.boardRepo.insertContent(rest, filenameArr, tagArr)
-            return insertContent
+            const tagArr = tagName.split(","); //['sadf','dfs','asdfsa']
+            const filenameArr = files.map((v) => v.filename);
+            const insertContent = await this.boardRepo.insertContent(rest, filenameArr, tagArr);
+            return insertContent;
         } else {
-            const filenameArr = files.map((v) => v.filename)
-            const insertContent = await this.boardRepo.insertContent(rest, filenameArr)
-            return insertContent
+            const filenameArr = files.map((v) => v.filename);
+            const insertContent = await this.boardRepo.insertContent(rest, filenameArr);
+            return insertContent;
         }
 
         // const insertFile = await this.boardRepo.insertFile(filenameArr);
@@ -81,6 +79,22 @@ class BoardService {
 
         // 리턴값으로 들어간 데이터의 id를 리턴해줌
     }
+
+    async postModify(body) {
+        console.log(body);
+        try {
+            // const { id, tagName, ...rest } = body;
+            // if (tagName) {
+            //     const newTag = tagName[1].split(",");
+            //     const test = await this.boardRepo.modifyHashTag(id, newTag);
+            //     // console.log(test);
+            // } else return;
+            const modifyContent = await this.boardRepo.modifyContent(body);
+            return modifyContent;
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
 }
 
-module.exports = BoardService
+module.exports = BoardService;

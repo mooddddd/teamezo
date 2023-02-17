@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/header.css" />
         <link rel="stylesheet" href="/css/layout/writeForm.css" />
@@ -22,6 +23,7 @@
 
                 <div class="write">
                     <form method="post" action="/board/modify" enctype="multipart/form-data">
+                        <input type="hidden" , value="modify" />
                         <ul>
                             <li class="subject">
                                 <select class="mainCategorySelect" name="mainName">
@@ -41,6 +43,7 @@
                                 </select>
 
                                 <br />
+                                <input type="hidden" name="id" value="{{content.id}}" />
                                 <input type="text" name="subject" value="{{content.subject}}" />
                             </li>
 
