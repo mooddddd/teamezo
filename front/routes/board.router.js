@@ -17,6 +17,6 @@ router.post("/view/comment", controller.postComment);
 router.get("/modify", controller.getModify);
 // router.post("/modify");
 
-// router.get("/delete");
+router.get("/delete", controller.getDelete);
 
 module.exports = router;

@@ -51,6 +51,16 @@ exports.getModify = async (req, res) => {
     }
 };
 
+exports.getDelete = async (req, res) => {
+    try {
+        const id = req.query.id;
+        await request.get(`/delete?id=${id}`);
+        res.redirect(`/board/list?page=1`);
+    } catch (e) {
+        throw new Error(e);
+    }
+};
+
 /* 뷰 view */
 exports.getView = async (req, res) => {
     // findOne 해와야 함

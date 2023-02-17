@@ -14,6 +14,8 @@ router.post("/write", upload.array("fileUrl"), (req, res, next) => boardControll
 router.get("/modify", (req, res, next) => boardController.getModify(req, res, next));
 router.post("/modify", upload.array("fileUrl"), (req, res, next) => boardController.postmodify(req, res, next));
 
+router.get("/delete", (req, res, next) => boardController.getDelete(req, res, next));
+
 router.post("/view/comment", (req, res, next) => boardController.getComment(req, res, next));
 
 module.exports = router;

@@ -85,6 +85,15 @@ class BoardController {
         const boardId = await this.boardService.postModify(req.body);
         res.json(boardId);
     }
+
+    // 글 삭제
+    async getDelete(req, res, next) {
+        try {
+            const contentDelete = await this.boardService.getDelete(req.query.id);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 module.exports = BoardController;

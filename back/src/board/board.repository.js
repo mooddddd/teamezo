@@ -48,13 +48,6 @@ class BoardRepo {
                 }
                 return v;
             });
-
-            // const serchLiked = boardIdArr.map(() => { where page,token });
-
-            // console.log(list);
-
-            // const imgList
-
             return { list, startNumber, endNumber, totalPage, listCount, imgArr };
         } catch (e) {
             throw new Error(e);
@@ -98,8 +91,6 @@ class BoardRepo {
                 });
                 return destroy; // 무조건 1
             }
-            // console.log(userid, Number(boardId));
-            // console.log(Number(boardId));
             // 찾아서 없으면 추가+return true, 있으면 삭제+return false
         } catch (e) {}
     }
@@ -186,12 +177,7 @@ class BoardRepo {
                 where: { id },
             }
         );
-        // console.log(this.modifyHashTag(id, newTag));
-        // console.log(result);
         const addNewHash = await this.modifyHashTag(id, newTag);
-        // console.log(addNewHash);
-        // await result.addHashNames(addNewHash.map((v) => v[0]));
-        // await result.addHashNames(addNewHash.map((v) => v[0]));
         return id;
     }
 
@@ -211,6 +197,10 @@ class BoardRepo {
         // const test = await newTagArr.map((v) => this.models.HashTag.create({ boardId: id, tagName: v }));
         // // await Promise.all(deletePromise);
         return;
+    }
+
+    async getDelete(id) {
+        await this.models.Board.destroy({ where: { id } });
     }
 
     // async postBoardContent(body, file) {
