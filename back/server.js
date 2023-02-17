@@ -2,14 +2,15 @@ const app = require("./app");
 const { sequelize } = require("./models");
 const port = process.env.PORT || 3000;
 
-const user = require("./dummy/user_data");
-const mainCategory = require("./dummy/cate_data");
-const subCategory = require("./dummy/sub_data");
-const board = require("./dummy/board_data");
+const user = require('./dummy/user_data')
+const mainCategory = require('./dummy/cate_data')
+const subCategory = require('./dummy/sub_data')
+const board = require('./dummy/board_data')
+const qna = require('./dummy/qna.data')
 
 app.listen(3000, async () => {
-    await sequelize.sync({ force: false });
-    console.log("Database Connected!");
+    await sequelize.sync({ force: false })
+    console.log('Database Connected!')
 
     // for (let i = 0; i <= user.length - 1; i++) {
     //     await sequelize.models.User.create(user[i]);
@@ -24,8 +25,12 @@ app.listen(3000, async () => {
     // }
 
     // for (let i = 0; i <= board.length - 1; i++) {
-    //     await sequelize.models.Board.create(board[i]);
+
+    //     await sequelize.models.Board.create(board[i])
     // }
+    for (let i = 0; i <= qna.length - 1; i++) {
+        await sequelize.models.Qna.create(qna[i])
+    }
 
     // await sequelize.models.HashName.create({ tagName: "javascript" });
     // await sequelize.models.HashName.create({ tagName: "c++" });
@@ -56,5 +61,5 @@ app.listen(3000, async () => {
     // await sequelize.models.File.create({ fileUrl: "upload/asdf.jpg", boardId: 7 });
     // await sequelize.models.File.create({ fileUrl: "upload/asdf.jpg", boardId: 7 });
 
-    console.log(`Running on http://localhost:${port}`);
-});
+    console.log(`Running on http://localhost:${port}`)
+})

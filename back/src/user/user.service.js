@@ -42,9 +42,12 @@ class UserService {
     async loginIdChk({ userid }) {
         try {
             console.log('userService loginIdChk')
+            console.log(userid)
+
             const userId = await this.userRepository.checkUserId({ userid })
             console.log('userService loginIdChk after')
             console.log(userId)
+
             if (userId === null) {
                 return userId
             } else throw '아이디 중복인디?!'

@@ -1,93 +1,100 @@
 #listForm {
-  width: 120rem;
-  margin: 0 auto;
+    width: 120rem;
+    margin: 0 auto;
 }
 
 #listForm > .top {
-  margin-top: 10rem;
-  padding: 1rem 0;
-  border-bottom: 0.1rem solid #646464;
+    margin-top: 10rem;
+    padding: 1rem 0;
+    border-bottom: 0.1rem solid #646464;
 }
 
 #listForm > .top > h1 {
-  color: #adc46d;
-  font-size: 3rem;
-  font-weight: bold;
+    color: #adc46d;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
 #listForm > .content {
-  margin-top: 1rem;
-  width: 100%;
+    margin-top: 1rem;
+    width: 100%;
 }
 
 #listForm > .content {
-  width: 90%;
-  border-collapse: collapse;
-  font-size: 1.3rem;
-  margin: 2rem auto;
+    width: 90%;
+    border-collapse: collapse;
+    font-size: 1.3rem;
+    margin: 2rem auto;
 }
 
 #listForm > .content > tbody > tr {
-  /* width: 80%; */
-  text-align: center;
-  padding-top: 1rem;
-  height: 3rem;
+    /* width: 80%; */
+    text-align: center;
+    padding-top: 1rem;
+    height: 3rem;
 }
 
 #listForm > .content > tbody > tr > th {
-  font-size: 1.7rem;
-  padding-bottom: 1rem;
+    font-size: 1.7rem;
+    padding-bottom: 1rem;
 }
 
 #listForm > .content > tbody > tr > td {
-  font-size: 1.3rem;
-  border-bottom: 0.1rem solid #646464;
-  padding: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 0.1rem solid #646464;
+    padding: 1rem;
 }
 
 #listForm > .content > tbody > tr > td > a {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
 #listForm > .content > tbody > tr > td > a:hover {
-  color: #adc46d;
-  font-weight: bold;
+    color: #adc46d;
+    font-weight: bold;
 }
 
 #listForm > .content > tbody > tr > .title {
-  margin-left: 1rem;
-  text-align: left;
+    margin-left: 1rem;
+    text-align: left;
 }
 
 #listForm > .content > tbody > tr > .per10 {
-  width: 10%;
+    width: 10%;
 }
 #listForm > .content > tbody > tr > .per20 {
-  width: 20%;
+    width: 20%;
 }
 #listForm > .content > tbody > tr > .per40 {
-  width: 40%;
+    width: 40%;
 }
 
 #listForm > .bottom {
-  margin: 2rem auto;
-  width: 30%;
-  text-align: center;
-  margin-bottom: 12rem;
+    margin: 2rem auto;
+    width: 70%;
+    text-align: center;
+    margin-bottom: 12rem;
 }
 
 #listForm > .bottom > ul > li {
-  display: inline-block;
-  padding: 1rem;
+    display: inline-block;
+    padding: 1rem;
 }
 
 #listForm > .bottom > ul > li > a {
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
 }
 
 #listForm > .bottom > ul > li > a:hover {
-  color: #adc46d;
+    color: #adc46d;
+}
+
+.bottomWriteTag {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
 }

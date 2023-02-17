@@ -8,8 +8,6 @@ class AuthService {
     async token({ userid, userpw }) {
         try {
             if (!userid || !userpw) throw '입력하셈'
-            console.log('process.env.SALT')
-            console.log(process.env.SALT === 'teamezo')
             const hash = this.crypto.createHmac('sha256', 'teamezo').update(userpw).digest('hex')
             console.log('hash')
             console.log(hash)
@@ -17,10 +15,10 @@ class AuthService {
             console.log('service user')
             console.log(user)
 
-            const token = this.jwt.sign(user)
-            console.log('auth.service token')
-            console.log(token)
-            return token
+            // const token = this.jwt.sign(user)
+            // console.log('auth.service token')
+            console.log(user.userid)
+            return user
         } catch (e) {
             throw new Error(e)
         }
