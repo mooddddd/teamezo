@@ -58,8 +58,6 @@ class UserRepository {
                     order: [['id', 'desc']],
                 },
             })
-            console.log('repository user')
-            console.log(user)
 
             return user
         } catch (e) {

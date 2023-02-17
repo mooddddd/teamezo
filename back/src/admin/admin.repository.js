@@ -8,6 +8,7 @@ class AdminRepository {
             const pageNum = await this.models.User.findAll({ raw: true, })
             const totalPage = Math.ceil(pageNum.length / 5)
             let current = Number(page)*5-4
+            
             let startNumber = current/5 - (current/5 % 5) + 1
             let endNumber = current/5 - (current/5 % 5) + 5
 

@@ -10,10 +10,11 @@
         <link rel="stylesheet" href="/css/layout/footer.css" />
         <link rel="stylesheet" href="/css/index.css">
         <script src="/js/index.js" defer></script>
-        <script src="/js/layout/header.js" defer></script>
-        <script src="/js/layout/sidebar.js" defer></script>
+        <!-- <script src="/js/layout/header.js" defer></script> -->
+        <!-- <script src="/js/layout/sidebar.js" defer></script> -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://kit.fontawesome.com/18286462db.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     </head>
     <body>
         {% include 'layout/header.html' %}
@@ -24,24 +25,11 @@
                         <li class="category_path">
                             <a href="/">Hot</a>
                         </li>
+                        {% for category in mainName %}
                         <li class="category_path">
-                            <a href="/">Category_1</a>
+                            <a href="/search?category={{category}}">{{category}}</a>
                         </li>
-                        <li class="category_path">
-                            <a href="/">Category_2</a>
-                        </li>
-                        <li class="category_path">
-                            <a href="/">Category_3</a>
-                        </li>
-                        <li class="category_path">
-                            <a href="/">Category_4</a>
-                        </li>
-                        <li class="category_path">
-                            <a href="/">Category_5</a>
-                        </li>
-                        <li class="category_path">
-                            <a href="/">Category_6</a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="media">
@@ -52,35 +40,34 @@
                     <h2>function's description - user, board, notice, qna, admin,... </h2>
                 </div>
                 <div class="searchBox">
-                    <form action="">
+                    <form action="/search" method="post">
                         <img src="/img/search.png">
-                        <input type="search" placeholder="Search...">
+                        <input type="search" placeholder="subject, content, hashtag, ..." name="search">
                     </form>
                 </div>
                 <ul class="hashTag">
                     <li class="search_hash_header">hashtag search</li>
-                    <li class="search_hash"><a href=""># hong_tae</a></li>
-                    <li class="search_hash"><a href=""># eun_ji</a></li>
-                    <li class="search_hash"><a href=""># hong_tae</a></li>
-                    <li class="search_hash"><a href=""># char1ey</a></li>
-                    <li class="search_hash"><a href=""># hong_tae</a></li>
+                    {% for hash in tagName %}
+                    <li class="search_hash"><a href="/search?tagName={{hash}}">#{{hash}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="board_container">
                 <div id="content">
                     <div id="main_content">
                         <ol class="content_grid">
+                            {% for board in list %}
                             <li>
                                 <div class="figure_container">
                                     <figure>
-                                        <img src="/img/welcomeback.jpg">
+                                        <img src="{{board.fileUrl}}">
                                     </figure>
-                                    <a class="board_view" href=""></a>
+                                    <a class="board_view" href="/board/view?id={{board.id}}"></a>
                                 </div>
                                 <div class="board_information">
                                     <div class="user_information">
                                         <div><img src=""></div>
-                                        <div>userid</div>
+                                        <div>{{board.userid}}</div>
                                     </div>
                                     <div class="function_box">
                                         <div class="liked_box">
@@ -89,276 +76,12 @@
                                         </div>
                                         <div class="hit_box">
                                             <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
+                                            <div>{{board.hit}}</div>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/welcomeback.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src=""></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/1676369985587.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src="/img/profileEdit.PNG"></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/1676369985587.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src="/img/profileEdit.PNG"></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/1676369985587.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src="/img/profileEdit.PNG"></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="figure_container">
-                                    <figure>
-                                        <img src="/img/1676369985587.jpg">
-                                    </figure>
-                                    <a class="board_view" href=""></a>
-                                </div>
-                                <div class="board_information">
-                                    <div class="user_information">
-                                        <div><img src="/img/profileEdit.PNG"></div>
-                                        <div>userid</div>
-                                    </div>
-                                    <div class="function_box">
-                                        <div class="liked_box">
-                                            <i class="fa-solid fa-heart"></i>
-                                            <div>429</div>
-                                        </div>
-                                        <div class="hit_box">
-                                            <i class="fa-sharp fa-solid fa-eye"></i>
-                                            <div>429</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
+                            {% endfor %}
                         </ol>
                     </div>
                 </div>
@@ -384,7 +107,9 @@
                 <div id="chatHeader">
                     <div id="cancelBtn"></div>
                 </div>
-                <template id="chatLeft">
+                <ul class="chatContentsLeft"></ul>
+                <ul class="chatContentsRight"></ul>
+                <!-- <template id="chatLeft">
                     <ul class="chatContentsLeft">
                         <li class="chatUserName">char1ey</li>
                         <li class="chatContent">아 하기싫다.</li>
@@ -394,11 +119,11 @@
                     <ul class="chatContentsRight">
                         <li class="chatContent">나도 하기싫다.</li>
                     </ul>
-                </template>
-                <div id="chatBox">
-                    <input type="text">
-                    <div>전송</div>
-                </div>
+                </template> -->
+                <form id="chatBox">
+                    <input type="text" name="message">
+                    <button type="submit">전송</button>
+                </form>
             </div>
             {% include 'layout/footer.html' %}
         </div>

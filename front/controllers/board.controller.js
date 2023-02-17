@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-exports.getList = async (req, res) => {
+exports.getList = async (req, res, next) => {
     // 게시물&카테고리 findAll 해와야 함(axios 사용), 좋아요 갯수는 게시물이랑 같이 받아와야 함
     // const list = await request.get();
     try {
