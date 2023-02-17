@@ -1,55 +1,53 @@
 class BoardRepo {
     constructor({ models }) {
-        this.models = models
+        this.models = models;
     }
 
     async getCategoryList() {
         try {
-            const mainCategory = await this.models.MainCategory.findAll()
-            const subCategory = await this.models.SubCategory.findAll()
-            return { mainCategory, subCategory }
+            const mainCategory = await this.models.MainCategory.findAll({ raw: true });
+            const subCategory = await this.models.SubCategory.findAll({ raw: true });
+            return { mainCategory, subCategory };
             // return mainCategory;
         } catch (e) {
-            throw new Error(e)
+            throw new Error(e);
         }
     }
     async getBoardList(page, token) {
         // limit 10
         try {
-            console.log('getBoardList')
-            const listAll = await this.models.Board.findAll({ raw: true, where: { notice: false } })
-            const listCount = listAll.length
-            const totalPage = Math.ceil(listAll.length / 10)
-            let current = page * 10 - 9
+            console.log("getBoardList");
+            const listAll = await this.models.Board.findAll({ raw: true, where: { notice: false } });
+            const listCount = listAll.length;
+            const totalPage = Math.ceil(listAll.length / 10);
+            let current = page * 10 - 9;
 
-            let startNumber = current / 10 - ((current / 10) % 5) + 1
-            let endNumber = current / 10 - ((current / 10) % 5) + 5
+            let startNumber = current / 10 - ((current / 10) % 5) + 1;
+            let endNumber = current / 10 - ((current / 10) % 5) + 5;
             if (endNumber > totalPage) {
-                endNumber = totalPage
+                endNumber = totalPage;
             }
             const boardList = await this.models.Board.findAll({
                 raw: true,
                 offset: page * 10 - 10,
                 limit: 10,
-                order: [['id', 'desc']],
+                order: [["id", "desc"]],
                 where: { notice: false },
-            })
+            });
 
-            const boardIdArr = boardList.map((v) => v.id)
+            const boardIdArr = boardList.map((v) => v.id);
 
-            const searchImg = boardIdArr.map((id) =>
-                this.models.File.findAll({ raw: true, where: { boardId: id }, limit: 1 })
-            )
-            const img = await Promise.all(searchImg)
+            const searchImg = boardIdArr.map((id) => this.models.File.findAll({ raw: true, where: { boardId: id }, limit: 1 }));
+            const img = await Promise.all(searchImg);
             const imgArr = img.map((v) => {
-                return v[0]
-            }) // [{}, {}, {}]
+                return v[0];
+            }); // [{}, {}, {}]
             const list = boardList.map((v, index) => {
                 if (imgArr[index] != undefined) {
-                    v.fileUrl = imgArr[index].fileUrl
+                    v.fileUrl = imgArr[index].fileUrl;
                 }
-                return v
-            })
+                return v;
+            });
 
             // const serchLiked = boardIdArr.map(() => { where page,token });
 
@@ -57,9 +55,9 @@ class BoardRepo {
 
             // const imgList
 
-            return { list, startNumber, endNumber, totalPage, listCount, imgArr }
+            return { list, startNumber, endNumber, totalPage, listCount, imgArr };
         } catch (e) {
-            throw new Error(e)
+            throw new Error(e);
         }
     }
 
@@ -76,8 +74,8 @@ class BoardRepo {
         try {
             const result = await this.models.Liked.findOne({
                 where: { userid: `${userid}`, boardId: Number(boardId) },
-            })
-            return result // 좋아요 리스트에 없으면 null
+            });
+            return result; // 좋아요 리스트에 없으면 null
         } catch (e) {}
     }
 
@@ -85,20 +83,20 @@ class BoardRepo {
         try {
             const result = await this.models.Liked.findOne({
                 where: { userid: `${userid}`, boardId: Number(boardId) },
-            })
+            });
             // console.log(result);
             if (result === null) {
                 const insert = await this.models.Liked.create({
                     userid: `${userid}`,
                     boardId: Number(boardId),
-                })
+                });
                 // console.log(insert.dataValues);
-                return insert
+                return insert;
             } else {
                 const destroy = await this.models.Liked.destroy({
                     where: { userid: `${userid}`, boardId: Number(boardId) },
-                })
-                return destroy // 무조건 1
+                });
+                return destroy; // 무조건 1
             }
             // console.log(userid, Number(boardId));
             // console.log(Number(boardId));
@@ -109,9 +107,9 @@ class BoardRepo {
     async getViewContent(id) {
         try {
             // const addHit = await this.models.Board.update()
-            const result = await this.models.Board.findOne({ where: { id: `${id}` } })
+            const result = await this.models.Board.findOne({ where: { id: `${id}` } });
             // console.log(result.dataValues);
-            return result
+            return result;
         } catch (e) {}
     }
 
@@ -119,65 +117,59 @@ class BoardRepo {
         const tagResult = await this.models.HashTag.findAll({
             raw: true,
             where: { boardId: `${id}` },
-        })
-        return tagResult
+        });
+        return tagResult;
     }
 
     async getViewFiles(id) {
-        const filesResult = await this.models.File.findAll({ raw: true, where: { boardId: id } })
-        return filesResult
+        const filesResult = await this.models.File.findAll({ raw: true, where: { boardId: id } });
+        return filesResult;
     }
 
     async getViewComment(id) {
         const commentResult = await this.models.Comment.findAll({
             raw: true,
             where: { boardId: id, classNum: 0 },
-        })
+        });
         const replyResult = await this.models.Comment.findAll({
             raw: true,
             where: { boardId: id, classNum: 1 },
-        })
-        return { commentResult, replyResult }
+        });
+        return { commentResult, replyResult };
     }
 
     async insertContent(rest, filenameArr, tagArr) {
         if (tagArr) {
-            const result = await this.models.Board.create(rest)
-            console.log('rest')
-            console.log(rest)
-            console.log('result')
-            console.log(result)
-            const hashtags = tagArr.map((tagName) =>
-                this.models.HashName.findOrCreate({ raw: true, where: { tagName } })
-            )
-            const tags = await Promise.all(hashtags)
-            await result.addHashNames(tags.map((v) => v[0]))
+            const result = await this.models.Board.create(rest);
+            console.log("rest");
+            console.log(rest);
+            console.log("result");
+            console.log(result);
+            const hashtags = tagArr.map((tagName) => this.models.HashName.findOrCreate({ raw: true, where: { tagName } }));
+            const tags = await Promise.all(hashtags);
+            await result.addHashNames(tags.map((v) => v[0]));
 
-            const files = filenameArr.map((fileUrl) =>
-                this.models.File.create({ fileUrl, boardId: result.id })
-            )
-            const promiseFiles = await Promise.all(files)
+            const files = filenameArr.map((fileUrl) => this.models.File.create({ fileUrl, boardId: result.id }));
+            const promiseFiles = await Promise.all(files);
             // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
 
-            return result.id // 리턴값으로 board 테이블의 id를 반환
+            return result.id; // 리턴값으로 board 테이블의 id를 반환
         } else {
-            const result = await this.models.Board.create(rest)
+            const result = await this.models.Board.create(rest);
 
-            const files = filenameArr.map((fileUrl) =>
-                this.models.File.create({ fileUrl, boardId: result.id })
-            )
+            const files = filenameArr.map((fileUrl) => this.models.File.create({ fileUrl, boardId: result.id }));
 
-            await Promise.all(files)
+            await Promise.all(files);
             // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
-            console.log('result.id')
-            console.log(result.id)
-            return result.id // 리턴값으로 board 테이블의 id를 반환
+            console.log("result.id");
+            console.log(result.id);
+            return result.id; // 리턴값으로 board 테이블의 id를 반환
         }
     }
 
     async insertComment(value) {
-        const result = await this.models.Comment.create(value)
-        return result
+        const result = await this.models.Comment.create(value);
+        return result;
     }
 
     // async postBoardContent(body, file) {
@@ -205,4 +197,4 @@ class BoardRepo {
     // async insertFile(filenameArr) {}
 }
 
-module.exports = BoardRepo
+module.exports = BoardRepo;

@@ -1,3 +1,5 @@
+console.log(`hi`);
+
 // const categoryChange = (e) => {
 //     const subCategotyIT = ["javascript", "nodejs", "html", "css"]; // 서브카테고리를 불러오기
 //     const subCategotyFood = ["한식", "중식", "일식", "양식", "기타"];
@@ -113,14 +115,23 @@ const submitHandler = async (e) => {
     let body = new FormData(e.target);
     body.append("tagName", tagNamesArr);
 
-    const insertBoardContent = await axios.post("http://localhost:3000/board/write", body, {
-        header: {
-            ["Content-type"]: "multipart/form-data",
-        },
-    });
+    if (writeDataForm.action === "/board/write") {
+        console.log(`hi`);
+        const insertBoardContent = await axios.post("http://localhost:3000/board/write", body, {
+            header: {
+                ["Content-type"]: "multipart/form-data",
+            },
+        });
 
-    console.log(insertBoardContent.data);
-    location.href = `/board/view?id=${insertBoardContent.data}`;
+        console.log(insertBoardContent.data);
+        location.href = `/board/view?id=${insertBoardContent.data}`;
+    } else if (writeDataForm.action === "board/modify") {
+        const modifyBoardContent = await axios.post("http://localhost:3000/board/modify", body, {
+            header: {
+                ["Content-type"]: "multipart/form-data",
+            },
+        });
+    }
 };
 writeDataForm.addEventListener("submit", submitHandler);
 

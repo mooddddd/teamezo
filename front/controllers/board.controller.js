@@ -37,13 +37,28 @@ exports.getWrite = async (req, res) => {
 };
 // exports.postWrite = (req, res) => {}; // 포스트는 브라우저에서 바로 백으로 넘김
 
+exports.getModify = async (req, res) => {
+    try {
+        const id = req.query.id;
+        const response = await request.get(`/modify?id=${id}`);
+        const { rest, mainCategory, subCategory } = response.data;
+        const { content, hashtag, files } = rest;
+        console.log(files);
+
+        res.render("board/category/boardEdit.html", { content, hashtag, files, mainCategory, subCategory });
+    } catch (e) {
+        throw new Error(e);
+    }
+};
+
 /* 뷰 view */
 exports.getView = async (req, res) => {
     // findOne 해와야 함
     const id = req.query.id;
     const result = await request.get(`/view?id=${id}`);
     const { content, hashtag, files, commentResult, replyResult } = result.data;
-    res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult });
+    const commentCount = commentResult.length + replyResult.length;
+    res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, commentCount });
 };
 
 /* 댓글 */

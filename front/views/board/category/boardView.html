@@ -38,7 +38,7 @@
                                     <li class="contentCreateDate">{{content.createAt}}</li>
 
                                     {%if content.cookies == content.user_userid %}
-                                    <li class="contentModify"><a href="/board/modify">수정</a></li>
+                                    <li class="contentModify"><a href="/board/modify?id={{content.id}}">수정</a></li>
                                     <li class="contentDelete"><a href="/board/delete">삭제</a></li>
                                     {%endif%}
                                 </ul>
@@ -76,7 +76,7 @@
 
                         <!-- 전체 댓글창 -->
                         <div class="viewComment">
-                            <div class="commentCount">댓글({{comment.length}})</div>
+                            <div class="commentCount">댓글({{commentCount}})</div>
 
                             <!-- 원댓 -->
                             {% for reply in commentResult %}

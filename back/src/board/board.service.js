@@ -11,6 +11,7 @@ class BoardService {
         const categoryList = await this.boardRepo.getCategoryList()
         return categoryList
     }
+
     async getList(page) {
         try {
             const boardList = await this.boardRepo.getBoardList(page)
