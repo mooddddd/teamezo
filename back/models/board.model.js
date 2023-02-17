@@ -24,8 +24,8 @@ module.exports = (sequelize, Sequelize) => {
                         defaultValue: false,
                     },
                     createAt: {
-                        type: Sequelize.DATEONLY,
-                        // defaultValue: sequelize.fn('now'),
+                        type: Sequelize.DATE,
+                        defaultValue: sequelize.fn('now'),
                     },
                 },
                 { sequelize }

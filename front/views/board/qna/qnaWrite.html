@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/root.css" />
-    <link rel="stylesheet" href="/css/layout/header.css" />
-    <link rel="stylesheet" href="/css/layout/writeForm.css" />
-    <link rel="stylesheet" href="/css/layout/footer.css" />
-  </head>
-  <body>
-    {% include 'layout/header.html' %} {% include 'layout/writeForm.html' %} {% include 'layout/footer.html' %}
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/root.css" />
+        <link rel="stylesheet" href="/css/layout/header.css" />
+        <link rel="stylesheet" href="/css/layout/writeForm.css" />
+        <link rel="stylesheet" href="/css/layout/footer.css" />
+    </head>
+    <body>
+        {% include 'layout/header.html' %} 
+        <article>
+          <div id="writeForm">
+            <div class="top">
+              <h1>새글쓰기</h1>
+              <span></span>
+            </div>
+    
+            <div class="write">
+              <form method="post" action="/qna/write">
+                <ul>
+    
+                  <li class="subject">
+                    <input type="text" name="subject" placeholder="제목을 입력하세요" />
+                  </li>
+    
+                  <li class="content">
+                    <textarea name="content" placeholder="내용을 입력하세요"></textarea><br>
+                    <input type="file" name="img" />
+                  </li>
+                  </li>
+                </ul>
+                <button class="submitBtn">등록하기</button>
+              </form>
+              <button class="cancelBtn" onclick="location.href='/qna/list'">돌아가기</button>
+            </div>
+          </div>
+          
+        </article>
+        {% include 'layout/footer.html' %}
+        <script src="/js/qna/qnaWrite.js" type="text/javascript"></script>
+    </body>
 </html>

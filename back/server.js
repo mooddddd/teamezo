@@ -3,7 +3,6 @@ const socketIO = require('./socket')
 const { sequelize } = require('./models')
 const port = process.env.PORT || 3000
 
-
 const user = require('./dummy/user_data')
 const mainCategory = require('./dummy/cate_data')
 const subCategory = require('./dummy/sub_data')
@@ -11,9 +10,8 @@ const board = require('./dummy/board_data')
 const qna = require('./dummy/qna.data')
 
 const http = app.listen(3000, async () => {
-    await sequelize.sync({ force: false });
-    console.log("Database Connected!");
-
+    await sequelize.sync({ force: false })
+    console.log('Database Connected!')
 
     // for (let i = 0; i <= user.length - 1; i++) {
     //     await sequelize.models.User.create(user[i]);
@@ -40,7 +38,6 @@ const http = app.listen(3000, async () => {
     //     await sequelize.models.HashTag.create({ boardId: i, tagName: "IT" });
     // }
 
-
     // for (let i = 0; i <= mainCategory.length - 1; i++) {
     //     await sequelize.models.MainCategory.create(mainCategory[i]);
     // }
@@ -53,9 +50,9 @@ const http = app.listen(3000, async () => {
 
     //     await sequelize.models.Board.create(board[i])
     // }
-    for (let i = 0; i <= qna.length - 1; i++) {
-        await sequelize.models.Qna.create(qna[i])
-    }
+    // for (let i = 0; i <= qna.length - 1; i++) {
+    //     await sequelize.models.Qna.create(qna[i])
+    // }
 
     // await sequelize.models.HashName.create({ tagName: "javascript" });
     // await sequelize.models.HashName.create({ tagName: "c++" });
