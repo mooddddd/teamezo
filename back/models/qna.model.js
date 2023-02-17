@@ -13,27 +13,21 @@ module.exports = (sequelize, Sequelize) => {
                     },
                     password: {
                         type: Sequelize.STRING(255),
-                        allowNull: false,
+                        allowNull: true,
                     },
                     createAt: {
                         type: Sequelize.DATE,
-                        defaultValue: sequelize.fn("now"),
+                        defaultValue: sequelize.fn('now'),
                     },
                 },
                 { sequelize }
-            );
+            )
         }
         static associate(model) {
-            this.hasMany(model.Qna, {
-                foreignKey: "group",
-            });
-            this.belongsTo(model.Qna, {
-                foreignKey: "group",
-            });
             this.belongsTo(model.User, {
-                foreignKey: "userid",
-            });
+                foreignKey: 'userid',
+            })
         }
     }
-    Qna.initialize();
-};
+    Qna.initialize()
+}

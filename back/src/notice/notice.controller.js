@@ -17,6 +17,22 @@ class NoticeController {
             next(e)
         }
     }
+
+    async postWrite(req, res, next) {
+        try {
+            const { body, files } = req
+            console.log(req.cookies)
+            console.log('req.bodyreq.bodyreq.bodyreq.body')
+            console.log(req.body)
+            console.log(req.cookies)
+            console.log('notice postWirte!')
+            const result = await this.noticeService.postNoticeContent(body, files)
+
+            res.json(result)
+        } catch (e) {
+            next(e)
+        }
+    }
 }
 
 module.exports = NoticeController

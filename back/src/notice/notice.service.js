@@ -16,6 +16,14 @@ class NoticeService {
             throw new Error(e)
         }
     }
+
+    async postNoticeContent(body, files) {
+        const { tagName, ...rest } = body
+
+        const filenameArr = files.map((v) => v.filename)
+        const insertContent = await this.noticeRepository.insertContent(rest, filenameArr)
+        return insertContent
+    }
 }
 
 module.exports = NoticeService

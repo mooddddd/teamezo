@@ -16,7 +16,7 @@
         <article>
             <div id="listForm">
                 <div class="top">
-                    <h1>{{board}}</h1>
+                    <h1>공지사항</h1>
                     <span></span>
                 </div>
                 <table class="content">
@@ -32,7 +32,7 @@
                         <tr>
                             <td class="per10">{{item.id}}</td>
                             <td class="title per40">
-                                <a href="/{{board}}/view?idx={{item.idx}}">{{item.subject}}</a>
+                                <a href="/board/view?id={{item.id}}">{{item.subject}}</a>
                             </td>
                             <td class="per20">{{item.userid}}</td>
                             <td class="per20">{{item.createAt}}</td>
@@ -50,7 +50,7 @@
                     {% for number in btnNumber %}
                     <span class="pageNumber">{{number}}</span>
                     {% endfor %} {% if userAdmin === 1 %}
-                    <a href="/{{board}}/write" class="bottomWriteTag">글쓰기</a>
+                    <a href="/notice/write" class="bottomWriteTag">글쓰기</a>
                     {% endif %}
                 </div>
             </div>

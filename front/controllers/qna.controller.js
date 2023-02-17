@@ -30,9 +30,18 @@ exports.getList = async (req, res) => {
     }
 }
 
-exports.getView = (req, res) => {
+exports.getView = async (req, res) => {
     try {
-        res.render('board/view.html', { board })
+        const id = req.query.id
+        const result = await request.get(`/qna/view?id=${id}`)
+        const { content, hashtag, files, commentResult, replyResult } = result.data
+        res.render('board/qna/qnaView.html', {
+            content,
+            hashtag,
+            files,
+            commentResult,
+            replyResult,
+        })
     } catch (e) {
         throw new Error(e)
     }
