@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
                         defaultValue: sequelize.fn("now"),
                         allowNull: false,
                     },
-                    class: {
+                    classNum: {
                         type: Sequelize.BOOLEAN,
                         defaultValue: true,
                         allowNull: false,

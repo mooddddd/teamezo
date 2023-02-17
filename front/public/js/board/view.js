@@ -1,13 +1,13 @@
-/* 댓글 등록 기능 => 데이터 내보내고 새로고침만 해주면 됨! */
-const commentContentBox = document.querySelector(".writeCommentForm > form > div > textarea ");
+/* 댓글 내용 없으면 알림창 뜸 */
 const commentContentForm = document.querySelector(".writeCommentForm > form");
-
-const commentClone = document.importNode(justComment.content, true);
+const commentBox = document.querySelector(".writeCommentForm > form > div > textarea");
 
 commentContentForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    // console.log(commentContentBox.value);
-    // console.log(document.querySelector(".upperComment"));
+    if (commentBox.value === "") {
+        e.preventDefault();
+        alert("댓글 내용을 입력해주세요!");
+        return;
+    }
 });
 
 /* 답글쓰기 버튼 누르면 답댓창 뜨는 기능 */

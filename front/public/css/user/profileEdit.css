@@ -56,14 +56,13 @@ section {
     font-weight: 700;
 }
 
-
 .profileEditContent1Text > div,
 .profileEditContent1Text > button {
     margin: 1rem;
 }
 
 .profileEditContent1Text > button {
-    padding:  0.5rem 1rem;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.5rem;
     color: var(--main);
@@ -73,7 +72,7 @@ section {
 .profileEditContent2 {
     width: 90%;
     height: 60%;
-    border: 0.1rem solid var(--border); 
+    border: 0.1rem solid var(--border);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -135,7 +134,7 @@ section {
     height: 60%;
     margin: 1rem auto;
     border: none;
-    background-color: #EBEBEB;
+    background-color: #ebebeb;
 }
 
 .profileEditBtnWrap {

@@ -26,23 +26,6 @@ class UserRepository {
     //     }
     // }
 
-    async getUserById(userid) {
-        try {
-            console.log('user.Repository getUserById')
-            const user = await this.User.findOne({
-                raw: true,
-                where: {
-                    userid,
-                },
-            })
-            console.log('user.Repository getUserById')
-            console.log(user)
-            return user
-        } catch (e) {
-            throw new Error(e)
-        }
-    }
-
     async getUserByInfo({ userid, page = 1 }) {
         try {
             console.log('repository userid')
@@ -72,6 +55,7 @@ class UserRepository {
                 where: {
                     userid,
                 },
+                raw: true,
             })
             console.log('userRepository checkUserId after')
             console.log(user)
@@ -101,6 +85,35 @@ class UserRepository {
             console.log('user.repository after')
             console.log(created)
             return [user, created]
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
+
+    async getInfo(kakaoUserData) {
+        try {
+            console.log('user.repository getInfo')
+            console.log(kakaoUserData.username)
+
+            const [user, created] = await this.User.findOrCreate({
+                where: { userid: kakaoUserData.userid },
+                defaults: {
+                    userpw: kakaoUserData.userpw,
+                    username: kakaoUserData.username,
+                    email: kakaoUserData.email,
+                    provider: kakaoUserData.provider,
+                    avatarUrl: kakaoUserData.avatarUrl,
+                },
+                raw: true,
+            })
+            console.log('user.repository kakaoUserData')
+            console.log(user)
+            console.log('user.repository kakaoUserData')
+            console.log(created)
+
+            const token = kakaoUserData.userid
+
+            return token
         } catch (e) {
             throw new Error(e)
         }

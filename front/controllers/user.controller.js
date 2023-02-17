@@ -12,7 +12,9 @@ exports.postlogin = async (req, res) => {
     const response = await request.post('/auth', {
         ...req.body,
     })
-    console.log(response.data.username)
+    console.log('response.data.username')
+
+    console.log(response)
     if (response.data.username !== undefined) {
         res.setHeader('Set-Cookie', `token=${response.data.userid};path=/;`)
         res.redirect('/')
