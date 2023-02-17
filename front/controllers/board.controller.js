@@ -43,8 +43,8 @@ exports.getView = async (req, res) => {
     // findOne 해와야 함
     const id = req.query.id;
     const result = await request.get(`/view?id=${id}`);
-    const { content, hashtag, files, comment } = result.data;
-    res.render("board/category/boardView.html", { content, hashtag, files, comment });
+    const { content, hashtag, files, commentResult, replyResult } = result.data;
+    res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult });
 };
 
 /* 댓글 */

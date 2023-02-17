@@ -6,7 +6,7 @@ class BoardController {
     // 리스트
     async getList(req, res, next) {
         try {
-            console.log(req.query.token);
+            // console.log(req.query.token);
             const listAll = await this.boardService.getList(req.query.page);
             const category = await this.boardService.getCategory();
             // token이랑 page 값 넘겨서 있냐 없냐 확인
@@ -39,7 +39,7 @@ class BoardController {
     // 댓글 작성
     async getComment(req, res, next) {
         try {
-            console.log(req.body); // { boardId: '52', classNum: '0', content: 'ㅁㄴㅇㄹㄴㄹㅇ' }
+            // console.log(req.body); // { boardId: '52', classNum: '0', content: 'ㅁㄴㅇㄹㄴㄹㅇ' }
             const body = req.body;
             const result = await this.boardService.postComment(body);
             res.json(result);

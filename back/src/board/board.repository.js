@@ -108,8 +108,9 @@ class BoardRepo {
     }
 
     async getViewComment(id) {
-        const commentResult = await this.models.Comment.findAll({ raw: true, where: { boardId: id } });
-        return commentResult;
+        const commentResult = await this.models.Comment.findAll({ raw: true, where: { boardId: id, classNum: 0 } });
+        const replyResult = await this.models.Comment.findAll({ raw: true, where: { boardId: id, classNum: 1 } });
+        return { commentResult, replyResult };
     }
 
     async insertContent(tagArr, rest, filenameArr) {

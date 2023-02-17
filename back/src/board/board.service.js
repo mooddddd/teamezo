@@ -35,14 +35,12 @@ class BoardService {
             const { dataValues: content } = await this.boardRepo.getViewContent(id);
             const hashtag = await this.boardRepo.getViewHashTag(id);
             const files = await this.boardRepo.getViewFiles(id);
-            const comment = await this.boardRepo.getViewComment(id);
-
-            console.log(comment);
+            const { commentResult, replyResult } = await this.boardRepo.getViewComment(id);
             // const likedCount = await this.boardRepo.getLikedCount(id);
             // const comment = await this.boardRepo.getViewComment(id);
             // console.log(content.dataValues);
 
-            return { content, hashtag, files, comment };
+            return { content, hashtag, files, commentResult, replyResult };
         } catch (e) {
             throw new Error(e);
         }
