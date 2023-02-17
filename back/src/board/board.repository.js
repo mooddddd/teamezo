@@ -5,8 +5,8 @@ class BoardRepo {
 
     async getCategoryList() {
         try {
-            const mainCategory = await this.models.MainCategory.findAll();
-            const subCategory = await this.models.SubCategory.findAll();
+            const mainCategory = await this.models.MainCategory.findAll({ raw: true });
+            const subCategory = await this.models.SubCategory.findAll({ raw: true });
             return { mainCategory, subCategory };
             // return mainCategory;
         } catch (e) {

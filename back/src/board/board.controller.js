@@ -68,6 +68,22 @@ class BoardController {
             next(e);
         }
     }
+
+    // 글 수정
+    async getModify(req, res, next) {
+        try {
+            const id = req.query.id;
+            const { commentResult, replyResult, ...rest } = await this.boardService.getview(id);
+            const { mainCategory, subCategory } = await this.boardService.getCategory();
+            res.json({ rest, mainCategory, subCategory });
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async postmodify(req, res) {
+        console.log(req.body);
+    }
 }
 
 module.exports = BoardController;

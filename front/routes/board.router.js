@@ -14,7 +14,7 @@ router.post("/view/comment", controller.postComment);
 // router.get("/view/comments/modify")
 // router.get("/view/comments/delete")
 
-// router.get("/modify");
+router.get("/modify", controller.getModify);
 // router.post("/modify");
 
 // router.get("/delete");

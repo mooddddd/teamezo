@@ -34,7 +34,7 @@
                                     <li class="contentCreateDate">{{content.createAt}}</li>
 
                                     {%if content.cookies == content.user_userid %}
-                                    <li class="contentModify"><a href="/board/modify">수정</a></li>
+                                    <li class="contentModify"><a href="/board/modify?id={{content.id}}">수정</a></li>
                                     <li class="contentDelete"><a href="/board/delete">삭제</a></li>
                                     {%endif%}
                                 </ul>

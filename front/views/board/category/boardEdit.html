@@ -21,33 +21,40 @@
                 </div>
 
                 <div class="write">
-                    <form method="post" action="/board/write">
-                        <input type="hidden" name="idx" value="{{list.idx}}" />
+                    <form method="post" action="/board/modify" enctype="multipart/form-data">
                         <ul>
                             <li class="subject">
-                                <select class="mainCategorySelect" name="mainCategory_idx" onchange="categoryChange(this)">
+                                <select class="mainCategorySelect" name="mainName">
                                     <option>--카테고리 선택--</option>
-                                    <!-- 만약에 벨류값 없으면 alert 뜨게 -->
-                                    <option value="IT">IT</option>
-                                    <option value="food">음식/맛집</option>
-                                    <option value="etc">기타</option>
+                                    {% for item in mainCategory%}
+                                    <option class="mainCategory" value="{{item.mainName}}">{{item.mainName}}</option>
+                                    {% endfor %}
                                 </select>
+                                <div>
+                                    {% for sub in subCategory%}
+                                    <input type="hidden" class="{{sub.mainName}}" value="{{sub.subName}}" />
+                                    {% endfor %}
+                                </div>
 
                                 <select class="subCategory" name="subName">
                                     <option>--카테고리 선택--</option>
                                 </select>
 
                                 <br />
-                                <input type="text" name="subject" placeholder="제목을 입력하세요" value="{{list.title}}" />
+                                <input type="text" name="subject" value="{{content.subject}}" />
                             </li>
 
                             <li class="content">
-                                <textarea name="content" placeholder="내용을 입력하세요">{{list.content}}</textarea><br />
+                                <textarea name="content">{{content.content}}</textarea><br />
                                 <input type="file" name="img" />
+                                첨부 파일 : {%for img in files%} "{{img.fileUrl}}" {%endfor%}
                             </li>
 
                             <li class="hashtagLi" style="margin-top: 1.5rem">
-                                <span style="color: gray"># </span>
+                                {%for item in hashtag%}
+                                <a style="float: left; margin-right: 1.5rem; color: grey; cursor: pointer" class="tagName"># {{item.tagName}}</a>
+                                {%endfor%}
+                                <span style="color: gray"># {{item.tagName}}</span>
                                 <input type="text" class="hashtagBox" name="tagName" placeholder="해시태그" style="border: none" />
                             </li>
                         </ul>
