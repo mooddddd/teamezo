@@ -43,7 +43,9 @@ exports.getView = async (req, res) => {
     const id = req.query.id;
     const result = await request.get(`/view?id=${id}`);
     const { content, hashtag, files, commentResult, replyResult } = result.data;
-    res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult });
+    const commentCount = commentResult.length + replyResult.length;
+    console.log(commentCount);
+    res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, commentCount });
 };
 
 /* 댓글 */
