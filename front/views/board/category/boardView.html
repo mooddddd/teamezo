@@ -18,7 +18,7 @@
                 <div id="viewForm">
                     <!-- 상단 고정 부분 -->
                     <div class="top">
-                        <h1>{{contentResult.mainName}}</h1>
+                        <h1>{{content.mainName}} - {{content.subName}}</h1>
                         <span></span>
                     </div>
 
@@ -28,12 +28,12 @@
                         <div class="viewContent">
                             <!-- 제목, 작성자 & 날짜 -->
                             <div class="contentTop">
-                                <div class="contentSubject">{{contentResult.subject}}</div>
+                                <div class="contentSubject">{{content.subject}}</div>
                                 <ul>
-                                    <li class="contentWriter">{{contentResult.user_userid}}</li>
-                                    <li class="contentCreateDate">{{contentResult.createAt}}</li>
+                                    <li class="contentWriter">{{content.user_userid}}작성자</li>
+                                    <li class="contentCreateDate">{{content.createAt}}</li>
 
-                                    {%if contentResult.cookies == contentResult.user_userid %}
+                                    {%if content.cookies == content.user_userid %}
                                     <li class="contentModify"><a href="/board/modify">수정</a></li>
                                     <li class="contentDelete"><a href="/board/delete">삭제</a></li>
                                     {%endif%}
@@ -43,12 +43,19 @@
                             <!-- 글 내용, 해쉬태그 -->
                             <div class="contentCenter">
                                 <div class="contentData">
-                                    <div>{{contentResult.content}}</div>
+                                    <div>
+                                        {{content.content}}
+                                        <br />
+                                        {%for img in files%}
+                                        <img src="/{{img.fileUrl}}" />
+                                        <br />
+                                        {%endfor%}
+                                    </div>
                                 </div>
                                 <div class="hashtagData">
                                     <ul>
-                                        {%for item in contentResult.tagName%}
-                                        <li>{{item}}</li>
+                                        {%for item in hashtag%}
+                                        <li><a href="#"># {{item.tagName}}　</a></li>
                                         {%endfor%}
                                     </ul>
                                 </div>
@@ -65,21 +72,27 @@
 
                         <!-- 전체 댓글창 -->
                         <div class="viewComment">
-                            <div class="commentCount">댓글({{commentCount}})</div>
+                            <div class="commentCount">댓글({{comment.length}})</div>
 
                             <!-- 원댓 -->
-                            {% for item in commentResult %}
+                            {% for reply in commentResult %}
                             <div class="upperComment">
                                 <div class="userCommnetContent">
                                     <div class="avatar">
-                                        <a> <img src="/img/{{item.avatar}}" /> </a>
+                                        <a> <img src="/img/{{reply.avatar}}" /> </a>
                                     </div>
                                     <div class="commentCenterContent">
                                         <ul>
-                                            <li><sapn class="commentWriter">{{item.user_userid}}</sapn> <span class="commentDate">{{item.createAt}}</span></li>
-                                            <li>{{item.content}}</li>
+                                            <li><sapn class="commentWriter">{{reply.userid}}</sapn> <span class="commentDate">{{reply.createAt}}</span></li>
+                                            <li>{{reply.content}}</li>
                                             <li><a href="#">답글쓰기</a></li>
                                         </ul>
+                                        {%for re in replyResult%} {%if reply.id===re.groupNum%}
+                                        <ul>
+                                            <li><sapn class="commentWriter">{{re.userid}}</sapn> <span class="commentDate">{{re.createAt}}</span></li>
+                                            <li class="commentReplyContent">{{re.content}}</li>
+                                        </ul>
+                                        {%endif%}{%endfor%}
                                     </div>
                                     <div class="commentBtns">
                                         <a href="#" class="commentBtnsEdit">수정</a>
@@ -89,10 +102,13 @@
 
                                 <!-- 답댓 쓰기창 -->
                                 <div class="commentReplyBox off">
-                                    <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments?idx=">
+                                    <form method="post" action="/board/view/comment">
                                         <!-- <span>내닉네임</span><br /> -->
                                         <div>
                                             <input type="hidden" name="userid" value="mood" />
+                                            <input type="hidden" name="boardId" value="{{content.id}}" />
+                                            <input type="hidden" name="classNum" value="1" />
+                                            <input type="hidden" name="groupNum" value="{{reply.id}}" />
                                             <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
                                             <button type="submit">등록</button>
                                         </div>
@@ -106,75 +122,13 @@
                             </div>
                             {%endfor%}
 
-                            <!-- 댓글 탬플릿 -->
-                            <template id="justComment">
-                                <div class="upperComment">
-                                    <div class="userCommnetContent">
-                                        <div class="avatar">
-                                            <a> <img src="/img/{{item.avatar}}" /> </a>
-                                        </div>
-                                        <div class="commentCenterContent">
-                                            <ul>
-                                                <li><sapn class="commentWriter">{{item.user_userid}}</sapn> <span class="commentDate">{{item.createAt}}</span></li>
-                                                <li>{{item.content}}</li>
-                                                <li><a href="#">답글쓰기</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="commentBtns">
-                                            <a href="/board/comment/modify" class="commentBtnsEdit">수정</a>
-                                            <a href="/board/comment/delete" class="commentBtnsDel">삭제</a>
-                                        </div>
-                                    </div>
-
-                                    <!-- 답댓 쓰기창 -->
-                                    <div class="commentReplyBox off">
-                                        <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments?idx=">
-                                            <!-- <span>내닉네임</span><br /> -->
-                                            <div>
-                                                <input type="hidden" name="userid" value="mood" />
-                                                <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
-                                                <button type="submit">등록</button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                    <div class="replyplace">
-                                        <!-- 답댓 테스트 데이터 -->
-                                        <!-- 여기에 답댓 들어감 -->
-                                    </div>
-                                </div>
-                            </template>
-
-                            <!-- 답댓 탬플릿 -->
-                            <template id="replyofComment">
-                                <div class="commentReply">
-                                    <div class="userCommnetContent">
-                                        <div class="replyImg">
-                                            <img src="/img/replyArrow.png" />
-                                        </div>
-                                        <div class="avatar">
-                                            <a> <img src="#" /> </a>
-                                        </div>
-                                        <div class="commentCenterContent">
-                                            <ul>
-                                                <li><sapn class="commentWriter">댓글작성자</sapn> <span class="commentDate">2023 - 01 - 31</span></li>
-                                                <li class="commentReplyContent"></li>
-                                            </ul>
-                                        </div>
-                                        <div class="commentBtns">
-                                            <a href="#" class="commentBtnsEdit">수정</a>
-                                            <a href="#" class="commentBtnsDel">삭제</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-
                             <!-- 댓글쓰기 -->
                             <div class="writeCommentForm">
-                                <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments">
+                                <form method="post" action="/board/view/comment">
                                     <!-- <span>내닉네임</span><br /> -->
                                     <div>
-                                        <input type="hidden" />
+                                        <input type="hidden" name="boardId" value="{{content.id}}" />
+                                        <input type="hidden" name="classNum" value="0" />
                                         <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
                                         <button type="submit">등록</button>
                                     </div>
@@ -198,3 +152,69 @@
         {% include 'layout/footer.html' %}
     </body>
 </html>
+
+<!-- 댓글 탬플릿 -->
+<template id="justComment">
+    <div class="upperComment">
+        <div class="userCommnetContent">
+            <div class="avatar">
+                <a> <img src="/img/{{item.avatar}}" /> </a>
+            </div>
+            <div class="commentCenterContent">
+                <ul>
+                    <li><sapn class="commentWriter">{{item.user_userid}}</sapn> <span class="commentDate">{{item.createAt}}</span></li>
+                    <li>{{item.content}}</li>
+                    <li><a href="#">답글쓰기</a></li>
+
+                    <li></li>
+                </ul>
+            </div>
+            <div class="commentBtns">
+                <a href="/board/comment/modify" class="commentBtnsEdit">수정</a>
+                <a href="/board/comment/delete" class="commentBtnsDel">삭제</a>
+            </div>
+        </div>
+
+        <!-- 답댓 쓰기창 -->
+        <div class="commentReplyBox off">
+            <form method="post" action="/board/view?idx={{contentResult.board_idx}}/comments?idx=">
+                <!-- <span>내닉네임</span><br /> -->
+                <div>
+                    <input type="hidden" name="userid" value="mood" />
+                    <input type="hidden" name="classNum" value="1" />
+                    <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
+                    <button type="submit">등록</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="replyplace">
+            <!-- 답댓 테스트 데이터 -->
+            <!-- 여기에 답댓 들어감 -->
+        </div>
+    </div>
+</template>
+
+<!-- 답댓 탬플릿 -->
+<template id="replyofComment">
+    <div class="commentReply">
+        <div class="userCommnetContent">
+            <div class="replyImg">
+                <img src="/img/replyArrow.png" />
+            </div>
+            <div class="avatar">
+                <a> <img src="#" /> </a>
+            </div>
+            <div class="commentCenterContent">
+                <ul>
+                    <li><sapn class="commentWriter">댓글작성자</sapn> <span class="commentDate">2023 - 01 - 31</span></li>
+                    <li class="commentReplyContent"></li>
+                </ul>
+            </div>
+            <div class="commentBtns">
+                <a href="#" class="commentBtnsEdit">수정</a>
+                <a href="#" class="commentBtnsDel">삭제</a>
+            </div>
+        </div>
+    </div>
+</template>

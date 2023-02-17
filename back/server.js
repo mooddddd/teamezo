@@ -1,6 +1,6 @@
-const app = require('./app')
-const { sequelize } = require('./models')
-const port = process.env.PORT || 3000
+const app = require("./app");
+const { sequelize } = require("./models");
+const port = process.env.PORT || 3000;
 
 const user = require('./dummy/user_data')
 const mainCategory = require('./dummy/cate_data')
@@ -25,6 +25,7 @@ app.listen(3000, async () => {
     // }
 
     // for (let i = 0; i <= board.length - 1; i++) {
+
     //     await sequelize.models.Board.create(board[i])
     // }
     for (let i = 0; i <= qna.length - 1; i++) {

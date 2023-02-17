@@ -67,6 +67,11 @@ article {
     background: white;
 }
 
+.viewContent > .contentCenter > .contentData > div > img {
+    max-width: 100%;
+    height: auto;
+}
+
 .viewContent > .contentCenter > .hashtagData {
     color: gray;
     font-size: 1.2rem;
@@ -78,6 +83,9 @@ article {
 }
 .viewContent > .contentCenter > .hashtagData > ul > li:last-child {
     padding: 0;
+}
+.viewContent > .contentCenter > .hashtagData > ul > li > a {
+    color: #646464 !important;
 }
 
 /* 좋아요 */
