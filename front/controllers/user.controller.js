@@ -52,6 +52,7 @@ exports.getwelcome = (req, res) => {
 exports.getprofile = async (req, res) => {
     // 1. 로그인여부체크
     // 2. backend 에 다가 필요한 내용을 전달하기
+    const { token } = req.cookies
     const profileCookies = req.cookies.token
     const { page } = req.query
     if (profileCookies === undefined) {
@@ -63,7 +64,7 @@ exports.getprofile = async (req, res) => {
         })
         console.log('{result}')
         console.log(result.data)
-        res.render('user/profile', { result })
+        res.render('user/profile', { result, token })
     }
 }
 
@@ -78,12 +79,13 @@ exports.postProfileEdit = (req, res) => {
 
 exports.getProfileEdit = (req, res) => {
     const profileCookies = JSON.stringify(req.cookies.token)
+    const { token } = req.cookies
     if (profileCookies === undefined) {
         res.render('error.html')
     } else {
         const userid = 'hongtae'
         const username = 'hongttt'
         const useremail = 'hongtae3@gmail.com'
-        res.render('user/profileEdit.html', { userid, username, useremail })
+        res.render('user/profileEdit.html', { userid, username, useremail, token })
     }
 }

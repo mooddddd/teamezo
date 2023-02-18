@@ -12,9 +12,16 @@ exports.getIndex = async (req, res, next) => {
         const result = await request.get('/')
         const { boardList, mainName, tagName } = result.data
         const list =  boardList.fileUrlList
-        res.render("index.html", { list, mainName, tagName, token })
-        // const { boardList, MainCategory, Hashtag } = result
-        // res.render("index.html", { boardList, MainCategory, Hashtag })
+        if (Object.values(req.query).length) {
+            res.setHeader('Set-Cookie', `token=${req.query.token};path=/;`)
+            res.render("index.html", { list, mainName, tagName, token })
+        } else {
+            const { token } = req.cookies
+            const result = await request.get('/')
+            const { boardList, mainName, tagName } = result.data
+            const list =  boardList.fileUrlList
+            res.render("index.html", { list, mainName, tagName, token })
+        }
     } catch (error) {
         console.log('getIndex',error)
     }

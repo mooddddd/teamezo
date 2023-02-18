@@ -10,7 +10,7 @@ exports.getSearch = async (req, res) => {
         console.log(req.query)
         const result = await request.post("/", req.query)
         const { subject, content, hash } = result.data
-        res.send(`${subject}`)
+        res.render('search/searchList.html', { subject, content, hash })
     } catch (error) {
         console.log(error)
     }

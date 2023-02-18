@@ -8,6 +8,7 @@ const board = 'notice'
 
 exports.getList = async (req, res) => {
     try {
+        const { token } = req.cookies
         // getList 시, token값(userid)로 admin인지 체크랑 , Board테이블에 notice true인것을 가져올거임
         const { page } = req.query
         const noticeList = await request.get(`/notice/list?page=${page}&token=${req.cookies.token}`)
@@ -25,6 +26,7 @@ exports.getList = async (req, res) => {
             btnNumber,
             totalPage,
             userAdmin,
+            token,
         })
     } catch (e) {
         throw new Error(e)
@@ -33,6 +35,7 @@ exports.getList = async (req, res) => {
 
 exports.getView = (req, res) => {
     try {
+        const { token } = req.cookies
         const contentResult = {
             cookies: 'cookies와 user_userid 값이 같아야 수정, 삭제 버튼 뜨도록 넌작스로 처리함',
             board_idx: 1,
@@ -42,7 +45,7 @@ exports.getView = (req, res) => {
             content: '공지사항이 어쩌구',
         }
         const commentCount = '123'
-        res.render('board/view.html', { contentResult, commentCount, board })
+        res.render('board/view.html', { contentResult, commentCount, board, token })
     } catch (e) {
         throw new Error(e)
     }
@@ -50,8 +53,9 @@ exports.getView = (req, res) => {
 
 exports.getWrite = (req, res) => {
     try {
+        const { token } = req.cookies
         const board = 'notice' // 레이아웃때문에 넣어줘야 함
-        res.render('board/notice/noticeWrite.html', { board })
+        res.render('board/notice/noticeWrite.html', { board, token })
     } catch (e) {
         throw new Error(e)
     }
@@ -64,41 +68,3 @@ exports.postWrite = (req, res) => {
         throw new Error(e)
     }
 }
-
-// const list = [
-//     {
-//         idx: 1,
-//         subject: "공지사항1",
-//         userid: "admin",
-//         createAt: "2023 - 01 -31",
-//         hit: "21",
-//     },
-//     {
-//         idx: 2,
-//         subject: "공지사항2",
-//         userid: "admin",
-//         createAt: "2023 - 01 -31",
-//         hit: "21",
-//     },
-//     {
-//         idx: 3,
-//         subject: "공지사항3",
-//         userid: "admin",
-//         createAt: "2023 - 01 -31",
-//         hit: "21",
-//     },
-//     {
-//         idx: 4,
-//         subject: "공지사항4",
-//         userid: "admin",
-//         createAt: "2023 - 01 -31",
-//         hit: "21",
-//     },
-//     {
-//         idx: 5,
-//         subject: "공지사항5",
-//         userid: "admin",
-//         createAt: "2023 - 01 -31",
-//         hit: "21",
-//     },
-// ];

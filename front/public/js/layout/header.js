@@ -1,18 +1,16 @@
-// const search = document.querySelector(".searchWrap")
-// const searchInput = document.querySelector("#search")
-// const searchIcon = document.querySelector("#searchIcon")
-// const searchBtn = document.querySelector("#searchBtn")
+const logout = document.querySelector(".logout_box")
 
-// searchIcon.addEventListener("click", (e) => {
-//     if( searchInput.className === "invisible" ){
-//         searchInput.classList.remove("invisible")
-//     } else {
-//         searchInput.classList.add("invisible")
-//     }
+if(logout !== null) {
+    logout.addEventListener("click", (e) => {
+        e.preventDefault()
+        deleteCookie(document.cookie.split("=")[0])
+        console.log(document.cookie)
+        location.href = 'http://localhost:3005/'
+    })
+}
 
-//     if( searchBtn.className === "invisible" ){
-//         searchBtn.classList.remove("invisible")
-//     } else {
-//         searchBtn.classList.add("invisible")
-//     }
-// })
+
+function deleteCookie(key){
+    let todayDate = new Date()
+    document.cookie = key + "=; path=/; expires=" + todayDate.toGMTString() + ";"   
+}

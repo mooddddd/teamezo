@@ -28,8 +28,6 @@ class UserRepository {
 
     async getUserByInfo({ userid, page = 1 }) {
         try {
-            console.log('repository userid')
-            console.log({ userid, page })
             const user = await this.User.findAll({
                 where: {
                     userid,
@@ -49,16 +47,12 @@ class UserRepository {
     }
     async checkUserId({ userid }) {
         try {
-            console.log('userRepository checkUserId')
-            console.log({ userid })
             const user = await this.User.findOne({
                 where: {
                     userid,
                 },
                 raw: true,
             })
-            console.log('userRepository checkUserId after')
-            console.log(user)
             return user
         } catch (e) {
             throw new Error(e)
@@ -67,9 +61,6 @@ class UserRepository {
 
     async addUser(userInfo) {
         try {
-            console.log('user.repository')
-            console.log(userInfo)
-
             const [user, created] = await this.User.findOrCreate({
                 where: { userid: userInfo.userid },
                 defaults: {
@@ -79,11 +70,6 @@ class UserRepository {
                 },
                 raw: true,
             })
-
-            console.log('user.repository after')
-            console.log(user)
-            console.log('user.repository after')
-            console.log(created)
             return [user, created]
         } catch (e) {
             throw new Error(e)
@@ -92,9 +78,6 @@ class UserRepository {
 
     async getInfo(kakaoUserData) {
         try {
-            console.log('user.repository getInfo')
-            console.log(kakaoUserData.username)
-
             const [user, created] = await this.User.findOrCreate({
                 where: { userid: kakaoUserData.userid },
                 defaults: {
@@ -106,10 +89,6 @@ class UserRepository {
                 },
                 raw: true,
             })
-            console.log('user.repository kakaoUserData')
-            console.log(user)
-            console.log('user.repository kakaoUserData')
-            console.log(created)
 
             const token = kakaoUserData.userid
 

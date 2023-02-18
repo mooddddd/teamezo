@@ -7,7 +7,12 @@ const request = axios.create({
 
 exports.getAdmin = (req, res, next) => {
     try {
-        res.render("admin/admin.html")
+        const { token } = req.cookies
+        if( token !== "admin" ){
+            res.render("error.html")
+        } else {
+            res.render("admin/admin.html", { token })
+        }
     } catch (error) {
         
     }
@@ -59,7 +64,6 @@ exports.postAdminUserEdit = async (req, res, next) => {
     try {
         const { path } = req.file
         const { body } = req
-        console.log(path, body)
         await request.post('/userEdit', { path, body })
         res.redirect('/admin/user')
     } catch (error) {
@@ -83,9 +87,17 @@ exports.postAdminCategory = (req, res, next) => {
     }
 }
 
-exports.getAdminBoard = (req, res, next) => {
+exports.getAdminBoard = async (req, res, next) => {
     try {
-        res.render("admin/adminBoard.html")
+        console.log(req.query)
+        const { page, order } = req.query
+        const response = await request.get(`/board?page=${Number(page)}&order=${order}`)
+        const { boardList, startNumber, endNumber, totalPage } = response.data
+        const btnNumber = []
+        for(let i = startNumber; i <= endNumber; i++){
+            btnNumber.push(i)
+        }
+        res.render("admin/adminBoard.html", { boardList, btnNumber, totalPage })
     } catch (error) {
         
     }
