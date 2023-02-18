@@ -46,7 +46,7 @@ exports.getView = async (req, res) => {
     const result = await request.get(`/view?id=${id}`);
     if( result.data.content.visible ){
         const { content, hashtag, files, commentResult, replyResult } = result.data;
-        content.userid = token
+        content.token = token
         res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, token });
     } else {
         res.render("inaccessible.html")

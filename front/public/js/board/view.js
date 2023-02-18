@@ -66,7 +66,7 @@ const deleteBtn = document.querySelector(".contentDelete > a")
 deleteBtn.addEventListener("click", async (e) => {
     e.preventDefault()
     const idx = deleteBtn.getAttribute("href").split("=")[1]
-    await request.post(`/delete?id=${idx}`, )
+    await request.post(`/delete?id=${idx}`)
     alert("글이 삭제되었습니다.")
     location.href = `http://localhost:3005/board/list?page=1`
 })
