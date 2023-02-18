@@ -15,7 +15,7 @@ class IndexRepository {
                 item.fileUrl = item['Files.fileUrl']
                 return item
             })
-
+            
             return { fileUrlList }
         } catch (error) {
             throw new Error(error)

@@ -67,6 +67,10 @@ app.get('/oauth/kakao', async (req, res, next) => {
     } catch (e) {}
 })
 
+app.use('/socket.io', (req, res) => {
+    console.log(req.body)
+})
+
 app.use((error, req, res, next) => {
     res.status(500).send(error.message)
 })

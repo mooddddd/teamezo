@@ -53,9 +53,9 @@ const http = app.listen(3000, async () => {
 
     //     await sequelize.models.Board.create(board[i])
     // }
-    for (let i = 0; i <= qna.length - 1; i++) {
-        await sequelize.models.Qna.create(qna[i])
-    }
+    // for (let i = 0; i <= qna.length - 1; i++) {
+    //     await sequelize.models.Qna.create(qna[i])
+    // }
 
     // await sequelize.models.HashName.create({ tagName: "javascript" });
     // await sequelize.models.HashName.create({ tagName: "c++" });
