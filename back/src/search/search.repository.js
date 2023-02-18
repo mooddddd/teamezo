@@ -7,7 +7,6 @@ class SearchRepository {
 
     async findSearch (searchValue){
         try {
-            console.log(searchValue)
             const result = await Promise.all([
                 this.models.Board.findAll({ where:{ subject : {[this.Op.like]: "%" + searchValue + "%"}}, raw: true}),
                 this.models.Board.findAll({ where:{ content : {[this.Op.like]: "%" + searchValue + "%"}}, raw: true }),
