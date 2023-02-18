@@ -184,6 +184,16 @@ class BoardRepo {
     // }
 
     // async insertFile(filenameArr) {}
+
+    async postDelete(id){
+        try {
+            const result = await this.models.Board.destroy({where: {id:Number(id)}})
+            console.log(result)
+            return result
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = BoardRepo

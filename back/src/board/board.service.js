@@ -76,6 +76,15 @@ class BoardService {
 
         // 리턴값으로 들어간 데이터의 id를 리턴해줌
     }
+    
+    async postDelete(id){
+        try {
+            const result = await this.boardRepo.postDelete(id)
+            return result
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = BoardService

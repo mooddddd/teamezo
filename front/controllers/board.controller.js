@@ -41,12 +41,12 @@ exports.getWrite = async (req, res) => {
 
 /* 뷰 view */
 exports.getView = async (req, res) => {
-    // findOne 해와야 함
     const { token } = req.cookies
     const id = req.query.id;
     const result = await request.get(`/view?id=${id}`);
     if( result.data.content.visible ){
         const { content, hashtag, files, commentResult, replyResult } = result.data;
+        content.userid = token
         res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, token });
     } else {
         res.render("inaccessible.html")

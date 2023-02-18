@@ -15,8 +15,20 @@ class IndexRepository {
                 item.fileUrl = item['Files.fileUrl']
                 return item
             })
+
             
-            return { fileUrlList }
+            let likedNumber = []
+            
+            for(let i = 0; i <= fileUrlList.length - 1; i++){
+                const idx = fileUrlList[i].id
+                const liked = await this.models.Liked.findAll({
+                    raw: true, 
+                    where: {boardId: idx}
+                })
+                likedNumber.push(liked.length)
+            }
+            
+            return { fileUrlList, likedNumber }
         } catch (error) {
             throw new Error(error)
         }

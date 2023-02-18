@@ -1,3 +1,8 @@
+const request = axios.create({
+    baseURL:"http://localhost:3000/board",
+    withCredentials: true,
+})
+
 /* 댓글 내용 없으면 알림창 뜸 */
 const commentContentForm = document.querySelector(".writeCommentForm > form");
 const commentBox = document.querySelector(".writeCommentForm > form > div > textarea");
@@ -56,3 +61,12 @@ for (let i = 0; i <= commentAllArr.length - 1; i++) {
 //         // insertReplyPlaceArr[i] = clone.querySelectorAll
 //     });
 // }
+
+const deleteBtn = document.querySelector(".contentDelete > a")
+deleteBtn.addEventListener("click", async (e) => {
+    e.preventDefault()
+    const idx = deleteBtn.getAttribute("href").split("=")[1]
+    await request.post(`/delete?id=${idx}`, )
+    alert("글이 삭제되었습니다.")
+    location.href = `http://localhost:3005/board/list?page=1`
+})

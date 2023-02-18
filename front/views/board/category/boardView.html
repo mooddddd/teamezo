@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/css/layout/header.css" />
         <link rel="stylesheet" href="/css/layout/footer.css" />
         <link rel="stylesheet" href="/css/board/boardView.css" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Document</title>
     </head>
     <body>
@@ -34,12 +35,12 @@
                             <div class="contentTop">
                                 <div class="contentSubject">{{content.subject}}</div>
                                 <ul>
-                                    <li class="contentWriter">{{content.user_userid}}작성자</li>
+                                    <li class="contentWriter">{{content.userid}}</li>
                                     <li class="contentCreateDate">{{content.createAt}}</li>
 
                                     {%if content.cookies == content.user_userid %}
                                     <li class="contentModify"><a href="/board/modify">수정</a></li>
-                                    <li class="contentDelete"><a href="/board/delete">삭제</a></li>
+                                    <li class="contentDelete"><a href="/board/delete?id={{content.id}}">삭제</a></li>
                                     {%endif%}
                                 </ul>
                             </div>
@@ -59,7 +60,7 @@
                                 <div class="hashtagData">
                                     <ul>
                                         {%for item in hashtag%}
-                                        <li><a href="#"># {{item.tagName}}　</a></li>
+                                        <li><a href="#"># {{item.tagName}}</a></li>
                                         {%endfor%}
                                     </ul>
                                 </div>
