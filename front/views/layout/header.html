@@ -12,10 +12,10 @@
         </ul>
     </nav>
     <ul class="header_functions">
-        <li class="header_function">
-            <input type="text" class="search_box" placeholder="search" />
+        <form action="/search" method="post" class="header_function">
+            <input type="search" name="search" class="search_box" placeholder="search" />
             <img src="/img/search.png" />
-        </li>
+        </form>
         {% if token %}
         <li class="header_function profile_box"><a href="/user/profile">Profile</a></li>
         <li class="header_function logout_box"><a href="/">Logout</a></li>
@@ -26,55 +26,4 @@
     </ul>
     <script src="/js/layout/header.js" defer></script>
 </div>
-<!-- <div class="wrap">
-    <aside id="sidebarWrap">
-        <div class="cancleBtn">
-            <span class="cancle1"></span>
-            <span class="cancle2"></span>
-            <span class="cancle3"></span>
-        </div>
-        <div id="sidebar">
-            <div id="sidemenus">
-                <div class="sideloginWrap">
-                    <a href="/user/login" class="sidelogin">로그인</a>
-                    <a href="/user/join" class="sidelogin">회원가입</a>
-                </div>
-                <a href="/board?category=카테고리1" class="sidemenu">카테고리 1</a>
-                <a href="/board?category=카테고리2" class="sidemenu">카테고리 2</a>
-                <a href="/board?category=카테고리3" class="sidemenu">카테고리 3</a>
-                <a href="/board?category=카테고리4" class="sidemenu">카테고리 4</a>
-            </div>
-        </div>
-    </aside>
-    <header id="headerWrap">
-        <div id="header">
-            <div class="headerLogoWrap">
-                <h1 class="headerLogo">TeamEzo</h1>
-            </div>
-            <div class="headerContentWrap">
-                <div class="headerContents">
-                    <a href=""><div class="headerContent">Home</div></a>
-                    <a href="/board/list"><div class="headerContent">Board</div></a>
-                    <a href=""><div class="headerContent">Notice</div></a>
-                    <a href=""><div class="headerContent">QnA</div></a>
-                </div>
-            </div>
-            <div class="headerFunction">
-                <form class="searchWrap">
-                    <input id="search" class="" type="text" placeholder="search"/>
-                    <button id="searchBtn" class="">
-                        <img id="searchIcon" src="/img/search.png" />
-                    </button>
-                </form>
-                <div class="hamburgerBtn">
-                    <span class="stick h1"></span>
-                    <span class="stick h2"></span>
-                    <span class="stick h3"></span>
-                </div>
-            </div>
-        </div>
-    </header>
-</div>
-<script src="/js/layout/header.js"></script>
-<script src="/js/layout/sidebar.js"></script> -->
 {% endblock %}

@@ -5,8 +5,8 @@ class SearchController {
 
     async postSearch(req, res, next){
         try {
-            const { subject, content, hash } = await this.SearchService.postSearch(req.body.search)
-            res.json({ subject, content, hash })
+            const { subject, content, hash, startNumber, endNumber, totalPage } = await this.SearchService.postSearch(req.body.search)
+            res.json({ subject, content, hash, startNumber, endNumber, totalPage })
         } catch (error) {
             next(error)
         }

@@ -7,13 +7,12 @@
         <title>Document</title>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/header.css" />
-        <link rel="stylesheet" href="/css/layout/listForm.css" />
         <link rel="stylesheet" href="/css/layout/footer.css" />
-        <link rel="stylesheet" href="/css/board/boardList.css" />
+        <link rel="stylesheet" href="/css/search/searchList.css" />
     </head>
     <body>
         {% include 'layout/header.html' %}
-        <article>
+        <article id="searchList">
             <div id="listForm">
                 <div class="top">
                     <h1>검색결과</h1>
@@ -63,16 +62,16 @@
                         {%endfor%}
                     </tbody>
                 </table>
-                <div class="bottom">
+                <div class="adminPreNext">
+                    <a id="prev"><</a>
                     {% for number in btnNumber %}
                     <span class="pageNumber">{{number}}</span>
-                    {% endfor %} {% if userAdmin === 1 %}
-                    <a href="/{{board}}/write" class="bottomWriteTag">글쓰기</a>
-                    {% endif %}
+                    {% endfor %}
+                    <input type="hidden" value="{{totalPage}}" id="totalPage">
+                    <a id="next">></a>
                 </div>
             </div>
         </article>
         {% include 'layout/footer.html' %}
-        <script src="/js/notice/noticeList.js"></script>
     </body>
 </html>

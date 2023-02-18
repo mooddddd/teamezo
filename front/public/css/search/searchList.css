@@ -1,11 +1,12 @@
-article {
-    padding: 5rem 0rem 7rem;
+#searchList {
+    padding: 3rem 0;
     width: 100%;
-    min-height: 180rem;
     background: #f5f5f5;
 }
 
 #boardListWrap {
+    padding-top: 10rem;
+    padding-bottom: 5rem;
     width: 80%;
     margin: 0 auto;
 }
@@ -75,6 +76,7 @@ article {
 .boardListContents {
     width: 90%;
     margin: 2rem auto;
+    padding-top: 1rem;
     background: white;
 }
 
@@ -83,10 +85,10 @@ article {
 }
 
 .boardListContents > .boardFindOne {
-    padding: 2rem;
+    margin: 2rem 2rem 0 2rem;
+    /* height: 7rem; */
     display: flex;
     justify-content: space-between;
-    border: 1px solid var(--border);
 }
 /* 대표이미지 */
 .boardListContents > .boardFindOne > .boardListPic {
@@ -147,17 +149,12 @@ article {
 
 /* 페이징 */
 .boardListPaging {
-    padding: 2rem 0;
+    padding: 3rem 0;
     width: 100%;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .boardListPaging > ul {
     width: 30%;
-    margin: 0 auto 1rem;
+    margin: 0 auto;
     display: flex;
     justify-content: space-evenly;
 }
@@ -169,7 +166,7 @@ article {
     padding-right: none;
 }
 .boardListPaging > ul > li > a {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .boardListPaging > ul > li > a:hover {
     font-weight: bold;
@@ -179,11 +176,6 @@ article {
     font-size: 1.5rem;
     font-weight: bold;
     border: none;
-}
-
-.listPagingPrev, .listPagingNext{
-    font-size: 2rem;
-    background-color: #f5f5f5;
 }
 
 .pageNumber {
@@ -208,27 +200,154 @@ article {
     color: var(--footer);
 }
 
-.writeWrap{
-    position: relative;
-    width: 80%;
+#listForm {
+    width: 120rem;
+    margin: 0 auto;
+}
+
+#listForm > .top {
+    margin-top: 5rem;
+    padding: 1rem 0;
+    border-bottom: 0.1rem solid #646464;
+}
+
+#listForm > .top > h1 {
+    color: #adc46d;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#listForm > .content {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+#listForm > .content {
+    width: 90%;
+    border-collapse: collapse;
+    font-size: 1.3rem;
+    margin: 2rem auto;
+}
+
+#listForm > .content > tbody > tr {
+    /* width: 80%; */
+    text-align: center;
+    padding-top: 1rem;
+    height: 3rem;
+}
+
+#listForm > .content > tbody > tr > th {
+    font-size: 1.7rem;
+    padding-bottom: 1rem;
+}
+
+#listForm > .content > tbody > tr > td {
+    font-size: 1.3rem;
+    border-bottom: 0.1rem solid #646464;
+    padding: 1rem;
+}
+
+#listForm > .content > tbody > tr > td > a {
+    font-size: 1.3rem;
+}
+
+#listForm > .content > tbody > tr > td > a:hover {
+    color: #adc46d;
+    font-weight: bold;
+}
+
+#listForm > .content > tbody > tr > .title {
+    margin-left: 1rem;
+    text-align: left;
+}
+
+#listForm > .content > tbody > tr > .per10 {
+    width: 10%;
+}
+#listForm > .content > tbody > tr > .per20 {
+    width: 20%;
+}
+#listForm > .content > tbody > tr > .per40 {
+    width: 40%;
+}
+
+#listForm > .bottom {
+    margin: 2rem auto;
+    width: 70%;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+#listForm > .bottom > ul > li {
+    display: inline-block;
+    padding: 1rem;
+}
+
+#listForm > .bottom > ul > li > a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+#listForm > .bottom > ul > li > a:hover {
+    color: #adc46d;
+}
+
+.bottomWriteTag {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.adminPreNext{
+    margin-top: 5rem;
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
 
-#doWrite {
-    position: absolute;
-    top: -4.25rem;
-    right: -11rem;
-    padding: 0.5rem 1rem;
-    display: block;
-    font-weight: 700;
-    font-size: 2rem;
-    background-color: var(--header);
-    color: var(--main);
+.adminPreNext > a {
+    cursor: pointer;
+    text-align: center;
+    line-height: 3rem;
+    width: 4rem;
+    height: 4.5rem;
+    margin: 1rem auto;
+    border: none;
     border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--header);
+    transition: all 0.2s;
+    box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
-#doWrite:hover {
+.adminPreNext > a:hover {
     background-color: var(--footer);
-    
+}
+
+.pageNumber {
+    cursor: pointer;
+    text-align: center;
+    line-height: 3rem;
+    width: 4rem;
+    height: 4.5rem;
+    margin: 1rem 2.5rem;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--main);
+    background-color: var(--footer);
+    box-shadow: 0.75rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.pageNumber:hover {
+    background-color: var(--main);
+    color: var(--footer);
 }
