@@ -7,7 +7,6 @@ class UserKakao {
 
     async addKakaoInfo(kakaoData) {
         try {
-            console.log('kakaoUser')
             const kakaoDataId = kakaoData.id.toString()
 
             const hash = this.crypto
@@ -25,8 +24,6 @@ class UserKakao {
             }
 
             const user = await this.userRepository.getInfo(kakaoUser)
-            console.log('user.controller getMyInfo')
-            console.log(user)
             return user
         } catch (e) {
             throw new Error(e)

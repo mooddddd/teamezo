@@ -36,6 +36,5 @@ const subCategory = [
         subName:"mountain",
     },
 ]
-console.log(subCategory.length)
 
 module.exports = subCategory

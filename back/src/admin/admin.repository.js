@@ -122,7 +122,6 @@ class AdminRepository {
 
     async postBoard(boardId, visible){
         try {
-            console.log(boardId)
             await this.models.Board.update( { visible: visible }, { where: { id: Number(boardId) }})
         } catch (error) {
             throw new Error(error)

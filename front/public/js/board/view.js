@@ -16,8 +16,6 @@ const commentReplyBox = document.querySelectorAll(".commentReplyBox");
 const commentAllArr = Object.values(commentAll);
 const commentReplyBoxArr = Object.values(commentReplyBox);
 
-// console.log(commentAllArr[0]);
-
 // const reCommentClickHander = (e) => {
 //     commentReplyBox.className = "commentReplyBox";
 // };
@@ -48,18 +46,13 @@ for (let i = 0; i <= commentAllArr.length - 1; i++) {
 // for (let i = 0; i <= replyofcommentbtnArr.length - 1; i++) {
 //     replyofcommentbtnArr[i].addEventListener("click", (e) => {
 //         e.preventDefault();
-//         // console.log(replyofcommentContent[i].value); // 댓글 내용 => 얘를 백으로 보내기
-//         // console.log(insertReplyPlaceArr);
 //         let clone = document.importNode(replyTemplate.content, true);
 //         const test = clone.querySelectorAll(".commentReply>.userCommnetContent>div");
 //         const avatar = test[i].querySelector(".avatar>a>img");
 //         // const commentWriter = clone.querySelector(".commentCenterContent>ul>li>.commentWriter");
 //         // const commentDate = clone.querySelector(".commentCenterContent>ul>li>.commentDate");
-//         console.log(avatar);
 //         // const testArr = Object.values(test);
 //         // test[2];
-//         // console.log(testArr);
 //         // insertReplyPlaceArr[i] = clone.querySelectorAll
 //     });
-//     // console.log(replyofcommentbtnArr[i]);
 // }

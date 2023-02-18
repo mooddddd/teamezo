@@ -6,7 +6,6 @@ class BoardController {
     // 리스트
     async getList(req, res, next) {
         try {
-            // console.log(req.query.token);
             const listAll = await this.boardService.getList(req.query.page)
             const category = await this.boardService.getCategory()
             // token이랑 page 값 넘겨서 있냐 없냐 확인
@@ -27,7 +26,6 @@ class BoardController {
     // 뷰
     async getview(req, res, next) {
         try {
-            // console.log(req.query.id); // 1
             const id = req.query.id
             const result = await this.boardService.getview(id)
             res.json(result)
@@ -39,7 +37,6 @@ class BoardController {
     // 댓글 작성
     async getComment(req, res, next) {
         try {
-            // console.log(req.body); // { boardId: '52', classNum: '0', content: 'ㅁㄴㅇㄹㄴㄹㅇ' }
             const body = req.body
             const result = await this.boardService.postComment(body)
             res.json(result)
@@ -61,11 +58,6 @@ class BoardController {
     async postWrite(req, res, next) {
         try {
             const { body, files } = req
-            console.log(req.cookies)
-            console.log('req.bodyreq.bodyreq.bodyreq.body')
-            console.log(req.body)
-            console.log(req.cookies)
-            console.log('notice postWirte!')
             const result = await this.boardService.postBoardContent(body, files)
 
             res.json(result)

@@ -50,12 +50,10 @@ chatBox.addEventListener("submit", (e) => {
 
 socket.on("reply", (dataValue) => {
     const json = JSON.parse(dataValue)
-    console.log(json)
     const { userid, data } = json
     const ul = document.createElement("ul")
     const li = document.createElement("li")
     ul.classList.add("chatContentsLeft")
-    // li.classList.add("left")
     li.innerHTML = `<li class="chatUserName">${userid}</li>
     <li class="chatContent">${data}</li>`
     ul.append(li)

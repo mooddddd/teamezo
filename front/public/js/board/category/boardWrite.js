@@ -33,25 +33,19 @@ const subCategory = document.querySelector(".subCategory");
 const categoryArr = Object.values(MainCategory);
 
 // const holeSubCategoryArr = Object.values(holeSubCategory); //[]
-// console.log(Object.values(MainCategory)); // [{옵션1}, {옵션2}, {옵션3}]
-// console.log(holeSubCategoryArr);
 
 mainCategoryBox.addEventListener("change", (e) => {
-    // console.log(e.target.value);
     subCategory.options.length = 1;
     for (i = 0; i <= MainCategory.length - 1; i++) {
-        console.log(e.target.value);
         if (MainCategory[i].value === e.target.value) {
             const selectSubCategory = document.querySelectorAll(`.subject > div > .${MainCategory[i].value}`);
             const selectSubCategoryArr = Object.values(selectSubCategory);
             for (j = 0; j <= selectSubCategoryArr.length - 1; j++) {
-                // console.log(selectSubCategoryArr[j].value);
                 const subOpt = document.createElement("option");
                 subOpt.value = `${selectSubCategoryArr[j].value}`;
                 subOpt.innerHTML = `${selectSubCategoryArr[j].value}`;
                 subCategory.append(subOpt);
             }
-            // console.log(document.getElementsByClassName(`${MainCategory[i].value}`));
         }
     }
     // 백에서 데이터 받아와서 뿌리는 걸로 바꿔보기! (나중에,,,)
@@ -119,9 +113,9 @@ const submitHandler = async (e) => {
         },
     });
 
-    console.log(insertBoardContent.data);
     location.href = `/board/view?id=${insertBoardContent.data}`;
 };
+
 writeDataForm.addEventListener("submit", submitHandler);
 
 //

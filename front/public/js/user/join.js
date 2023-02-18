@@ -32,12 +32,9 @@ const request = axios.create({
 
 duplicateBtn.addEventListener('click', async (e) => {
     try {
-        console.log('addEventListener userid')
-        console.log(joinInputId.value)
         const response = await request.post('/users/login', {
             userid: joinInputId.value,
         })
-        console.log(response)
 
         joinCheck[0].innerHTML = '사용가능한 아이디입니다.'
     } catch (e) {

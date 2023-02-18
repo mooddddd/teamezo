@@ -11,10 +11,6 @@ const submitHandler = async (e) => {
             ['Set-Cookie']: `${document.cookie}`,
         },
     })
-    console.log(
-        'insertBoardContent.datainsertBoardContent.datainsertBoardContent.datainsertBoardContent.data'
-    )
-    console.log(insertBoardContent.data)
     location.href = `/board/view?id=${insertBoardContent.data}`
 }
 writeDataForm.addEventListener('submit', submitHandler)

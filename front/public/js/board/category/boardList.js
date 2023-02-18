@@ -8,11 +8,9 @@ const clickHandler = async (e) => {
     // const {boardId, userid} = 어디서 받아오지
     const response = await axios.post("http://localhost:3000/board/list", { boardId: "50", userid: "char1ey" });
 
-    console.log(e.target.value);
     if (response.data != 1) {
         e.target.removeAttribute("src");
         e.target.setAttribute("src", "/img/thumsupClick.png");
-        console.log(e.target);
     } else {
         e.target.removeAttribute("src");
         e.target.setAttribute("src", "/img/thumsup.png");

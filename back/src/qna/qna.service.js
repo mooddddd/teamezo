@@ -5,12 +5,7 @@ class QnaService {
 
     async getList(userid, page) {
         try {
-            console.log('qna Service')
-            console.log(userid)
-            console.log(page)
             const userBoardInfo = await this.qnaRepository.getQnaList(userid, page)
-            console.log('notice Service after')
-            console.log(userBoardInfo)
             return userBoardInfo
         } catch (e) {
             throw new Error(e)
@@ -19,9 +14,7 @@ class QnaService {
 
     async postQnaContent(body, files) {
         const { ...rest } = body
-        console.log("Object.values(rest)[2].split('=')[1]")
         rest.userid = Object.values(rest)[2].split('=')[1]
-        console.log(rest)
         const filenameArr = files.map((v) => v.filename)
         const insertContent = await this.qnaRepository.insertContent(rest, filenameArr)
         return insertContent

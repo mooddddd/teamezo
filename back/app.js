@@ -29,9 +29,6 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET
 
 app.get('/oauth/kakao', async (req, res, next) => {
     const { code } = req.query
-    console.log('code')
-    console.log(code)
-
     const host = `${HOST}/oauth/token`
     const headers = {
         'Content-type': 'application/x-www-form-urlencoded',
@@ -46,8 +43,6 @@ app.get('/oauth/kakao', async (req, res, next) => {
     })
 
     const response = await axios.post(host, body, headers)
-    console.log('response.data')
-    console.log(response.data)
 
     // step3. 회원정보 가져옴니당
     try {
@@ -60,15 +55,8 @@ app.get('/oauth/kakao', async (req, res, next) => {
             },
         })
         const kakaoLoginUser = await userKakao.addKakaoInfo(user.data) // id hash화 한것? front set-cookies로 저장
-        console.log('kakaoLoginUser')
-        console.log(kakaoLoginUser)
-
         res.redirect(`http://localhost:3005/?token=${kakaoLoginUser}`)
     } catch (e) {}
-})
-
-app.use('/socket.io', (req, res) => {
-    console.log(req.body)
 })
 
 app.use((error, req, res, next) => {

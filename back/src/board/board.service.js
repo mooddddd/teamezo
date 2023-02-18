@@ -16,8 +16,6 @@ class BoardService {
             const boardList = await this.boardRepo.getBoardList(page)
             // const likedCheck = await this.boardRepo.getLikedCheck(page, token);
 
-            // console.log(boardList);
-
             // const userid = await 받아온 token값으로 유저 찾아오기
             // const listLikedTnF = await this.boardRepo.getLiked(userid);
             // where userid해서 liked 테이블 데이터 가져오기
@@ -38,7 +36,6 @@ class BoardService {
             const { commentResult, replyResult } = await this.boardRepo.getViewComment(id)
             // const likedCount = await this.boardRepo.getLikedCount(id);
             // const comment = await this.boardRepo.getViewComment(id);
-            // console.log(content.dataValues);
 
             return { content, hashtag, files, commentResult, replyResult }
         } catch (e) {
@@ -53,7 +50,6 @@ class BoardService {
 
     async postListLiked(body) {
         const { boardId, userid } = body
-        // console.log(boardId, userid);
         const result = await this.boardRepo.postListLiked(userid, boardId)
         return result
     }

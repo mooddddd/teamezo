@@ -5,18 +5,17 @@ const request = axios.create({
     withCredentials: true,
 })
 
-exports.getSearch = async (req, res) => {
+exports.getSearch = async (req, res, next) => {
     try {
-        console.log(req.query)
         const result = await request.post("/", req.query)
         const { subject, content, hash } = result.data
         res.render('search/searchList.html', { subject, content, hash })
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }
 
-exports.postSearch = async (req, res) => {
+exports.postSearch = async (req, res, next) => {
     try {
         
         const result = await request.post("/", req.body)
@@ -36,6 +35,6 @@ exports.postSearch = async (req, res) => {
         // }
 
     } catch (error) {
-        console.log(error)
+        next(error)
     }
 }

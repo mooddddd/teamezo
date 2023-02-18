@@ -89,7 +89,6 @@ exports.postAdminCategory = (req, res, next) => {
 
 exports.getAdminBoard = async (req, res, next) => {
     try {
-        console.log(req.query)
         const { page, order } = req.query
         const response = await request.get(`/board?page=${Number(page)}&order=${order}`)
         const { boardList, startNumber, endNumber, totalPage } = response.data

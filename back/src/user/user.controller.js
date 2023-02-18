@@ -5,12 +5,8 @@ class UserController {
 
     async postLoginChk(req, res, next) {
         try {
-            console.log('userController postLoginChk')
             const { userid } = req.body
-            console.log(userid)
             const user = await this.userService.loginIdChk({ userid })
-            console.log('userController postLoginChk after')
-            console.log(user)
             res.json(user)
         } catch (e) {
             next(e)
@@ -20,10 +16,7 @@ class UserController {
     async getProfile(req, res, next) {
         try {
             const { userid, page } = req.query
-            console.log('user.controller')
             const [getUserProfile] = await this.userService.userCheck({ userid, page })
-            console.log('getUserProfile user')
-            console.log(getUserProfile)
             res.json(getUserProfile)
         } catch (e) {
             next(e)
@@ -33,8 +26,6 @@ class UserController {
     async postJoin(req, res, next) {
         try {
             const { userid, userpw, username, email } = req.body
-            console.log('useridadasdasd')
-            console.log(email)
             const userInfo = await this.userService.joinChk({
                 userid,
                 userpw,

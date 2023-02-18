@@ -12,9 +12,6 @@ exports.postlogin = async (req, res) => {
     const response = await request.post('/auth', {
         ...req.body,
     })
-    console.log('response.data.username')
-
-    console.log(response)
     if (response.data.username !== undefined) {
         res.setHeader('Set-Cookie', `token=${response.data.userid};path=/;`)
         res.redirect('/')
@@ -32,9 +29,6 @@ exports.postjoin = async (req, res) => {
         const result = await request.post('/users/join', {
             ...req.body,
         })
-
-        console.log('result')
-        console.log(result)
         const cookies = result.data
         res.setHeader('Set-Cookie', `token=${cookies.userid}; path=/;`)
         res.redirect(`/user/welcome?userid=${cookies.userid}&username=${cookies.username}`)
@@ -62,8 +56,7 @@ exports.getprofile = async (req, res) => {
             url: 'http://localhost:3000/',
             params: { userid: profileCookies, page },
         })
-        console.log('{result}')
-        console.log(result.data)
+        
         res.render('user/profile', { result, token })
     }
 }

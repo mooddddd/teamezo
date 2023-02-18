@@ -23,6 +23,6 @@ exports.getIndex = async (req, res, next) => {
             res.render("index.html", { list, mainName, tagName, token })
         }
     } catch (error) {
-        console.log('getIndex',error)
+        next('getIndex',error)
     }
 }

@@ -4,7 +4,6 @@ if(logout !== null) {
     logout.addEventListener("click", (e) => {
         e.preventDefault()
         deleteCookie(document.cookie.split("=")[0])
-        console.log(document.cookie)
         location.href = 'http://localhost:3005/'
     })
 }
