@@ -134,8 +134,8 @@ table {
 
 
 .trBody > td > button {
-    width: 50%;
-    height: 30%;
+    width: 6rem;
+    height: 2.5rem;
     background-color: var(--header);
     border: none;
     border-radius: 0.5rem;

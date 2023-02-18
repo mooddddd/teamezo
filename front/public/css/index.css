@@ -346,15 +346,16 @@ padding: 10px;
 #chatSpace {
     position: fixed;
     z-index: 5;
-    top: 45rem;
+    bottom: 1rem;
     /* right: 5rem; */
     right: -55rem;
     width: 50rem;
-    /* height: 70rem; */
-    min-height: 70rem;
+    height: 70rem;
+    /* max-height: 70rem; */
     background-color: #ececec;
     box-shadow: 1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
     transition: all 1s;
+    overflow-y: scroll;
 }
 
 #chatHeader {

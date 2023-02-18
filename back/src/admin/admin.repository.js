@@ -43,6 +43,92 @@ class AdminRepository {
             throw new Error(error)
         }
     }
+
+    async getBoard (page, order){
+        try {
+            const pageNum = await this.models.Board.findAll({ raw: true, })
+            const totalPage = Math.ceil(pageNum.length / 5)
+            let current = Number(page)*5-5
+            
+            let startNumber = current/5 - (current/5 % 5) + 1
+            let endNumber = current/5 - (current/5 % 5) + 5
+
+            if( endNumber > totalPage ){
+                endNumber = totalPage
+            }
+
+            if( order === "hit" ){
+                const boardList = await this.models.Board.findAll({
+                    offset: Number(page)*5 - 5,
+                    limit: 5,
+                    order: [[`hit`, 'desc']],
+                    raw: true,
+                })
+                let likedNumber = []
+    
+                for(let i = 0; i <= boardList.length - 1; i++){
+                    const idx = boardList[i].id
+                    const liked = await this.models.Liked.findAll({
+                        raw: true, 
+                        where: {boardId: idx}
+                    })
+                    likedNumber.push(liked.length)
+                }
+    
+                return { boardList, startNumber, endNumber, totalPage, likedNumber }
+            // }else if( order === "liked" ){
+                // const boardList = await this.models.Board.findAll({
+                //     offset: Number(page)*5 - 5,
+                //     limit: 5,
+                //     order: [[`hit`, 'desc']],
+                //     raw: true,
+                // })
+                // let likedNumber = []
+    
+                // for(let i = 0; i <= boardList.length - 1; i++){
+                //     const idx = boardList[i].id
+                //     const liked = await this.models.Liked.findAll({
+                //         raw: true, 
+                //         where: {boardId: idx}
+                //     })
+                //     likedNumber.push(liked.length)
+                // }
+                // return { boardList, startNumber, endNumber, totalPage, likedNumber }
+            } else {
+                const boardList = await this.models.Board.findAll({
+                    offset: Number(page)*5 - 5,
+                    limit: 5,
+                    raw: true,
+                    order: [[`id`, 'desc']],
+                })
+    
+                let likedNumber = []
+    
+                for(let i = 0; i <= boardList.length - 1; i++){
+                    const idx = boardList[i].id
+                    const liked = await this.models.Liked.findAll({
+                        raw: true, 
+                        where: {boardId: idx}
+                    })
+                    likedNumber.push(liked.length)
+                }
+    
+                return { boardList, startNumber, endNumber, totalPage, likedNumber }
+            }
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
+    async postBoard(boardId, visible){
+        try {
+            console.log(boardId)
+            await this.models.Board.update( { visible: visible }, { where: { id: Number(boardId) }})
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
 }
 
 module.exports = AdminRepository
