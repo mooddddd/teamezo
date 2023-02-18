@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
         <link rel="stylesheet" href="/css/admin/adminBoard.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Document</title>
     </head>
     <body>
@@ -15,13 +16,15 @@
             <div class="adminRight">
                 <div class="adminRightTop">
                     <h1>게시물 관리</h1>
-                    <p>게시물을 검색하고 숨길 수 있습니다.</p>
+                    <p>게시물을 확인하고 숨길 수 있습니다.</p>
                 </div>
                 <div class="adminBoardSearch">
-                    <form action="" method="">
-                        <input type="text" name="" id="" />
-                        <button type="submit">검색</button>
-                    </form>
+                    <select name="order" id="order">
+                        <option value="" selected>--정렬방식선택--</option>
+                        <option value="liked">좋아요</option>
+                        <option value="hit">조회수</option>
+                    </select>    
+                    <button type="button">검색</button>
                 </div>
                 <div class="adminBoardList">
                     <table>
@@ -42,81 +45,32 @@
 
                             <th class="th8">글상태</th>
                         </tr>
-
+                        {% for list in boardList %}
                         <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
+                            <td class="boardId">{{list.id}}</td>
+                            <td>{{list.mainName}}</td>
+                            <td>{{list.userid}}</td>
+                            <td class="boardSubject">{{list.subject}}</td>
+                            <td>{{list.createAt}}</td>
+                            <td>{{list.liked}}</td>
+                            <td>{{list.hit}}</td>
+                            <td class="access">{{list.visible}}</td>
                         </tr>
-
-                        <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
-                        </tr>
-
-                        <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
-                        </tr>
-
-                        <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
-                        </tr>
-
-                        <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
-                        </tr>
-
-                        <tr class="trBody">
-                            <td>{idx}</td>
-                            <td>{카테고리}</td>
-                            <td>{아이디}</td>
-                            <td>{제목}</td>
-                            <td>{작성일}</td>
-                            <td>{좋아요}</td>
-                            <td>{조회수}</td>
-                            <td>{글상태}</td>
-                        </tr>
+                        {% endfor %}
                     </table>
                     <div class="adminPreNext">
-                        <a href="#">이전</a>
-                        <a href="#">다음</a>
+                        <a id="prev"><</a>
+                        {% for number in btnNumber %}
+                        <span class="pageNumber">{{number}}</span>
+                        {% endfor %}
+                        <input type="hidden" value="{{totalPage}}" id="totalPage">
+                        <a id="next">></a>
                     </div>
                 </div>
                 <!-- adminUserList -->
             </div>
             <!-- adminRight -->
         </div>
+        <script src="/js/admin/adminBoard.js" defer></script>
     </body>
 </html>

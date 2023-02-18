@@ -10,10 +10,14 @@ for(let i = 0; i < Object.values(updateBtn).length; i++){
 }
 
 const pageNumber = document.querySelectorAll(".pageNumber")
+const currentPageNumber = location.search.split("=")[1]
 
 for(let i = 0; i < Object.values(pageNumber).length; i++){
+    if (Object.values(pageNumber)[i].textContent === currentPageNumber) {
+        Object.values(pageNumber)[i].style.background = "#fdfdfd"
+        Object.values(pageNumber)[i].style.color = "#526a7e"
+    }
     const number = Object.values(pageNumber)[i].innerHTML
-
     Object.values(pageNumber)[i].addEventListener("click", (e) => {
         location.href = `http://localhost:3005/admin/user?page=${number}`
     })
@@ -41,3 +45,4 @@ nextBtn.addEventListener("click", (e) => {
         location.href = `http://localhost:3005/admin/user?page=${pageNum + 1}`
     }
 })
+

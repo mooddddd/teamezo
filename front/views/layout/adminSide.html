@@ -23,4 +23,20 @@
         </div>
     </div>
 </aside>
+<script>
+    const move = document.querySelectorAll('.textCenter')
+
+    Object.values(move)[0].addEventListener("click", (e) => {
+        location.href = `http://localhost:3005/admin/user?page=1`
+    })
+
+    Object.values(move)[1].addEventListener("click", (e) => {
+        location.href = `http://localhost:3005/admin/category`
+    })
+
+    Object.values(move)[2].addEventListener("click", (e) => {
+        location.href = `http://localhost:3005/admin/board?page=1&order=`
+    })
+
+</script>
 {% endblock %}

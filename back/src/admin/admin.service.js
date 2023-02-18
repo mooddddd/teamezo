@@ -32,6 +32,37 @@ class AdminService {
             throw new Error(error)
         }
     }
+
+    async getAllBoard( page, order ){
+        try {
+            const result = await this.AdminRepoistory.getBoard( page, order )
+            for(let i = 0; i <= result.boardList.length - 1; i++){
+                result.boardList[i].liked = result.likedNumber[i]
+                if( result.boardList[i].visible ){
+                    result.boardList[i].visible = "이용가능"
+                } else {
+                    result.boardList[i].visible = "이용불가"
+                }
+            }
+            return result
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+
+    async postBoard(boardId, visible){
+        try {
+            if( visible === '이용가능'){
+                visible = 0
+            } else {
+                visible = 1
+            }
+            const result = await this.AdminRepoistory.postBoard( boardId, visible )
+            return result
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
 }
 
 module.exports = AdminService

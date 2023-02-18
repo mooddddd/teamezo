@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/root.css">
+    <style>
+
+        body{
+            background-color: #2e2e2e;
+        }
+        #inaccessible_wrap{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inaccessible{
+            width: 60rem;
+            height: 30rem;
+            border: 3px solid #2e2e2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #inaccessible > h1 {
+            font-size: 4rem;
+            color: #efefef;
+        }
+
+        #inaccessible > a {
+            margin-top: 5rem;
+            display: block;
+            font-size: 3rem;
+            font-weight: 700;
+            background-color: var(--header);
+            color: var(--main);
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        #inaccessible > a:hover {
+            background-color: var(--footer);
+        }
+    </style>
+</head>
+<body>
+    <div id="inaccessible_wrap">
+        <div id="inaccessible">
+            <h1> 해당글에 접근할 수 없습니다!</h1>
+            <a href="/board/list?page=1">리스트로 가기</a>
+        </div>
+    </div>
+</body>
+</html>
