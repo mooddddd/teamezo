@@ -9,7 +9,7 @@ router.get("/user", controller.getAdminUser)
 router.post("/user", controller.postAdminUser)
 
 router.get("/userEdit", controller.getAdminUserEdit)
-router.post("/userEdit", upload.single("avatarUrl"),controller.postAdminUserEdit)
+router.post("/userEdit", upload.single("avatarUrl"), controller.postAdminUserEdit)
 
 router.get("/category", controller.getAdminCategory)
 router.post("/category", controller.postAdminCategory)

@@ -46,6 +46,7 @@ class BoardService {
 
     async getview(id) {
         try {
+            await this.boardRepo.upHit(id)
             const { dataValues: content } = await this.boardRepo.getViewContent(id)
             const hashtag = await this.boardRepo.getViewHashTag(id)
             const files = await this.boardRepo.getViewFiles(id)

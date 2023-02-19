@@ -210,6 +210,15 @@ class BoardRepo {
         }
     }
 
+    async upHit(id){
+        try {
+            const hitNumber =  await this.models.Board.findOne({ attributes:[ "hit" ], where:{ id: id }, raw: true })
+            let hit = hitNumber.hit + 1
+            await this.models.Board.update({hit: hit}, { where: {id: id}})
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
     // async postBoardContent(body, file) {
     //     // 한 거
     //     // const insertContent = await this.models.Board.create({ nameName: `${body.nameName}`, subName: `${body.subName}`, subject: `${body.subject}`, content: `${body.content}` });

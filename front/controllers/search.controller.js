@@ -7,13 +7,33 @@ const request = axios.create({
 
 exports.getSearch = async (req, res, next) => {
     try {
-        const result = await request.post("/", req.query)
-        const { subject, content, hash, startNumber, endNumber, totalPage } = result.data
-        const btnNumber = []
-        for(let i = startNumber; i <= endNumber; i++){
-            btnNumber.push(i)
+        if( req.query.search ) {
+            const result = await request.post("/", req.query)
+            const { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage } = result.data
+            const btnNumber = []
+            for(let i = startNumber; i <= endNumber; i++){
+                btnNumber.push(i)
+            }
+            res.render('search/searchList.html', { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage })
+        } else if ( req.query.category ){
+            const result = await request.post("/", req.query)
+            const { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage } = result.data
+            const btnNumber = []
+            for(let i = startNumber; i <= endNumber; i++){
+                btnNumber.push(i)
+            }
+            res.render('search/searchList.html', { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage })
+        } else if ( req. query.tagName ){
+            const result = await request.post("/", req.query)
+            const { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage } = result.data
+            const btnNumber = []
+            for(let i = startNumber; i <= endNumber; i++){
+                btnNumber.push(i)
+            }
+            res.render('search/searchList.html', { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage })
+        } else {
+            res.render('error.html')
         }
-        res.render('search/searchList.html', { subject, content, hash, btnNumber, totalPage })
     } catch (error) {
         next(error)
     }

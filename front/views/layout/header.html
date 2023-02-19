@@ -17,7 +17,7 @@
             <img src="/img/search.png" />
         </form>
         {% if token %}
-        <li class="header_function profile_box"><a href="/user/profile">Profile</a></li>
+        <li class="header_function profile_box"><a href="/user/profile?userid={{token}}">Profile</a></li>
         <li class="header_function logout_box"><a href="/">Logout</a></li>
         {% else %}
         <li class="header_function login_box"><a href="/user/login">Sign in</a></li>

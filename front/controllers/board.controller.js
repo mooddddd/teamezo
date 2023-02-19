@@ -32,39 +32,43 @@ exports.getList = async (req, res, next) => {
 };
 
 /* 글작성 */
-exports.getWrite = async (req, res) => {
+exports.getWrite = async (req, res, next) => {
     try {
         const { token } = req.cookies
         const response = await request.get("/write");
         const { mainCategory, subCategory } = response.data;
         res.render("board/category/boardWrite.html", { mainCategory, subCategory, token });
     } catch (e) {
-        throw new Error(e);
+        next(e)
     }
 };
-// exports.postWrite = (req, res) => {}; // 포스트는 브라우저에서 바로 백으로 넘김
 
 /* 뷰 view */
-exports.getView = async (req, res) => {
-    const { token } = req.cookies
-    const id = req.query.id;
-    const result = await request.get(`/view?id=${id}`);
-    if( result.data.content.visible ){
-        const { content, hashtag, files, commentResult, replyResult } = result.data;
-        content.token = token
-        res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, token });
-    } else {
-        res.render("inaccessible.html")
+exports.getView = async (req, res, next) => {
+    try {
+        const { token } = req.cookies
+        const id = req.query.id;
+        const result = await request.get(`/view?id=${id}`);
+        if( result.data.content.visible ){
+            const { content, hashtag, files, commentResult, replyResult } = result.data;
+            content.token = token
+            content.createAt = content.createAt.split("T")[0]
+            res.render("board/category/boardView.html", { content, hashtag, files, commentResult, replyResult, token });
+        } else {
+            res.render("inaccessible.html")
+        }
+    } catch (error) {
+        next(error)
     }
 };
 
 /* 댓글 */
-exports.postComment = async (req, res) => {
+exports.postComment = async (req, res, next) => {
     try {
         const value = req.body;
         const response = await request.post("/view/comment", value);
         res.redirect(`/board/view?id=${response.data.boardId}`);
     } catch (e) {
-        throw new Error(e);
+        next(e)
     }
 };

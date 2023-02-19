@@ -38,6 +38,7 @@ class AdminController {
         try {
             const { path } = req.body
             const { body } = req.body
+            console.log(body)
             const result = await this.AdminService.putUserEdit(path, body)
             res.json(result)
         } catch (error) {

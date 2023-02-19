@@ -3,7 +3,6 @@ const useridValue = document.querySelectorAll(".trBody > .userid")
 
 for(let i = 0; i < Object.values(updateBtn).length; i++){
     const userid = Object.values(useridValue)[i].innerHTML
-
     Object.values(updateBtn)[i].addEventListener("click", (e) => {
         location.href = `http://localhost:3005/admin/userEdit?userid=${userid}`
     })

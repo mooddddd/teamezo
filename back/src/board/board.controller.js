@@ -72,8 +72,8 @@ class BoardController {
         try {
             const result = await this.boardService.postDelete(req.query.id)
             res.json(result)
-        } catch (error) {
-            next(error)
+        } catch (e) {
+            next(e)
         }
     }
 }
