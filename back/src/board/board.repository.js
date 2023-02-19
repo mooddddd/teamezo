@@ -13,7 +13,7 @@ class BoardRepo {
             throw new Error(e)
         }
     }
-    async getBoardList(page, token) {
+    async getBoardList(page, userid) {
         // limit 10
         try {
             const listAll = await this.models.Board.findAll({ raw: true, where: { notice: false } })
@@ -34,6 +34,17 @@ class BoardRepo {
                 where: { notice: false },
             })
 
+            let likedNumber = []
+    
+            for(let i = 0; i <= boardList.length - 1; i++){
+                const idx = boardList[i].id
+                const liked = await this.models.Liked.findAll({
+                    raw: true, 
+                    where: {boardId: idx}
+                })
+                likedNumber.push(liked.length)
+            }
+
             const boardIdArr = boardList.map((v) => v.id)
 
             const searchImg = boardIdArr.map((id) =>
@@ -49,21 +60,29 @@ class BoardRepo {
                 }
                 return v
             })
+            
+            // const liked = await this.models.Liked.findAll({
+            //     raw: true, 
+            //     where: {userid: userid}
+            // })
 
-            return { list, startNumber, endNumber, totalPage, listCount, imgArr }
+            return { list, startNumber, endNumber, totalPage, listCount, imgArr, likedNumber }
         } catch (e) {
             throw new Error(e)
         }
     }
 
-    // async getLikedCheck(boardId, token) {
-    //     // limit 10
-    //     try {
-    //         // boardId로 검색해서 갯수만 던져주면 됨, 좋아요 데이터가 들어가는 건 브라우저에서 js로 처리함
-    //     } catch (e) {
-    //         throw new Error(e);
-    //     }
-    // }
+    async getLikedCheck(userid) {
+        try {
+            const liked = await this.models.Liked.findAll({
+                raw: true, 
+                where: {userid: userid}
+            })
+            return liked
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
 
     async getLiked(userid, boardId) {
         try {
@@ -71,7 +90,9 @@ class BoardRepo {
                 where: { userid: `${userid}`, boardId: Number(boardId) },
             })
             return result // 좋아요 리스트에 없으면 null
-        } catch (e) {}
+        } catch (e) {
+            throw new Error(e)
+        }
     }
 
     async postListLiked(userid, boardId) {
@@ -95,7 +116,9 @@ class BoardRepo {
             }
 
             // 찾아서 없으면 추가+return true, 있으면 삭제+return false
-        } catch (e) {}
+        } catch (e) {
+            throw new Error(e)
+        }
     }
 
     async getViewContent(id) {
@@ -103,66 +126,88 @@ class BoardRepo {
             // const addHit = await this.models.Board.update()
             const result = await this.models.Board.findOne({ where: { id: `${id}` } })
             return result
-        } catch (e) {}
+        } catch (e) {
+            throw new Error(e)
+        }
     }
 
     async getViewHashTag(id) {
-        const tagResult = await this.models.HashTag.findAll({
-            raw: true,
-            where: { boardId: `${id}` },
-        })
-        return tagResult
+        try {
+            const tagResult = await this.models.HashTag.findAll({
+                raw: true,
+                where: { boardId: `${id}` },
+            })
+            return tagResult
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
     async getViewFiles(id) {
-        const filesResult = await this.models.File.findAll({ raw: true, where: { boardId: id } })
-        return filesResult
+        try {
+            const filesResult = await this.models.File.findAll({ raw: true, where: { boardId: id } })
+            return filesResult
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
     async getViewComment(id) {
-        const commentResult = await this.models.Comment.findAll({
-            raw: true,
-            where: { boardId: id, classNum: 0 },
-        })
-        const replyResult = await this.models.Comment.findAll({
-            raw: true,
-            where: { boardId: id, classNum: 1 },
-        })
-        return { commentResult, replyResult }
+        try {
+            const commentResult = await this.models.Comment.findAll({
+                raw: true,
+                where: { boardId: id, classNum: 0 },
+            })
+            const replyResult = await this.models.Comment.findAll({
+                raw: true,
+                where: { boardId: id, classNum: 1 },
+            })
+            return { commentResult, replyResult }
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
     async insertContent(rest, filenameArr, tagArr) {
-        if (tagArr) {
-            const result = await this.models.Board.create(rest)
-            const hashtags = tagArr.map((tagName) =>
-                this.models.HashName.findOrCreate({ raw: true, where: { tagName } })
-            )
-            const tags = await Promise.all(hashtags)
-            await result.addHashNames(tags.map((v) => v[0]))
-
-            const files = filenameArr.map((fileUrl) =>
-                this.models.File.create({ fileUrl, boardId: result.id })
-            )
-            const promiseFiles = await Promise.all(files)
-            // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
-
-            return result.id // 리턴값으로 board 테이블의 id를 반환
-        } else {
-            const result = await this.models.Board.create(rest)
-
-            const files = filenameArr.map((fileUrl) =>
-                this.models.File.create({ fileUrl, boardId: result.id })
-            )
-
-            await Promise.all(files)
-            // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
-            return result.id // 리턴값으로 board 테이블의 id를 반환
+        try {
+            if (tagArr) {
+                const result = await this.models.Board.create(rest)
+                const hashtags = tagArr.map((tagName) =>
+                    this.models.HashName.findOrCreate({ raw: true, where: { tagName } })
+                )
+                const tags = await Promise.all(hashtags)
+                await result.addHashNames(tags.map((v) => v[0]))
+    
+                const files = filenameArr.map((fileUrl) =>
+                    this.models.File.create({ fileUrl, boardId: result.id })
+                )
+                const promiseFiles = await Promise.all(files)
+                // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
+    
+                return result.id // 리턴값으로 board 테이블의 id를 반환
+            } else {
+                const result = await this.models.Board.create(rest)
+    
+                const files = filenameArr.map((fileUrl) =>
+                    this.models.File.create({ fileUrl, boardId: result.id })
+                )
+    
+                await Promise.all(files)
+                // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
+                return result.id // 리턴값으로 board 테이블의 id를 반환
+            }
+        } catch (error) {
+            throw new Error(error)
         }
     }
 
     async insertComment(value) {
-        const result = await this.models.Comment.create(value)
-        return result
+        try {
+            const result = await this.models.Comment.create(value)
+            return result
+        } catch (error) {
+            throw new Error(error)
+        }
     }
 
     // async postBoardContent(body, file) {
@@ -188,10 +233,9 @@ class BoardRepo {
     async postDelete(id){
         try {
             const result = await this.models.Board.destroy({where: {id:Number(id)}})
-            console.log(result)
             return result
         } catch (error) {
-            next(error)
+            throw new Error(error)
         }
     }
 }

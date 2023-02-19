@@ -1,6 +1,6 @@
 const axios = require('axios')
 const request = axios.create({
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://localhost:3000',
     withCredentials: true,
 })
 
@@ -8,20 +8,28 @@ exports.getlogin = (req, res) => {
     res.render('user/login.html')
 }
 
-exports.postlogin = async (req, res) => {
-    const response = await request.post('/auth', {
-        ...req.body,
-    })
-    if (response.data.username !== undefined) {
-        res.setHeader('Set-Cookie', `token=${response.data.userid};path=/;`)
-        res.redirect('/')
-    } else {
-        res.render('error.html')
+exports.postlogin = async (req, res, next) => {
+    try {
+        const response = await request.post('/auth', {
+            ...req.body,
+        })
+        if (response.data.username !== undefined) {
+            res.setHeader('Set-Cookie', `token=${response.data.userid};path=/;`)
+            res.redirect('/')
+        } else {
+            res.render('error.html')
+        }
+    } catch (error) {
+        next(error)
     }
 }
 
-exports.getjoin = (req, res) => {
-    res.render('user/join.html')
+exports.getjoin = (req, res, next) => {
+    try {
+        res.render('user/join.html')
+    } catch (error) {
+        next(error)
+    }
 }
 
 exports.postjoin = async (req, res) => {

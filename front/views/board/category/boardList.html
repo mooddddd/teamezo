@@ -62,19 +62,22 @@
                                     <li class="subject">
                                         <a href="/board/view?id={{item.id}}">{{item.subject}}</a>
                                     </li>
-                                    <li class="writer">{{item.user_userid}}</li>
+                                    <li class="writer">{{item.userid}}</li>
                                     <li class="date">{{item.createAt}}</li>
                                 </ul>
                             </div>
                             <!-- 좋아요 -->
-                            <form method="post" , action="board/list">
+                            <form method="post" action="board/list" id="likedPost">
                                 <input type="hidden" value="{{item.id}}" />
                                 <div class="boardListLiked">
                                     <div class="changeIMG">
+                                        {% if item.liked %}
+                                        <img id="afterClick" class="off" src="/img/thumsupClick.png" />
+                                        {% else %}
                                         <img id="beforeClick" src="/img/thumsup.png" />
-                                        <!-- <img id="afterClick" class="off" src="/img/thumsupClick.png" /> -->
+                                        {% endif %}
                                     </div>
-                                    <span>{{item.liked}}</span>
+                                    <span>{{item.likedNumber}}</span>
                                 </div>
                             </form>
                         </div>

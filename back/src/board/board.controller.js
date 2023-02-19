@@ -6,7 +6,8 @@ class BoardController {
     // 리스트
     async getList(req, res, next) {
         try {
-            const listAll = await this.boardService.getList(req.query.page)
+            console.log(req.query) // 왜 query에 token이 찍히지..?
+            const listAll = await this.boardService.getList(req.query.page, req.query.token)
             const category = await this.boardService.getCategory()
             // token이랑 page 값 넘겨서 있냐 없냐 확인
             res.json({ listAll, category })
@@ -30,7 +31,7 @@ class BoardController {
             const result = await this.boardService.getview(id)
             res.json(result)
         } catch (e) {
-            throw new Error(e)
+            next(e)
         }
     }
 
@@ -41,7 +42,7 @@ class BoardController {
             const result = await this.boardService.postComment(body)
             res.json(result)
         } catch (e) {
-            throw new Error(e)
+            next(e)
         }
     }
 
@@ -58,6 +59,7 @@ class BoardController {
     async postWrite(req, res, next) {
         try {
             const { body, files } = req
+            console.log(body)
             const result = await this.boardService.postBoardContent(body, files)
 
             res.json(result)

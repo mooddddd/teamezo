@@ -11,7 +11,7 @@ app.get('/kakao/login', (req, res) => {
 })
 
 app.use((error, req, res, next) => {
-    res.status(500).send(error.message)
+    res.render('error.html')
 })
 
 app.listen(3005, () => {

@@ -5,24 +5,29 @@ const request = axios.create({
 });
 
 /* 리스트 */
-exports.getList = async (req, res) => {
+exports.getList = async (req, res, next) => {
     try {
         const { token } = req.cookies
         const page = req.query.page;
-        const response = await request.get(`/list?page=${page}`);
-        // { params: { token: `${req.cookies.token}` } }
-        // const boardList = response.data.boardList; // 게시물 전체  boardList:[{},{},{}]
+        const response = await request.get(`/list?page=${page}`,
+        {
+            params: { token },
+        }
+        );
         const { list, startNumber, endNumber, totalPage, listCount, imgArr } = response.data.listAll;
         const { mainCategory, subCategory } = response.data.category;
-        // 카테고리 전체 {mainCategory:[{},{},{}], subCategory:[{},{},{}]}
         const btnNumber = [];
         for (let i = startNumber; i <= endNumber; i++) {
             btnNumber.push(i);
         }
 
+        for(let i = 0; i <= list.length - 1; i++){
+            list[i].createAt = list[i].createAt.split("T")[0]
+        }
+        
         res.render("board/category/boardList.html", { list, mainCategory, subCategory, btnNumber, totalPage, listCount, imgArr, token });
     } catch (e) {
-        throw new Error(e);
+        next(e)
     }
 };
 

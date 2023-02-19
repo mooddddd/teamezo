@@ -106,6 +106,7 @@ const submitHandler = async (e) => {
 
     let body = new FormData(e.target);
     body.append("tagName", tagNamesArr);
+    body.append("userid", document.cookie.split("=")[1])
 
     const insertBoardContent = await axios.post("http://localhost:3000/board/write", body, {
         header: {
