@@ -10,8 +10,6 @@ class QnaRepository {
     async getQnaList(userid, page) {
         try {
             // Paging 처리
-            const Op = console.log('qna repository :: ')
-
             const pageNum = await this.Qna.findAll({
                 raw: true,
                 order: [['id', 'desc']],
@@ -39,8 +37,6 @@ class QnaRepository {
     }
 
     async insertContent(rest, filenameArr) {
-        console.log('restresrestrestrestrestrestrestrestrestrestrestt')
-        console.log(rest)
         const result = await this.Qna.create(rest)
 
         const files = filenameArr.map((fileUrl) =>
@@ -49,8 +45,6 @@ class QnaRepository {
 
         await Promise.all(files)
         // 파일 넣어주고 끝, 빼올 때는 id 찾아서 fileUrl 가져오면 됨 // 배열에 담기겠지?
-        console.log('result.id')
-        console.log(result.id)
         return result.id // 리턴값으로 board 테이블의 id를 반환
     }
 
@@ -58,8 +52,6 @@ class QnaRepository {
         try {
             // const addHit = await this.models.Board.update()
             const result = await this.Qna.findOne({ where: { id: `${id}` } })
-            console.log('result.dataValuesresult.dataValuesresult.dataValues')
-            console.log(result.dataValues)
             return result
         } catch (e) {}
     }

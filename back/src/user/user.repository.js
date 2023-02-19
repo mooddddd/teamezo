@@ -10,8 +10,6 @@ class UserRepository {
     // async checkLogin(payload) {
     //     try {
     //         const { userid, userpw } = { ...payload }
-    //         console.log(userid)
-    //         console.log(userpw)
     //         const user = await this.User.findOne({
     //             raw: true,
     //             where: {

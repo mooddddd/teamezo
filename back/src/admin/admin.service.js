@@ -14,7 +14,6 @@ class AdminService {
 
     async postOne( userid ){
         try {
-            console.log(userid)
             const result = await this.AdminRepoistory.findUser( userid )
             return result
         } catch (error) {

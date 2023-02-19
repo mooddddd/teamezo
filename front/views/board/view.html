@@ -30,10 +30,10 @@
                             <div class="contentTop">
                                 <div class="contentSubject">{{contentResult.subject}}</div>
                                 <ul>
-                                    <li class="contentWriter">{{contentResult.user_userid}}</li>
+                                    <li class="contentWriter">{{contentResult.userid}}</li>
                                     <li class="contentCreateDate">{{contentResult.createAt}}</li>
 
-                                    {%if contentResult.cookies == contentResult.user_userid %}
+                                    {%if contentResult.cookies == contentResult.userid %}
                                     <li class="contentModify"><a href="/board/modify">수정</a></li>
                                     <li class="contentDelete"><a href="/board/delete">삭제</a></li>
                                     {%endif%}

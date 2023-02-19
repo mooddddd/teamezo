@@ -11,7 +11,7 @@ exports.getIndex = async (req, res, next) => {
         const { token } = req.cookies
         const result = await request.get('/')
         const { boardList, mainName, tagName } = result.data
-        const list =  boardList.fileUrlList
+        const list =  boardList
         if (Object.values(req.query).length) {
             res.setHeader('Set-Cookie', `token=${req.query.token};path=/;`)
             res.render("index.html", { list, mainName, tagName, token })
@@ -19,10 +19,10 @@ exports.getIndex = async (req, res, next) => {
             const { token } = req.cookies
             const result = await request.get('/')
             const { boardList, mainName, tagName } = result.data
-            const list =  boardList.fileUrlList
+            const list =  boardList
             res.render("index.html", { list, mainName, tagName, token })
         }
     } catch (error) {
-        console.log('getIndex',error)
+        next(error)
     }
 }

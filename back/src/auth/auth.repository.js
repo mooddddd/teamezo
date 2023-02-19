@@ -5,9 +5,6 @@ class AuthRepository {
 
     async getUserInfo({ userid, userpw }) {
         try {
-            console.log('auth.repository userid,userpw')
-            console.log(userid)
-            console.log(userpw)
             const user = await this.User.findOne({
                 raw: true,
                 attributes: { exclude: ['userpw'] },
@@ -16,8 +13,6 @@ class AuthRepository {
                     userpw,
                 },
             })
-            console.log('user ======')
-            console.log(user)
             return user
         } catch (e) {
             throw new Error(e)

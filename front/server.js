@@ -10,6 +10,10 @@ app.get('/kakao/login', (req, res) => {
     res.redirect(redirectURI)
 })
 
+app.use((error, req, res, next) => {
+    res.render('error.html')
+})
+
 app.listen(3005, () => {
     console.log(`front server start`)
 })

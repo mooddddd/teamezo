@@ -5,8 +5,8 @@ class SearchService {
 
     async postSearch(searchValue){
         try {
-            const [ subject, content, hash ] = await this.SearchRepoistory.findSearch(searchValue)
-            return { subject, content, hash }
+            const [ subject, content, mainName, subName, hash, startNumber, endNumber, totalPage ] = await this.SearchRepoistory.findSearch(searchValue)
+            return { subject, content, mainName, subName, hash, startNumber, endNumber, totalPage }
         } catch (error) {
             throw new Error(error)
         }

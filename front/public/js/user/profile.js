@@ -28,12 +28,10 @@ prev.addEventListener('click', (e) => {
     let count = 1
     count--
     location.href = `http://127.0.0.1:3005/user/profile?page=${count}`
-    console.log(count)
 })
 
 next.addEventListener('click', (e) => {
     let count = 1
     location.href = `http://127.0.0.1:3005/user/profile?page=${count}`
     count++
-    console.log(count)
 })

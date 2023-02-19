@@ -1,3 +1,8 @@
+const request = axios.create({
+    baseURL:"http://localhost:3000/board",
+    withCredentials: true,
+})
+
 /* 댓글 내용 없으면 알림창 뜸 */
 const commentContentForm = document.querySelector(".writeCommentForm > form");
 const commentBox = document.querySelector(".writeCommentForm > form > div > textarea");
@@ -15,8 +20,6 @@ const commentAll = document.querySelectorAll(".commentCenterContent > ul > li > 
 const commentReplyBox = document.querySelectorAll(".commentReplyBox");
 const commentAllArr = Object.values(commentAll);
 const commentReplyBoxArr = Object.values(commentReplyBox);
-
-// console.log(commentAllArr[0]);
 
 // const reCommentClickHander = (e) => {
 //     commentReplyBox.className = "commentReplyBox";
@@ -48,18 +51,22 @@ for (let i = 0; i <= commentAllArr.length - 1; i++) {
 // for (let i = 0; i <= replyofcommentbtnArr.length - 1; i++) {
 //     replyofcommentbtnArr[i].addEventListener("click", (e) => {
 //         e.preventDefault();
-//         // console.log(replyofcommentContent[i].value); // 댓글 내용 => 얘를 백으로 보내기
-//         // console.log(insertReplyPlaceArr);
 //         let clone = document.importNode(replyTemplate.content, true);
 //         const test = clone.querySelectorAll(".commentReply>.userCommnetContent>div");
 //         const avatar = test[i].querySelector(".avatar>a>img");
 //         // const commentWriter = clone.querySelector(".commentCenterContent>ul>li>.commentWriter");
 //         // const commentDate = clone.querySelector(".commentCenterContent>ul>li>.commentDate");
-//         console.log(avatar);
 //         // const testArr = Object.values(test);
 //         // test[2];
-//         // console.log(testArr);
 //         // insertReplyPlaceArr[i] = clone.querySelectorAll
 //     });
-//     // console.log(replyofcommentbtnArr[i]);
 // }
+
+const deleteBtn = document.querySelector(".contentDelete > a")
+deleteBtn.addEventListener("click", async (e) => {
+    e.preventDefault()
+    const idx = deleteBtn.getAttribute("href").split("=")[1]
+    await request.post(`/delete?id=${idx}`)
+    alert("글이 삭제되었습니다.")
+    location.href = `http://localhost:3005/board/list?page=1`
+})

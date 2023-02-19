@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link rel="stylesheet" href="/css/root.css" />
-        <link rel="stylesheet" href="/css/user/profileEdit.css" />
         <link rel="stylesheet" href="/css/layout/header.css" />
         <link rel="stylesheet" href="/css/layout/footer.css" />
+        <link rel="stylesheet" href="/css/user/profileEdit.css" />
+        <!-- <link rel="stylesheet" href="/css/admin/adminUserEdit.css" /> -->
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function kakaopost() {
@@ -25,7 +26,7 @@
         {% include 'layout/header.html' %}
         <section>
             <div class="profileEdit">
-                <form action="/user/profileEdit" method="post" class="profileEdit">
+                <!-- <form action="/user/profileEdit" method="post" class="profileEdit">
                     <div class="profileEditContentsWrap">
                         <div class="profileEditContentsLeft">
                             <div class="profileEditContent1">
@@ -116,11 +117,90 @@
                     <div class="profileEditBtnWrap">
                         <button class="profileEditBtn">수정하기</button>
                     </div>
+                </form> -->
+                <form id="profileWrap" enctype="multipart/form-data" action="/admin/userEdit" method="post">
+                    <div class="profileWrap">
+                        <div id="profileHeader">
+                            <h1>회원정보 수정</h1>
+                            <p>회원의 정보를 수정할 수 있습니다.</p>
+                        </div>
+                        <div id="profileBody">
+                            <div class="profileBox">
+                                <div id="profileBox1">
+                                    <div id="avatarWrap">
+                                        <img src="{{user.avatarUrl}}">
+                                    </div>
+                                    <div id="avatarController">
+                                        <div>프로필 사진</div>
+                                        <input type="file" name="avatarUrl">
+                                    </div>
+                                </div>
+                                <div id="profileBox2">
+                                    <h2>계정 정보</h2>
+                                    <div class="profileContents">
+                                        <div class="profileContent">
+                                            <div class="profileContentName">이름</div>
+                                            <input type="text" class="profileContentInfo" name="username" value="{{user.username}}" >
+                                        </div>
+                                        <div class="profileContent">
+                                            <div class="profileContentName">아이디</div>
+                                            <input type="text" class="profileContentInfo" name="userid" value="{{user.userid}}">
+                                        </div>
+                                        <div class="profileContent">
+                                            <div class="profileContentName">닉네임</div>
+                                            <input type="text" class="profileContentInfo" name="nickname" value="{{user.nickname}}">
+                                        </div>
+                                        <div class="profileContent">
+                                            <div class="profileContentName">성별</div>
+                                            <input type="text" class="profileContentInfo" name="gender" value="{{user.gender}}">
+                                        </div>
+                                        <div class="profileContent">
+                                            <div class="profileContentName">이메일</div>
+                                            <input type="text" class="profileContentInfo" name="email" value="{{user.email}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profileBox">
+                                <div id="profileBox3">
+                                    <h2>회원 정보</h2>
+                                    <div class="profileContents">
+                                        <div class="profileContent">
+                                            <div class="profileContentName">휴대폰 번호</div>
+                                            <input type="text" class="profileContentInfo" name="phone" value="{{user.phone}}">
+                                        </div>
+                                        <div class="profileContent">
+                                            <div class="profileContentName">집전화 번호</div>
+                                            <input type="text" class="profileContentInfo" name="telephone" value="{{user.telephone}}">
+                                        </div>
+                                        <div class="profileEditContentBox">
+                                            <div id="addressNumber" class="profileContent">
+                                                <div class="profileContentName">우편번호</div>
+                                                <input class="profileContentInfo" type="text" name="" id="zipcode" size="7" readonly/>
+                                                <input type="button" value="찾기" onclick="kakaopost()" id="zipcodeStyle"/>
+                                            </div>
+                                            <div id="addressInfo" class="profileContent">
+                                                <div class="profileContentName">상세주소</div>
+                                                <input class="profileContentInfo" type="text" name="address" id="address" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="profileBox4">
+                                    <h2>간단 소개글</h2>
+                                    <div class="profileContentInfoWrap">
+                                        <input type="text" class="profileContentInfo" name="introduce" value="{{user.introduce}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="profileFooter">
+                            <button id="profileUpdateBtn" type="submit">수정하기</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </section>
         {% include 'layout/footer.html' %}
-        <script src="/js/layout/header.js"></script>
-        <script src="/js/layout/sidebar.js"></script>
     </body>
 </html>

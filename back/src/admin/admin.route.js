@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const { controller } = require('./admin.module')
-console.log(controller)
 
 router.get('/user', (req, res, next) => controller.getUser(req, res, next))
 router.post('/user', (req, res, next) => controller.postUser(req, res, next))

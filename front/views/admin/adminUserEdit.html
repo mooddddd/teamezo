@@ -4,10 +4,21 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원정보 수정</title>
         <link rel="stylesheet" href="/css/root.css" />
         <link rel="stylesheet" href="/css/layout/adminSide.css" />
         <link rel="stylesheet" href="/css/admin/adminUserEdit.css" />
-        <title>회원정보 수정</title>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+            function kakaopost() {
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        document.querySelector('#zipcode').value = data.zonecode
+                        document.querySelector('#address').value = data.address
+                    },
+                }).open()
+            }
+        </script>
     </head>
     <body>
         <div class="adminWrap">
@@ -68,9 +79,16 @@
                                         <div class="profileContentName">집전화 번호</div>
                                         <input type="text" class="profileContentInfo" name="telephone" value="{{user.telephone}}">
                                     </div>
-                                    <div class="profileContent">
-                                        <div class="profileContentName">주소</div>
-                                        <input type="text" class="profileContentInfo" name="address" value="{{user.address}}">
+                                    <div class="profileEditContentBox">
+                                        <div id="addressNumber" class="profileContent">
+                                            <div class="profileContentName">우편번호</div>
+                                            <input class="profileContentInfo" type="text" name="zipcode" id="zipcode" size="7" readonly/>
+                                            <input type="button" value="찾기" onclick="kakaopost()" id="zipcodeStyle"/>
+                                        </div>
+                                        <div id="addressInfo" class="profileContent">
+                                            <div class="profileContentName">상세주소</div>
+                                            <input class="profileContentInfo" type="text" name="address" id="address" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>

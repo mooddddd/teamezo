@@ -12,7 +12,6 @@ class UserService {
     //             userid,
     //             userpw,
     //         }
-    //         console.log(payload)
     //         const user = await this.userRepository.checkLogin(payload)
 
     //         // const algorithm = process.env.ALGORITHM
@@ -27,12 +26,8 @@ class UserService {
 
     // async getInfo(token) {
     //     try {
-    //         console.log('user.service process.env.SALT')
-    //         console.log(process.env.SALT)
     //         const { userid } = this.jwt.verify(token, process.env.SALT)
     //         const user = await this.userRepository.getUserById(userid)
-    //         console.log('user.Service getInfo')
-    //         console.log(user)
     //         return user
     //     } catch (e) {
     //         throw new Error(e)
@@ -41,12 +36,7 @@ class UserService {
 
     async loginIdChk({ userid }) {
         try {
-            console.log('userService loginIdChk')
-            console.log(userid)
-
             const userId = await this.userRepository.checkUserId({ userid })
-            console.log('userService loginIdChk after')
-            console.log(userId)
 
             if (userId === null) {
                 return userId
@@ -58,10 +48,7 @@ class UserService {
 
     async userCheck({ userid, page }) {
         try {
-            console.log('user.service')
             const user = await this.userRepository.getUserByInfo({ userid, page })
-            console.log('service user')
-            console.log(user)
             return user
         } catch (e) {
             throw new Error(e)
@@ -77,8 +64,6 @@ class UserService {
                 .createHmac('sha256', process.env.SALT)
                 .update(payload.userpw)
                 .digest('hex')
-            console.log('hash')
-            console.log(hash)
             const [user, created] = await this.userRepository.addUser({
                 userid: payload.userid,
                 userpw: hash,

@@ -6,7 +6,10 @@ class IndexService {
     async getIndex(){
         try {
             const boardList = await this.IndexRepoistory.getIndexBoard()
-
+            for(let i = 0; i <= boardList.fileUrlList.length - 1; i++){
+                boardList.fileUrlList[i].liked = boardList.likedNumber[i]
+            }
+            
             const categoryList = await this.IndexRepoistory.getIndexCategory()
             let mainName = []
             categoryList.map((item) => {
@@ -19,7 +22,7 @@ class IndexService {
                 tagName.push(item.tagName)
             })
 
-            return { boardList, mainName, tagName }
+            return { boardList: boardList.fileUrlList, mainName, tagName }
         } catch (error) {
             throw new Error(error)
         }

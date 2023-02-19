@@ -9,10 +9,6 @@ const submitHandler = async (e) => {
             ['Content-type']: 'multipart/form-data',
         },
     })
-    console.log(
-        'insertBoardContent.datainsertBoardContent.datainsertBoardContent.datainsertBoardContent.data'
-    )
-    console.log(insertBoardContent.data)
     location.href = `/qna/view?id=${insertBoardContent.data}`
 }
 writeDataForm.addEventListener('submit', submitHandler)

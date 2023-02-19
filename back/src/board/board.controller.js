@@ -6,8 +6,8 @@ class BoardController {
     // 리스트
     async getList(req, res, next) {
         try {
-            // console.log(req.query.token);
-            const listAll = await this.boardService.getList(req.query.page)
+            console.log(req.query) // 왜 query에 token이 찍히지..?
+            const listAll = await this.boardService.getList(req.query.page, req.query.token)
             const category = await this.boardService.getCategory()
             // token이랑 page 값 넘겨서 있냐 없냐 확인
             res.json({ listAll, category })
@@ -27,24 +27,22 @@ class BoardController {
     // 뷰
     async getview(req, res, next) {
         try {
-            // console.log(req.query.id); // 1
             const id = req.query.id
             const result = await this.boardService.getview(id)
             res.json(result)
         } catch (e) {
-            throw new Error(e)
+            next(e)
         }
     }
 
     // 댓글 작성
     async getComment(req, res, next) {
         try {
-            // console.log(req.body); // { boardId: '52', classNum: '0', content: 'ㅁㄴㅇㄹㄴㄹㅇ' }
             const body = req.body
             const result = await this.boardService.postComment(body)
             res.json(result)
         } catch (e) {
-            throw new Error(e)
+            next(e)
         }
     }
 
@@ -61,13 +59,18 @@ class BoardController {
     async postWrite(req, res, next) {
         try {
             const { body, files } = req
-            console.log(req.cookies)
-            console.log('req.bodyreq.bodyreq.bodyreq.body')
-            console.log(req.body)
-            console.log(req.cookies)
-            console.log('notice postWirte!')
+            console.log(body)
             const result = await this.boardService.postBoardContent(body, files)
 
+            res.json(result)
+        } catch (e) {
+            next(e)
+        }
+    }
+
+    async postDelete(req, res, next){
+        try {
+            const result = await this.boardService.postDelete(req.query.id)
             res.json(result)
         } catch (e) {
             next(e)
