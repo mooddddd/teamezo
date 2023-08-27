@@ -13,6 +13,9 @@ TeamEzo의 커뮤니티 사이트입니다.
 
 ## 📹 프로젝트 영상
 
+<p align="center">
+  <img src="https://nftin-wallet-bucket.s3.ap-northeast-2.amazonaws.com/uploads/회원가입.gif" />
+</p>
 
 프로젝트 영상
 
