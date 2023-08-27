@@ -1,9 +1,13 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,3,4,5,6,7,8,9,15,30&height=200&section=header&text=Welcome%20Team%202's%20Project!!&fontSize=60&animation=twinkling)
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,3,4,5,6,7,8,9,15,30&height=200&section=header&text=%20TeamEzo's%20Community%20Project&fontSize=60&animation=twinkling)
 
 ## 📋 Project 소개
 
 
 프로젝트 소개글 작성파트
+
+TeamEzo의 커뮤니티 사이트입니다.
+
+회원가입, 카카오 로그인,  글쓰기, 실시간 채팅 등의 기능이 구현되어있습니다.
 
 ---
 
