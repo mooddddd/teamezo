@@ -13,17 +13,9 @@ TeamEzo의 커뮤니티 사이트입니다.
 
 ## 📹 프로젝트 영상
 
-<p align="center">
-  <img src="[https://nftin-wallet-bucket.s3.ap-northeast-2.amazonaws.com/uploads/회원가입.gif](https://nftin-wallet-bucket.s3.ap-northeast-2.amazonaws.com/uploads/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.gif)" />
-</p>
-
-<p align="center">
-  <img src="https://nftin-wallet-bucket.s3.ap-northeast-2.amazonaws.com/uploads/%EA%B8%80%EC%93%B0%EA%B8%B0.gif" />
-</p>
-
-<p align="center">
-  <img src="https://nftin-wallet-bucket.s3.ap-northeast-2.amazonaws.com/uploads/%EC%B1%84%ED%8C%85.gif" />
-</p>
+![글쓰기](https://github.com/mooddddd/teamezo/assets/118948028/09a7c460-cf3a-4ac9-bd79-67c72e5af832)
+![채팅](https://github.com/mooddddd/teamezo/assets/118948028/25376716-3e8e-498d-b878-5cc0c83d7d80)
+![회원가입](https://github.com/mooddddd/teamezo/assets/118948028/ddaf58bf-75e8-4df5-97f7-598868840998)
 
 프로젝트 영상
 
